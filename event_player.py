@@ -12,7 +12,7 @@ class Player:
         self.playing = False
         self.thread = None
 
-    def _play_events_task(self, macro_data, repeat_count):
+    def _play_events_task(self, macro_data, repeat_count, speed_multiplier):
         self.playing = True
         events = macro_data.get('events', [])
         mode = macro_data.get('mode', 'absolute')
@@ -41,11 +41,16 @@ class Player:
                 for event_list_idx in range(action.start_index, action.end_index + 1):
                     event_time, (event, recorded_pos) = events[event_list_idx]
 
-                    # --- Sleep until the next event ---
                     current_delay = time.time() - start_time
                     wait_time = event_time - current_delay
-                    if wait_time > 0:
-                        time.sleep(wait_time)
+                    sleep_duration = wait_time / speed_multiplier
+
+                    if sleep_duration > 0:
+                        time.sleep(sleep_duration)
+                    else:
+                        # 대기 시간이 없거나 이미 지났더라도, 다른 스레드(단축키 감지 등)가
+                        # 실행될 수 있도록 CPU 제어권을 잠시 양보합니다.
+                        time.sleep(0)
 
                     # --- Correct Event Playback Logic ---
                     if isinstance(event, keyboard.KeyboardEvent):

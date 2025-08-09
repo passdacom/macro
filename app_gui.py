@@ -99,6 +99,12 @@ class AppGUI:
         self.repeat_spinbox = ttk.Spinbox(options_frame, from_=1, to=100, width=5)
         self.repeat_spinbox.pack(side="left", padx=5)
         self.repeat_spinbox.set(1)
+
+        ttk.Label(options_frame, text="Speed:").pack(side="left", padx=(10, 0))
+        self.speed_spinbox = ttk.Spinbox(options_frame, from_=0.1, to=5.0, increment=0.1, width=5)
+        self.speed_spinbox.pack(side="left", padx=5)
+        self.speed_spinbox.set(1.0)
+
         ttk.Label(options_frame, text="Coordinates:").pack(side="left", padx=(10, 0))
         self.coord_var = tk.StringVar(value="absolute")
         ttk.Radiobutton(options_frame, text="Absolute", variable=self.coord_var, value="absolute").pack(side="left")
@@ -233,13 +239,14 @@ class AppGUI:
             return
         try:
             repeat_count = int(self.repeat_spinbox.get())
+            speed_multiplier = float(self.speed_spinbox.get())
         except ValueError:
-            self.add_log_message("Invalid repeat count.")
+            self.add_log_message("Invalid repeat count or speed.")
             return
         self.is_playing = True
         self.update_button_states()
-        self.add_log_message(f"Playback started (repeating {repeat_count} times)...")
-        self.player.play_events(self.macro_data, repeat_count)
+        self.add_log_message(f"Playback started (repeating {repeat_count} times at {speed_multiplier}x speed)...")
+        self.player.play_events(self.macro_data, repeat_count, speed_multiplier)
 
     def stop_playing(self):
         if not self.is_playing:

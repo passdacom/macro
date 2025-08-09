@@ -92,7 +92,7 @@ class Player:
         if self.on_finish_callback:
             self.on_finish_callback()
 
-    def play_events(self, macro_data, repeat_count=1):
+    def play_events(self, macro_data, repeat_count=1, speed_multiplier=1.0):
         if self.playing:
             return
 
@@ -101,7 +101,7 @@ class Player:
                 self.on_finish_callback()
             return
 
-        self.thread = threading.Thread(target=self._play_events_task, args=(macro_data, repeat_count), daemon=True)
+        self.thread = threading.Thread(target=self._play_events_task, args=(macro_data, repeat_count, speed_multiplier), daemon=True)
         self.thread.start()
 
     def stop_playing(self):

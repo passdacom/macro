@@ -39,6 +39,8 @@ class Player:
 
                 # Play all raw events within this grouped action
                 for event_list_idx in range(action.start_index, action.end_index + 1):
+                    if not self.playing: # Check for stop signal more frequently
+                        break
                     event_time, (event, recorded_pos) = events[event_list_idx]
 
                     current_delay = time.time() - start_time

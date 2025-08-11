@@ -14,17 +14,17 @@ class Recorder:
         self.coordinate_mode = 'absolute'
         self.keyboard_hook = None
         self.mouse_hook = None
-        # Flag to ignore the final 'up' event of a double-click
-        self.ignore_next_up = False
+        # Flag to ignore the final 'up' event of a double-click, specific to a button
+        self.button_to_ignore_up = None
 
     def _record_event(self, event):
         if not self.recording:
             return
 
         # The mouse library sends a 'double' event on the second click's 'down' action.
-        # It also sends a final 'up' event. We need to ignore that final 'up'.
-        if isinstance(event, mouse.ButtonEvent) and event.event_type == mouse.UP and self.ignore_next_up:
-            self.ignore_next_up = False # Reset flag and skip recording this event
+        # It also sends a final 'up' event. We need to ignore that final 'up' for the correct button.
+        if isinstance(event, mouse.ButtonEvent) and event.event_type == mouse.UP and event.button == self.button_to_ignore_up:
+            self.button_to_ignore_up = None # Reset flag and skip recording this event
             return
 
         event_time = time.time() - self.start_time
@@ -45,12 +45,12 @@ class Recorder:
                         break
             
             if last_down_index != -1 and last_up_index != -1:
-                self.log_callback(f"Double-click detected. Cleaning up previous click event.")
+                self.log_callback(f"Double-click detected for '{event.button}' button. Cleaning up previous click event.")
                 del self.events[last_up_index]
                 del self.events[last_down_index]
             
-            # Set flag to ignore the upcoming 'up' event that completes the double-click action
-            self.ignore_next_up = True
+            # Set flag to ignore the upcoming 'up' event for this specific button
+            self.button_to_ignore_up = event.button
 
         # Record the event (the cleaned stream)
         pos = mouse.get_position() if isinstance(event, mouse.ButtonEvent) else None

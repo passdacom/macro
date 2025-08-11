@@ -313,7 +313,20 @@ class AppGUI:
             self.add_log_message(f"An unexpected error occurred: {e}")
 
     def add_log_message(self, message):
-        self.root.after(0, self._update_log_text, message)
+        timestamp = time.strftime("[%Y-%m-%d %H:%M:%S]")
+        log_message = f"{timestamp} {message}"
+        
+        # Write to file
+        try:
+            with open(self.log_file, 'a', encoding='utf-8') as f:
+                f.write(log_message + "\n")
+        except Exception as e:
+            # Log file writing errors to the GUI log box only
+            error_message = f"{timestamp} [ERROR] Could not write to log file: {e}"
+            self.root.after(0, self._update_log_text, error_message)
+
+        # Update GUI
+        self.root.after(0, self._update_log_text, log_message)
 
     def _update_log_text(self, message):
         self.log_text.config(state='normal')

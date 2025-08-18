@@ -1,0 +1,381 @@
+[2025-08-18 09:45:18] Recording started in absolute mode...
+[2025-08-18 09:45:18] Event: KeyboardEvent(f5 down)
+[2025-08-18 09:45:19] Event: KeyboardEvent(f5 up)
+[2025-08-18 09:45:19] Event: KeyboardEvent(alt up)
+[2025-08-18 09:45:19] Event: KeyboardEvent(ctrl up)
+[2025-08-18 09:45:20] Event: ButtonEvent(event_type='down', button='left', time=1755477920.1777284)
+[2025-08-18 09:45:20] Event: ButtonEvent(event_type='up', button='left', time=1755477920.3980637)
+[2025-08-18 09:45:21] Event: ButtonEvent(event_type='down', button='left', time=1755477921.2470167)
+[2025-08-18 09:45:21] Event: ButtonEvent(event_type='up', button='left', time=1755477921.4697268)
+[2025-08-18 09:45:21] Event: KeyboardEvent(1 down)
+[2025-08-18 09:45:21] Event: KeyboardEvent(right shift down)
+[2025-08-18 09:45:21] Event: KeyboardEvent(! up)
+[2025-08-18 09:45:21] Event: KeyboardEvent(right shift up)
+[2025-08-18 09:45:22] Event: KeyboardEvent(enter down)
+[2025-08-18 09:45:22] Event: KeyboardEvent(enter up)
+[2025-08-18 09:45:22] Event: KeyboardEvent(2 down)
+[2025-08-18 09:45:22] Event: KeyboardEvent(enter down)
+[2025-08-18 09:45:22] Event: KeyboardEvent(2 up)
+[2025-08-18 09:45:22] Event: KeyboardEvent(enter up)
+[2025-08-18 09:45:22] Event: KeyboardEvent(3 down)
+[2025-08-18 09:45:22] Event: KeyboardEvent(enter down)
+[2025-08-18 09:45:22] Event: KeyboardEvent(3 up)
+[2025-08-18 09:45:22] Event: KeyboardEvent(enter up)
+[2025-08-18 09:45:24] Event: ButtonEvent(event_type='down', button='left', time=1755477924.5927708)
+[2025-08-18 09:45:24] Event: ButtonEvent(event_type='up', button='left', time=1755477924.8121524)
+[2025-08-18 09:45:24] Recording stopped.
+[2025-08-18 09:45:24] Recorded 156 events.
+[2025-08-18 09:45:28] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 09:45:34] Playback finished.
+[2025-08-18 09:45:39] Action 1: Button changed to right
+[2025-08-18 09:45:41] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 09:45:47] Playback finished.
+[2025-08-18 09:45:50] Action 2: Button changed to right
+[2025-08-18 09:45:53] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 09:45:59] Playback finished.
+[2025-08-18 09:46:02] Recording started in absolute mode...
+[2025-08-18 09:46:03] Event: ButtonEvent(event_type='down', button='left', time=1755477963.3834357)
+[2025-08-18 09:46:03] Event: ButtonEvent(event_type='up', button='left', time=1755477963.606853)
+[2025-08-18 09:46:04] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 09:46:04] Event: ButtonEvent(event_type='double', button='left', time=1755477964.0811405)
+[2025-08-18 09:46:05] Event: ButtonEvent(event_type='down', button='left', time=1755477965.9545264)
+[2025-08-18 09:46:06] Event: ButtonEvent(event_type='up', button='left', time=1755477966.1752112)
+[2025-08-18 09:46:07] Event: ButtonEvent(event_type='down', button='left', time=1755477967.16651)
+[2025-08-18 09:46:07] Event: ButtonEvent(event_type='up', button='left', time=1755477967.3008113)
+[2025-08-18 09:46:07] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 09:46:07] Event: ButtonEvent(event_type='double', button='left', time=1755477967.3026948)
+[2025-08-18 09:46:09] Event: ButtonEvent(event_type='down', button='left', time=1755477969.4414122)
+[2025-08-18 09:46:09] Event: ButtonEvent(event_type='up', button='left', time=1755477969.667666)
+[2025-08-18 09:46:09] Recording stopped.
+[2025-08-18 09:46:09] Recorded 264 events.
+[2025-08-18 09:46:10] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 09:46:18] Playback finished.
+[2025-08-18 09:46:29] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 09:46:36] Playback finished.
+[2025-08-18 09:46:40] Recording started in absolute mode...
+[2025-08-18 09:46:41] Event: ButtonEvent(event_type='down', button='left', time=1755478001.0451255)
+[2025-08-18 09:46:41] Event: ButtonEvent(event_type='up', button='left', time=1755478001.270499)
+[2025-08-18 09:46:41] Event: ButtonEvent(event_type='down', button='left', time=1755478001.9508653)
+[2025-08-18 09:46:42] Event: ButtonEvent(event_type='up', button='left', time=1755478002.1669717)
+[2025-08-18 09:46:43] Event: KeyboardEvent(1 down)
+[2025-08-18 09:46:43] Event: KeyboardEvent(1 up)
+[2025-08-18 09:46:43] Event: KeyboardEvent(enter down)
+[2025-08-18 09:46:43] Event: KeyboardEvent(enter up)
+[2025-08-18 09:46:43] Event: KeyboardEvent(2 down)
+[2025-08-18 09:46:43] Event: KeyboardEvent(2 up)
+[2025-08-18 09:46:43] Event: KeyboardEvent(enter down)
+[2025-08-18 09:46:43] Event: KeyboardEvent(enter up)
+[2025-08-18 09:46:44] Event: ButtonEvent(event_type='down', button='left', time=1755478004.765571)
+[2025-08-18 09:46:44] Event: ButtonEvent(event_type='up', button='left', time=1755478004.9913397)
+[2025-08-18 09:46:45] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 09:46:45] Event: ButtonEvent(event_type='double', button='left', time=1755478005.149293)
+[2025-08-18 09:46:45] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 09:46:45] Event: ButtonEvent(event_type='double', button='left', time=1755478005.2920768)
+[2025-08-18 09:46:47] Event: ButtonEvent(event_type='down', button='left', time=1755478007.1132708)
+[2025-08-18 09:46:47] Event: ButtonEvent(event_type='up', button='left', time=1755478007.334001)
+[2025-08-18 09:46:47] Recording stopped.
+[2025-08-18 09:46:47] Recorded 195 events.
+[2025-08-18 17:38:52] Recording started in absolute mode...
+[2025-08-18 17:38:54] Event: ButtonEvent(event_type='down', button='left', time=1755506334.5880873)
+[2025-08-18 17:38:54] Event: ButtonEvent(event_type='up', button='left', time=1755506334.8155472)
+[2025-08-18 17:38:55] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:38:55] Event: ButtonEvent(event_type='double', button='left', time=1755506335.109956)
+[2025-08-18 17:38:55] Event: ButtonEvent(event_type='double', button='left', time=1755506335.2504401)
+[2025-08-18 17:38:56] Event: ButtonEvent(event_type='down', button='left', time=1755506336.8164263)
+[2025-08-18 17:38:57] Event: ButtonEvent(event_type='up', button='left', time=1755506337.0413578)
+[2025-08-18 17:38:59] Event: ButtonEvent(event_type='down', button='left', time=1755506339.211008)
+[2025-08-18 17:38:59] Event: ButtonEvent(event_type='up', button='left', time=1755506339.4270751)
+[2025-08-18 17:38:59] Recording stopped.
+[2025-08-18 17:38:59] Recorded 136 events.
+[2025-08-18 17:39:07] Recording started in absolute mode...
+[2025-08-18 17:39:08] Event: ButtonEvent(event_type='down', button='left', time=1755506348.9648492)
+[2025-08-18 17:39:09] Event: ButtonEvent(event_type='up', button='left', time=1755506349.1865606)
+[2025-08-18 17:39:10] Event: ButtonEvent(event_type='down', button='left', time=1755506350.207596)
+[2025-08-18 17:39:10] Event: ButtonEvent(event_type='up', button='left', time=1755506350.3640578)
+[2025-08-18 17:39:10] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:39:10] Event: ButtonEvent(event_type='double', button='left', time=1755506350.3658957)
+[2025-08-18 17:39:11] Event: ButtonEvent(event_type='down', button='left', time=1755506351.9320772)
+[2025-08-18 17:39:12] Event: ButtonEvent(event_type='up', button='left', time=1755506352.0806267)
+[2025-08-18 17:39:12] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:39:12] Event: ButtonEvent(event_type='double', button='left', time=1755506352.082187)
+[2025-08-18 17:39:13] Event: ButtonEvent(event_type='down', button='left', time=1755506353.9404697)
+[2025-08-18 17:39:14] Event: ButtonEvent(event_type='up', button='left', time=1755506354.1666594)
+[2025-08-18 17:39:15] Event: ButtonEvent(event_type='down', button='left', time=1755506355.4179518)
+[2025-08-18 17:39:15] Event: ButtonEvent(event_type='up', button='left', time=1755506355.6339762)
+[2025-08-18 17:39:15] Recording stopped.
+[2025-08-18 17:39:15] Recorded 262 events.
+[2025-08-18 17:39:22] Action 1: Button changed to right
+[2025-08-18 17:39:24] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:39:32] Playback finished.
+[2025-08-18 17:39:44] Action 5: Changed to Single Click.
+[2025-08-18 17:39:48] Action 3: Changed to Single Click.
+[2025-08-18 17:39:50] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:39:58] Playback finished.
+[2025-08-18 17:39:59] Recording started in absolute mode...
+[2025-08-18 17:40:00] Event: ButtonEvent(event_type='down', button='left', time=1755506400.3720436)
+[2025-08-18 17:40:00] Event: ButtonEvent(event_type='up', button='left', time=1755506400.5960546)
+[2025-08-18 17:40:01] Event: KeyboardEvent(r down)
+[2025-08-18 17:40:01] Event: KeyboardEvent(r up)
+[2025-08-18 17:40:01] Event: KeyboardEvent(r down)
+[2025-08-18 17:40:01] Event: KeyboardEvent(r up)
+[2025-08-18 17:40:01] Event: KeyboardEvent(r down)
+[2025-08-18 17:40:01] Event: KeyboardEvent(r up)
+[2025-08-18 17:40:03] Event: ButtonEvent(event_type='down', button='left', time=1755506403.6357703)
+[2025-08-18 17:40:03] Event: ButtonEvent(event_type='up', button='left', time=1755506403.8633819)
+[2025-08-18 17:40:03] Recording stopped.
+[2025-08-18 17:40:03] Recorded 122 events.
+[2025-08-18 17:40:06] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:40:11] Playback finished.
+[2025-08-18 17:40:16] Action 3: Key changed to 'd'
+[2025-08-18 17:40:21] Action 3: Key changed to 'd'
+[2025-08-18 17:40:26] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:41:10] Recording started in absolute mode...
+[2025-08-18 17:41:10] Event: KeyboardEvent(f5 down)
+[2025-08-18 17:41:10] Event: KeyboardEvent(f5 up)
+[2025-08-18 17:41:11] Event: KeyboardEvent(alt up)
+[2025-08-18 17:41:11] Event: KeyboardEvent(ctrl up)
+[2025-08-18 17:41:11] Event: ButtonEvent(event_type='down', button='left', time=1755506471.4585264)
+[2025-08-18 17:41:11] Event: ButtonEvent(event_type='up', button='left', time=1755506471.6827207)
+[2025-08-18 17:41:12] Event: KeyboardEvent(r down)
+[2025-08-18 17:41:12] Event: KeyboardEvent(r up)
+[2025-08-18 17:41:12] Event: KeyboardEvent(r down)
+[2025-08-18 17:41:12] Event: KeyboardEvent(r up)
+[2025-08-18 17:41:12] Event: KeyboardEvent(r down)
+[2025-08-18 17:41:12] Event: KeyboardEvent(r up)
+[2025-08-18 17:41:14] Event: KeyboardEvent(alt down)
+[2025-08-18 17:41:14] Event: KeyboardEvent(ctrl down)
+[2025-08-18 17:41:14] Recording stopped.
+[2025-08-18 17:41:14] Recorded 43 events.
+[2025-08-18 17:41:17] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:41:20] Playback finished.
+[2025-08-18 17:41:25] Action 2: Key changed to 'a'
+[2025-08-18 17:41:28] Action 2: Key changed to 'a'
+[2025-08-18 17:42:18] Recording started in absolute mode...
+[2025-08-18 17:42:19] Event: ButtonEvent(event_type='down', button='left', time=1755506539.8027534)
+[2025-08-18 17:42:20] Event: ButtonEvent(event_type='up', button='left', time=1755506540.029873)
+[2025-08-18 17:42:20] Event: KeyboardEvent(r down)
+[2025-08-18 17:42:20] Event: KeyboardEvent(r up)
+[2025-08-18 17:42:20] Event: KeyboardEvent(r down)
+[2025-08-18 17:42:20] Event: KeyboardEvent(r up)
+[2025-08-18 17:42:20] Event: KeyboardEvent(r down)
+[2025-08-18 17:42:20] Event: KeyboardEvent(r up)
+[2025-08-18 17:42:22] Event: ButtonEvent(event_type='down', button='left', time=1755506542.262671)
+[2025-08-18 17:42:22] Event: ButtonEvent(event_type='up', button='left', time=1755506542.4771338)
+[2025-08-18 17:42:22] Recording stopped.
+[2025-08-18 17:42:22] Recorded 174 events.
+[2025-08-18 17:42:25] Deleted 60 raw event(s).
+[2025-08-18 17:42:26] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:42:30] Playback finished.
+[2025-08-18 17:42:34] Deleted 106 raw event(s).
+[2025-08-18 17:42:45] Action 2 delay adjusted by 0.92s.
+[2025-08-18 17:42:45] Action 2: Key changed to 'r'
+[2025-08-18 17:42:50] Action 2 delay adjusted by 0.92s.
+[2025-08-18 17:42:50] Action 2: Key changed to 'r'
+[2025-08-18 17:42:57] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:43:33] Recording started in absolute mode...
+[2025-08-18 17:43:33] Event: KeyboardEvent(f5 down)
+[2025-08-18 17:43:33] Event: KeyboardEvent(f5 up)
+[2025-08-18 17:43:33] Event: KeyboardEvent(ctrl up)
+[2025-08-18 17:43:33] Event: KeyboardEvent(alt up)
+[2025-08-18 17:43:34] Event: ButtonEvent(event_type='down', button='left', time=1755506614.1671433)
+[2025-08-18 17:43:34] Event: ButtonEvent(event_type='up', button='left', time=1755506614.3873193)
+[2025-08-18 17:43:34] Event: KeyboardEvent(r down)
+[2025-08-18 17:43:34] Event: KeyboardEvent(r up)
+[2025-08-18 17:43:34] Event: KeyboardEvent(r down)
+[2025-08-18 17:43:34] Event: KeyboardEvent(r up)
+[2025-08-18 17:43:35] Event: KeyboardEvent(r down)
+[2025-08-18 17:43:35] Event: KeyboardEvent(r up)
+[2025-08-18 17:43:36] Event: KeyboardEvent(ctrl down)
+[2025-08-18 17:43:36] Event: KeyboardEvent(alt down)
+[2025-08-18 17:43:36] Recording stopped.
+[2025-08-18 17:43:36] Recorded 43 events.
+[2025-08-18 17:43:41] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:43:43] Playback finished.
+[2025-08-18 17:43:50] Action 2: Key changed to 'a'
+[2025-08-18 17:43:55] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:43:58] Playback finished.
+[2025-08-18 17:44:03] Action 2: Key changed to 'a'
+[2025-08-18 17:44:08] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:44:10] Playback finished.
+[2025-08-18 17:44:23] Action 1 delay adjusted by 0.67s.
+[2025-08-18 17:44:23] Action 1: Key changed to '1'
+[2025-08-18 17:44:25] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:44:28] Playback finished.
+[2025-08-18 17:44:39] Action 3 delay adjusted by 2.92s.
+[2025-08-18 17:44:39] Action 3: Key changed to 'r'
+[2025-08-18 17:44:39] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:44:46] Playback finished.
+[2025-08-18 17:44:52] Recording started in absolute mode...
+[2025-08-18 17:44:54] Event: ButtonEvent(event_type='down', button='left', time=1755506694.41674)
+[2025-08-18 17:44:54] Event: ButtonEvent(event_type='up', button='left', time=1755506694.5643992)
+[2025-08-18 17:44:54] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:44:54] Event: ButtonEvent(event_type='double', button='left', time=1755506694.5655315)
+[2025-08-18 17:44:57] Event: ButtonEvent(event_type='down', button='left', time=1755506697.4385004)
+[2025-08-18 17:44:57] Event: ButtonEvent(event_type='up', button='left', time=1755506697.6596353)
+[2025-08-18 17:44:57] Event: KeyboardEvent(a down)
+[2025-08-18 17:44:57] Event: KeyboardEvent(a up)
+[2025-08-18 17:45:00] Event: ButtonEvent(event_type='down', button='left', time=1755506700.110564)
+[2025-08-18 17:45:00] Event: ButtonEvent(event_type='up', button='left', time=1755506700.3290522)
+[2025-08-18 17:45:00] Recording stopped.
+[2025-08-18 17:45:00] Recorded 273 events.
+[2025-08-18 17:45:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:45:53] Playback finished.
+[2025-08-18 17:45:59] Action 1: Changed to Single Click.
+[2025-08-18 17:46:00] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:46:08] Playback finished.
+[2025-08-18 17:46:15] Action 4: Key changed to 'b'
+[2025-08-18 17:46:16] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:46:24] Playback finished.
+[2025-08-18 17:46:31] Action 3: Changed to Double Click.
+[2025-08-18 17:46:33] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:46:41] Playback finished.
+[2025-08-18 17:47:34] Recording started in absolute mode...
+[2025-08-18 17:47:35] Event: KeyboardEvent(a down)
+[2025-08-18 17:47:35] Event: KeyboardEvent(a up)
+[2025-08-18 17:47:36] Event: ButtonEvent(event_type='down', button='left', time=1755506856.622013)
+[2025-08-18 17:47:36] Event: ButtonEvent(event_type='up', button='left', time=1755506856.8428566)
+[2025-08-18 17:47:36] Recording stopped.
+[2025-08-18 17:47:36] Recorded 4 events.
+[2025-08-18 17:53:16] Recording started in absolute mode...
+[2025-08-18 17:53:17] Event: ButtonEvent(event_type='down', button='left', time=1755507197.8245218)
+[2025-08-18 17:53:18] Event: ButtonEvent(event_type='up', button='left', time=1755507198.0393791)
+[2025-08-18 17:53:18] Event: ButtonEvent(event_type='down', button='left', time=1755507198.677277)
+[2025-08-18 17:53:18] Event: ButtonEvent(event_type='up', button='left', time=1755507198.8234634)
+[2025-08-18 17:53:18] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:53:18] Event: ButtonEvent(event_type='double', button='left', time=1755507198.8248034)
+[2025-08-18 17:53:20] Event: ButtonEvent(event_type='down', button='left', time=1755507200.9897075)
+[2025-08-18 17:53:21] Event: ButtonEvent(event_type='up', button='left', time=1755507201.2171967)
+[2025-08-18 17:53:21] Event: ButtonEvent(event_type='down', button='left', time=1755507201.860371)
+[2025-08-18 17:53:22] Event: ButtonEvent(event_type='up', button='left', time=1755507202.0869832)
+[2025-08-18 17:53:22] Event: KeyboardEvent(a down)
+[2025-08-18 17:53:22] Event: KeyboardEvent(a up)
+[2025-08-18 17:53:23] Event: ButtonEvent(event_type='down', button='left', time=1755507203.7894356)
+[2025-08-18 17:53:24] Event: ButtonEvent(event_type='up', button='left', time=1755507204.008312)
+[2025-08-18 17:53:24] Recording stopped.
+[2025-08-18 17:53:24] Recorded 337 events.
+[2025-08-18 17:53:26] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:53:34] Playback finished.
+[2025-08-18 17:54:38] Recording started in absolute mode...
+[2025-08-18 17:54:40] Event: ButtonEvent(event_type='down', button='left', time=1755507280.1035855)
+[2025-08-18 17:54:40] Event: ButtonEvent(event_type='up', button='left', time=1755507280.3078065)
+[2025-08-18 17:54:40] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:54:40] Event: ButtonEvent(event_type='double', button='left', time=1755507280.3089242)
+[2025-08-18 17:54:41] Event: ButtonEvent(event_type='down', button='left', time=1755507281.2622862)
+[2025-08-18 17:54:41] Event: ButtonEvent(event_type='up', button='left', time=1755507281.4890702)
+[2025-08-18 17:54:42] Event: KeyboardEvent(d down)
+[2025-08-18 17:54:42] Event: KeyboardEvent(d up)
+[2025-08-18 17:54:42] Event: KeyboardEvent(d down)
+[2025-08-18 17:54:42] Event: KeyboardEvent(d up)
+[2025-08-18 17:54:44] Event: ButtonEvent(event_type='down', button='left', time=1755507284.537829)
+[2025-08-18 17:54:44] Event: ButtonEvent(event_type='up', button='left', time=1755507284.7610757)
+[2025-08-18 17:54:45] Event: ButtonEvent(event_type='down', button='left', time=1755507285.3295743)
+[2025-08-18 17:54:45] Event: ButtonEvent(event_type='up', button='left', time=1755507285.5496948)
+[2025-08-18 17:54:45] Recording stopped.
+[2025-08-18 17:54:45] Recorded 184 events.
+[2025-08-18 17:54:46] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:54:53] Playback finished.
+[2025-08-18 17:54:57] Deleted 112 raw event(s).
+[2025-08-18 17:55:03] Action 5: Key changed to 'a'
+[2025-08-18 17:55:06] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:55:10] Playback finished.
+[2025-08-18 17:55:19] Action 5: Key changed to 'q'
+[2025-08-18 17:55:26] Deleted 54 raw event(s).
+[2025-08-18 17:55:30] Action 0 delay adjusted by -1.46s.
+[2025-08-18 17:55:34] Action 0: Changed to Single Click.
+[2025-08-18 17:55:37] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:55:40] Playback finished.
+[2025-08-18 17:55:47] Action 3: Key changed to 'j'
+[2025-08-18 17:55:49] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:55:51] Playback finished.
+[2025-08-18 17:58:07] Recording started in absolute mode...
+[2025-08-18 17:58:07] Event: KeyboardEvent(f5 down)
+[2025-08-18 17:58:07] Event: KeyboardEvent(f5 up)
+[2025-08-18 17:58:07] Event: KeyboardEvent(alt up)
+[2025-08-18 17:58:07] Event: KeyboardEvent(ctrl up)
+[2025-08-18 17:58:08] Event: ButtonEvent(event_type='down', button='left', time=1755507488.6802185)
+[2025-08-18 17:58:08] Event: ButtonEvent(event_type='up', button='left', time=1755507488.89841)
+[2025-08-18 17:58:08] Event: KeyboardEvent(a down)
+[2025-08-18 17:58:09] Event: KeyboardEvent(a up)
+[2025-08-18 17:58:09] Event: KeyboardEvent(a down)
+[2025-08-18 17:58:09] Event: KeyboardEvent(a up)
+[2025-08-18 17:58:10] Event: ButtonEvent(event_type='down', button='left', time=1755507490.1465988)
+[2025-08-18 17:58:10] Event: ButtonEvent(event_type='up', button='left', time=1755507490.3717587)
+[2025-08-18 17:58:10] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:58:10] Event: ButtonEvent(event_type='double', button='left', time=1755507490.7071378)
+[2025-08-18 17:58:10] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:58:10] Event: ButtonEvent(event_type='double', button='left', time=1755507490.8537054)
+[2025-08-18 17:58:12] Event: ButtonEvent(event_type='down', button='left', time=1755507492.589637)
+[2025-08-18 17:58:12] Event: ButtonEvent(event_type='up', button='left', time=1755507492.8165498)
+[2025-08-18 17:58:13] Event: ButtonEvent(event_type='down', button='left', time=1755507493.4044054)
+[2025-08-18 17:58:13] Event: ButtonEvent(event_type='up', button='left', time=1755507493.622013)
+[2025-08-18 17:58:13] Recording stopped.
+[2025-08-18 17:58:13] Recorded 155 events.
+[2025-08-18 17:58:14] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:58:21] Playback finished.
+[2025-08-18 17:58:25] Recording started in absolute mode...
+[2025-08-18 17:58:27] Event: ButtonEvent(event_type='down', button='left', time=1755507507.0946114)
+[2025-08-18 17:58:27] Event: ButtonEvent(event_type='up', button='left', time=1755507507.3103492)
+[2025-08-18 17:58:27] Event: KeyboardEvent(a down)
+[2025-08-18 17:58:27] Event: KeyboardEvent(a up)
+[2025-08-18 17:58:29] Event: ButtonEvent(event_type='down', button='left', time=1755507509.824388)
+[2025-08-18 17:58:29] Event: ButtonEvent(event_type='up', button='left', time=1755507509.9674482)
+[2025-08-18 17:58:29] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-18 17:58:29] Event: ButtonEvent(event_type='double', button='left', time=1755507509.9687939)
+[2025-08-18 17:58:31] Event: KeyboardEvent(ctrl down)
+[2025-08-18 17:58:31] Event: KeyboardEvent(alt down)
+[2025-08-18 17:58:32] Recording stopped.
+[2025-08-18 17:58:32] Recorded 103 events.
+[2025-08-18 17:58:32] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:58:37] Playback finished.
+[2025-08-18 17:58:43] Action 2: Key changed to 'b'
+[2025-08-18 17:58:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:58:49] Playback finished.
+[2025-08-18 17:58:58] Action 4: Button changed to right
+[2025-08-18 17:59:03] Action 4: Changed to Single Click.
+[2025-08-18 17:59:05] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-18 17:59:10] Playback finished.
+[2025-08-19 08:21:26] Recording started in absolute mode...
+[2025-08-19 08:21:28] Event: ButtonEvent(event_type='down', button='left', time=1755559288.4062965)
+[2025-08-19 08:21:28] Event: ButtonEvent(event_type='up', button='left', time=1755559288.6268637)
+[2025-08-19 08:21:29] Event: ButtonEvent(event_type='down', button='left', time=1755559289.6010294)
+[2025-08-19 08:21:29] Event: ButtonEvent(event_type='up', button='left', time=1755559289.8301857)
+[2025-08-19 08:21:31] Event: ButtonEvent(event_type='down', button='left', time=1755559291.8344367)
+[2025-08-19 08:21:32] Event: ButtonEvent(event_type='up', button='left', time=1755559292.057685)
+[2025-08-19 08:21:33] Event: ButtonEvent(event_type='down', button='left', time=1755559293.1414888)
+[2025-08-19 08:21:33] Event: ButtonEvent(event_type='up', button='left', time=1755559293.3639107)
+[2025-08-19 08:21:34] Event: ButtonEvent(event_type='down', button='left', time=1755559294.9327989)
+[2025-08-19 08:21:35] Event: ButtonEvent(event_type='up', button='left', time=1755559295.1516001)
+[2025-08-19 08:21:35] Recording stopped.
+[2025-08-19 08:21:35] Recorded 378 events.
+[2025-08-19 08:21:40] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:21:48] Playback finished.
+[2025-08-19 08:21:58] Action 7: Changed to Double Click.
+[2025-08-19 08:22:00] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:22:08] Playback finished.
+[2025-08-19 08:22:14] Action 5: Changed to Double Click.
+[2025-08-19 08:22:16] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:22:25] Playback finished.
+[2025-08-19 08:22:35] Action 5: Button changed to right
+[2025-08-19 08:22:36] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:22:45] Playback finished.
+[2025-08-19 08:22:56] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:23:05] Playback finished.
+[2025-08-19 08:23:10] Action 5: Changed to Single Click.
+[2025-08-19 08:23:12] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:23:20] Playback finished.
+[2025-08-19 08:23:29] Recording started in absolute mode...
+[2025-08-19 08:23:30] Event: ButtonEvent(event_type='down', button='left', time=1755559410.4467063)
+[2025-08-19 08:23:30] Event: ButtonEvent(event_type='up', button='left', time=1755559410.6730921)
+[2025-08-19 08:23:30] Event: KeyboardEvent(r down)
+[2025-08-19 08:23:31] Event: KeyboardEvent(r up)
+[2025-08-19 08:23:31] Event: KeyboardEvent(r down)
+[2025-08-19 08:23:31] Event: KeyboardEvent(r up)
+[2025-08-19 08:23:33] Event: ButtonEvent(event_type='down', button='left', time=1755559413.201979)
+[2025-08-19 08:23:33] Event: ButtonEvent(event_type='up', button='left', time=1755559413.422436)
+[2025-08-19 08:23:33] Recording stopped.
+[2025-08-19 08:23:33] Recorded 146 events.
+[2025-08-19 08:25:22] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:25:26] Playback finished.
+[2025-08-19 08:25:30] Action 2: Key changed to 'a'
+[2025-08-19 08:25:32] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-19 08:25:36] Playback finished.

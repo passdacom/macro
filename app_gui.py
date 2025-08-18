@@ -9,6 +9,10 @@ from event_player import Player
 from hotkey_manager import HotkeyManager
 import event_grouper
 
+def _get_event_obj(event):
+    """Helper to extract the event object from a macro data entry."""
+    return event[1][0]
+
 # --- Event Serialization/Deserialization Helpers ---
 def _serialize_event(event_data):
     event_time, (event, pos) = event_data
@@ -55,7 +59,7 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v2.2")
+        self.root.title("Advanced Macro Editor v2.3")
         self.root.geometry("650x600")
 
         self.is_recording = False
@@ -127,7 +131,7 @@ class AppGUI:
         self.tree.configure(yscrollcommand=tree_scrollbar.set)
         tree_scrollbar.pack(side="right", fill="y")
         self.tree.pack(side="left", fill="both", expand=True)
-        self.tree.bind("<Double-1>", self.open_time_editor)
+        self.tree.bind("<Double-1>", self.open_action_editor)
 
         editor_button_frame = ttk.Frame(editor_frame)
         editor_button_frame.pack(fill='y', side='right', padx=5)
@@ -138,6 +142,8 @@ class AppGUI:
         main_pane.add(log_frame, weight=0)
         self.log_text = scrolledtext.ScrolledText(log_frame, wrap=tk.WORD, state='disabled', height=5)
         self.log_text.pack(fill="both", expand=True, padx=5, pady=5)
+
+        self.log_file = "macro_log.txt"
 
         self.update_button_states()
         self.hotkey_manager.start()
@@ -189,28 +195,18 @@ class AppGUI:
             self.record_button.config(text="Record (Ctrl+Alt+F5)")
             self.macro_data = self.recorder.stop_recording()
             
-            # --- Post-process recorded macro data to filter out hotkey presses ---
-            # --- Post-process recorded macro data to filter out hotkey presses ---
             if self.macro_data and self.macro_data.get('events'):
                 events = self.macro_data['events']
-                
-                # Heuristic for filtering start hotkey (Ctrl+Alt+F5)
-                # Remove any hotkey-related key events (F-keys and modifiers) 
-                # that occur within a very short time window (e.g., 0.5 seconds) at the beginning.
                 start_idx_to_keep = 0
                 if events:
                     start_filter_time = events[0][0]
                     for idx, (evt_time, (evt_obj, pos)) in enumerate(events):
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
                            evt_obj.name in ['f5', 'f6', 'f7', 'ctrl', 'alt', 'shift'] and \
-                           (evt_time - start_filter_time) < 0.5: # Within 0.5 seconds of start
+                           (evt_time - start_filter_time) < 0.5:
                             start_idx_to_keep = idx + 1
                         else:
                             break
-                
-                # Heuristic for filtering end hotkey (Ctrl+Alt+F7)
-                # Remove any hotkey-related key events (F-keys and modifiers) 
-                # that occur within a very short time window (e.g., 0.5 seconds) at the end.
                 end_idx_to_keep = len(events)
                 if events:
                     end_filter_time = events[-1][0]
@@ -218,12 +214,11 @@ class AppGUI:
                         evt_time, (evt_obj, pos) = events[idx]
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
                            evt_obj.name in ['f5', 'f6', 'f7', 'ctrl', 'alt', 'shift'] and \
-                           (end_filter_time - evt_time) < 0.5: # Within 0.5 seconds of end
+                           (end_filter_time - evt_time) < 0.5:
                             end_idx_to_keep = idx
                         else:
                             break
                 
-                # Apply filtering
                 filtered_events = events[start_idx_to_keep:end_idx_to_keep]
                 self.macro_data['events'] = filtered_events
 
@@ -316,16 +311,13 @@ class AppGUI:
         timestamp = time.strftime("[%Y-%m-%d %H:%M:%S]")
         log_message = f"{timestamp} {message}"
         
-        # Write to file
         try:
             with open(self.log_file, 'a', encoding='utf-8') as f:
                 f.write(log_message + "\n")
         except Exception as e:
-            # Log file writing errors to the GUI log box only
             error_message = f"{timestamp} [ERROR] Could not write to log file: {e}"
             self.root.after(0, self._update_log_text, error_message)
 
-        # Update GUI
         self.root.after(0, self._update_log_text, log_message)
 
     def _update_log_text(self, message):
@@ -338,17 +330,18 @@ class AppGUI:
         self.root.after(0, self._update_highlight, action_index)
 
     def _update_highlight(self, action_index):
-        # Clear previous selection
         for item in self.tree.selection():
             self.tree.selection_remove(item)
         
         if action_index != -1:
-            # Select the current item
-            item_id = self.tree.get_children()[action_index] # Get the actual item ID from its position
-            self.tree.selection_add(item_id)
-            self.tree.see(item_id) # Scroll to the item if it's not visible
+            try:
+                item_id = self.tree.get_children()[action_index]
+                self.tree.selection_add(item_id)
+                self.tree.see(item_id)
+            except IndexError:
+                pass
 
-    def open_time_editor(self, event):
+    def open_action_editor(self, event):
         if self.is_recording or self.is_playing:
             return
 
@@ -360,7 +353,14 @@ class AppGUI:
         action_index = self.tree.index(item_id)
         action = self.visible_actions[action_index]
 
-        # Calculate delay
+        editor_window = tk.Toplevel(self.root)
+        editor_window.title("Edit Action")
+        editor_window.transient(self.root)
+        editor_window.grab_set()
+
+        time_frame = ttk.LabelFrame(editor_window, text="Time Edit")
+        time_frame.pack(padx=10, pady=10, fill="x")
+
         if action_index == 0:
             label_text = "Start Delay (s):"
             current_delay = self.macro_data['events'][action.start_index][0]
@@ -369,71 +369,166 @@ class AppGUI:
             prev_action = self.visible_actions[action_index - 1]
             current_delay = self.macro_data['events'][action.start_index][0] - self.macro_data['events'][prev_action.end_index][0]
 
-        # --- Create Toplevel window ---
-        editor_window = tk.Toplevel(self.root)
-        editor_window.title("Edit Time")
-        editor_window.geometry("300x120")
-        editor_window.transient(self.root)
-        editor_window.grab_set()
-
-        root_x = self.root.winfo_x()
-        root_y = self.root.winfo_y()
-        root_w = self.root.winfo_width()
-        root_h = self.root.winfo_height()
-        popup_w = 300
-        popup_h = 120
-        x = root_x + (root_w // 2) - (popup_w // 2)
-        y = root_y + (root_h // 2) - (popup_h // 2)
-        editor_window.geometry(f'{popup_w}x{popup_h}+{x}+{y}')
-
-        ttk.Label(editor_window, text=label_text).pack(pady=(10,0))
-        
+        ttk.Label(time_frame, text=label_text).pack(side="left", padx=5, pady=5)
         delay_var = tk.StringVar(value=f"{current_delay:.4f}")
-        entry = ttk.Entry(editor_window, textvariable=delay_var, width=20)
-        entry.pack(pady=5)
-        entry.focus_set()
-        entry.select_range(0, 'end')
+        time_entry = ttk.Entry(time_frame, textvariable=delay_var, width=15)
+        time_entry.pack(side="left", padx=5, pady=5)
+
+        action_frame = ttk.LabelFrame(editor_window, text="Action Specific Edit")
+        action_frame.pack(padx=10, pady=5, fill="both", expand=True)
+
+        edit_params = {}
+        is_editable = False
+
+        if action.type in ['mouse_click', 'mouse_drag', 'raw_mouse']:
+            first_event_obj = None
+            for i in range(action.start_index, action.end_index + 1):
+                evt = _get_event_obj(self.macro_data['events'][i])
+                if isinstance(evt, mouse.ButtonEvent):
+                    first_event_obj = evt
+                    break
+            
+            if first_event_obj:
+                is_editable = True
+                click_type_var = tk.StringVar()
+                edit_params['click_type'] = click_type_var
+                ttk.Label(action_frame, text="Click Type:").grid(row=0, column=0, sticky="w", padx=5, pady=2)
+                ttk.Radiobutton(action_frame, text="Single", variable=click_type_var, value="single").grid(row=0, column=1, sticky="w")
+                ttk.Radiobutton(action_frame, text="Double", variable=click_type_var, value="double").grid(row=0, column=2, sticky="w")
+                is_double = any(isinstance(_get_event_obj(e), mouse.ButtonEvent) and _get_event_obj(e).event_type == 'double' for e in self.macro_data['events'][action.start_index:action.end_index+1])
+                click_type_var.set("double" if is_double else "single")
+
+                button_type_var = tk.StringVar()
+                edit_params['button_type'] = button_type_var
+                ttk.Label(action_frame, text="Button:").grid(row=1, column=0, sticky="w", padx=5, pady=2)
+                ttk.Radiobutton(action_frame, text="Left", variable=button_type_var, value="left").grid(row=1, column=1, sticky="w")
+                ttk.Radiobutton(action_frame, text="Right", variable=button_type_var, value="right").grid(row=1, column=2, sticky="w")
+                ttk.Radiobutton(action_frame, text="Middle", variable=button_type_var, value="middle").grid(row=1, column=3, sticky="w")
+                button_type_var.set(first_event_obj.button)
+
+        elif action.type in ['key_press', 'raw_key']:
+            is_editable = True
+            first_event_obj = _get_event_obj(self.macro_data['events'][action.start_index])
+            original_key = first_event_obj.name
+
+            ttk.Label(action_frame, text="Key:").pack(side="left", padx=5, pady=5)
+            key_var = tk.StringVar(value=original_key)
+            edit_params['new_key'] = key_var
+            key_entry = ttk.Entry(action_frame, textvariable=key_var, width=15)
+            key_entry.pack(side="left", padx=5, pady=5)
+            key_entry.focus_set()
+            key_entry.select_range(0, 'end')
+
+        if not is_editable:
+            ttk.Label(action_frame, text="(No action-specific edits available for this type)").pack(pady=10)
 
         button_frame = ttk.Frame(editor_window)
         button_frame.pack(pady=10)
 
         def on_ok():
-            self.apply_time_edit(action_index, delay_var.get(), current_delay)
+            self.apply_action_edit(action_index, delay_var.get(), current_delay, edit_params)
             editor_window.destroy()
 
         ok_button = ttk.Button(button_frame, text="OK", command=on_ok)
         ok_button.pack(side="left", padx=10)
-        
         cancel_button = ttk.Button(button_frame, text="Cancel", command=editor_window.destroy)
         cancel_button.pack(side="left", padx=10)
-        
         editor_window.bind('<Return>', lambda e: on_ok())
         editor_window.bind('<Escape>', lambda e: editor_window.destroy())
+        time_entry.focus_set()
+        time_entry.select_range(0, 'end')
 
-    def apply_time_edit(self, action_index, new_delay_str, old_delay):
-        # 1. Input validation
+    def apply_action_edit(self, action_index, new_delay_str, old_delay, edit_params):
+        action = self.visible_actions[action_index]
+        
         try:
             new_delay = float(new_delay_str)
-            if new_delay < 0:
-                raise ValueError("Delay cannot be negative.")
+            if new_delay < 0: raise ValueError("Delay cannot be negative.")
         except ValueError as e:
-            messagebox.showerror("Invalid Input", f"Please enter a valid non-negative number.\nError: {e}")
+            messagebox.showerror("Invalid Input", f"Please enter a valid non-negative number for delay.\nError: {e}")
             return
 
-        # 2. Calculate time delta
-        delta = new_delay - old_delay
+        time_delta = new_delay - old_delay
+        if abs(time_delta) > 0.0001:
+            for i in range(action.start_index, len(self.macro_data['events'])):
+                original_time, event_data = self.macro_data['events'][i]
+                self.macro_data['events'][i] = (original_time + time_delta, event_data)
+            self.add_log_message(f"Action {action_index} delay adjusted by {time_delta:.2f}s.")
 
-        if abs(delta) < 0.0001: # No significant change
-            return
+        if action.type in ['mouse_click', 'mouse_drag', 'raw_mouse']:
+            if edit_params:
+                new_click_type = edit_params['click_type'].get()
+                new_button_type = edit_params['button_type'].get()
+                
+                original_event_index = -1
+                original_event_obj = None
+                for i in range(action.start_index, action.end_index + 1):
+                    evt = _get_event_obj(self.macro_data['events'][i])
+                    if isinstance(evt, mouse.ButtonEvent):
+                        original_event_index = i
+                        original_event_obj = evt
+                        break
+                
+                if original_event_obj is None: self._populate_treeview(); return
 
-        # 3. Apply the delta to all subsequent events
-        action = self.visible_actions[action_index]
-        start_event_index = action.start_index
+                original_click_type = "double" if original_event_obj.event_type == 'double' else "single"
 
-        for i in range(start_event_index, len(self.macro_data['events'])):
-            original_time, event_data = self.macro_data['events'][i]
-            self.macro_data['events'][i] = (original_time + delta, event_data)
+                if original_event_obj.button != new_button_type:
+                    for i in range(action.start_index, action.end_index + 1):
+                        evt_time, (evt, pos) = self.macro_data['events'][i]
+                        if isinstance(evt, mouse.ButtonEvent):
+                            new_evt = mouse.ButtonEvent(evt.event_type, new_button_type, evt.time)
+                            self.macro_data['events'][i] = (evt_time, (new_evt, pos))
+                    self.add_log_message(f"Action {action_index}: Button changed to {new_button_type}")
 
-        # 4. Update UI
-        self.add_log_message(f"Action {action_index} delay adjusted by {delta:.2f}s.")
+                if original_click_type != new_click_type:
+                    if new_click_type == 'double':
+                        up_event_index = -1
+                        for i in range(action.start_index, action.end_index + 1):
+                            if _get_event_obj(self.macro_data['events'][i]).event_type == mouse.UP:
+                                up_event_index = i
+                                break
+                        if up_event_index != -1: del self.macro_data['events'][up_event_index]
+                        
+                        evt_time, (evt, pos) = self.macro_data['events'][original_event_index]
+                        new_evt = mouse.ButtonEvent(mouse.DOUBLE, new_button_type, evt.time)
+                        self.macro_data['events'][original_event_index] = (evt_time, (new_evt, pos))
+                        self.add_log_message(f"Action {action_index}: Changed to Double Click.")
+                    else:
+                        evt_time, (evt, pos) = self.macro_data['events'][original_event_index]
+                        new_evt = mouse.ButtonEvent(mouse.DOWN, new_button_type, evt.time)
+                        self.macro_data['events'][original_event_index] = (evt_time, (new_evt, pos))
+
+                        down_time, (down_event, pos) = self.macro_data['events'][original_event_index]
+                        up_event_time = down_time + 0.05
+                        up_event = (up_event_time, (mouse.ButtonEvent(mouse.UP, new_button_type, time.time()), pos))
+                        self.macro_data['events'].insert(original_event_index + 1, up_event)
+
+                        for i in range(original_event_index + 2, len(self.macro_data['events'])):
+                            original_time, event_data = self.macro_data['events'][i]
+                            self.macro_data['events'][i] = (original_time + 0.05, event_data)
+                        self.add_log_message(f"Action {action_index}: Changed to Single Click.")
+        
+        elif action.type in ['key_press', 'raw_key']:
+            if edit_params:
+                new_key = edit_params['new_key'].get()
+                if not new_key:
+                    messagebox.showwarning("Invalid Key", "Key cannot be empty.")
+                    return
+                
+                try:
+                    # Get the primary scan code for the new key name.
+                    new_key_code = keyboard.key_to_scan_codes(new_key)[0]
+                except IndexError:
+                    messagebox.showerror("Invalid Key", f"Could not find a scan code for key: '{new_key}'")
+                    return
+
+                new_key_name = new_key[0].lower()
+                for i in range(action.start_index, action.end_index + 1):
+                    evt_time, (evt, pos) = self.macro_data['events'][i]
+                    if isinstance(evt, keyboard.KeyboardEvent):
+                        new_evt = keyboard.KeyboardEvent(evt.event_type, scan_code=new_key_code, name=new_key_name)
+                        self.macro_data['events'][i] = (evt_time, (new_evt, pos))
+                self.add_log_message(f"Action {action_index}: Key changed to '{new_key_name}'")
+
         self._populate_treeview()

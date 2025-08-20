@@ -516,19 +516,25 @@ class AppGUI:
                     messagebox.showwarning("Invalid Key", "Key cannot be empty.")
                     return
                 
+                self.add_log_message(f"--- Start Key Edit Debug ---")
+                self.add_log_message(f"Editing action index: {action_index}, from raw index {action.start_index} to {action.end_index}")
+                self.add_log_message(f"Attempting to change key to: '{new_key}'")
+
                 try:
-                    # Get the primary scan code for the new key name.
                     new_key_code = keyboard.key_to_scan_codes(new_key)[0]
                 except IndexError:
                     messagebox.showerror("Invalid Key", f"Could not find a scan code for key: '{new_key}'")
+                    self.add_log_message(f"--- End Key Edit Debug ---")
                     return
 
                 new_key_name = new_key[0].lower()
                 for i in range(action.start_index, action.end_index + 1):
                     evt_time, (evt, pos) = self.macro_data['events'][i]
                     if isinstance(evt, keyboard.KeyboardEvent):
+                        self.add_log_message(f"Modifying raw index {i}: event_name={evt.name}, event_type={evt.event_type}")
                         new_evt = keyboard.KeyboardEvent(evt.event_type, scan_code=new_key_code, name=new_key_name)
                         self.macro_data['events'][i] = (evt_time, (new_evt, pos))
                 self.add_log_message(f"Action {action_index}: Key changed to '{new_key_name}'")
+                self.add_log_message(f"--- End Key Edit Debug ---")
 
         self._populate_treeview()

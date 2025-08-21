@@ -8,10 +8,16 @@ from event_recorder import Recorder
 from event_player import Player
 from hotkey_manager import HotkeyManager
 import event_grouper
+from action_editor import ActionEditorWindow
 
 def _get_event_obj(event):
     """Helper to extract the event object from a macro data entry."""
     return event[1][0]
+
+def _is_modifier_or_hotkey(key_name):
+    if not key_name: return False
+    key_name = key_name.lower()
+    return key_name in ['f5', 'f6', 'f7', 'ctrl', 'alt', 'shift']
 
 # --- Event Serialization/Deserialization Helpers ---
 def _serialize_event(event_data):
@@ -59,7 +65,7 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v2.3")
+        self.root.title("Advanced Macro Editor v2.4")
         self.root.geometry("650x600")
 
         self.is_recording = False
@@ -109,11 +115,6 @@ class AppGUI:
         self.speed_spinbox.pack(side="left", padx=5)
         self.speed_spinbox.set(1.0)
 
-        ttk.Label(options_frame, text="Coordinates:").pack(side="left", padx=(10, 0))
-        self.coord_var = tk.StringVar(value="absolute")
-        ttk.Radiobutton(options_frame, text="Absolute", variable=self.coord_var, value="absolute").pack(side="left")
-        ttk.Radiobutton(options_frame, text="Relative", variable=self.coord_var, value="relative").pack(side="left", padx=5)
-
         self.always_on_top_var = tk.BooleanVar()
         ttk.Checkbutton(options_frame, text="Always on Top", variable=self.always_on_top_var, command=self.toggle_always_on_top).pack(side="left", padx=(10,0))
 
@@ -126,7 +127,7 @@ class AppGUI:
         self.tree.heading("Details", text="Details")
         self.tree.column("Time", width=80, anchor="center")
         self.tree.column("Action", width=150)
-        self.tree.column("Details", width=270)
+        self.tree.column("Details", width=90)
         tree_scrollbar = ttk.Scrollbar(editor_frame, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=tree_scrollbar.set)
         tree_scrollbar.pack(side="right", fill="y")
@@ -154,7 +155,7 @@ class AppGUI:
         self.tree.delete(*self.tree.get_children())
         for i, action in enumerate(self.visible_actions):
             start_time = self.macro_data['events'][action.start_index][0]
-            details = f"{action.end_index - action.start_index + 1} raw events"
+            details = f"{len(action.indices)} raw events"
             self.tree.insert("", "end", iid=i, values=(f"{start_time:.2f}", action.display_text, details))
 
     def delete_selected_event(self):
@@ -167,7 +168,7 @@ class AppGUI:
         raw_indices_to_delete = []
         for i in selected_indices:
             action = self.visible_actions[i]
-            raw_indices_to_delete.extend(range(action.start_index, action.end_index + 1))
+            raw_indices_to_delete.extend(action.indices)
         
         final_delete_indices = sorted(list(set(raw_indices_to_delete)), reverse=True)
         for i in final_delete_indices:
@@ -202,7 +203,7 @@ class AppGUI:
                     start_filter_time = events[0][0]
                     for idx, (evt_time, (evt_obj, pos)) in enumerate(events):
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
-                           evt_obj.name in ['f5', 'f6', 'f7', 'ctrl', 'alt', 'shift'] and \
+                           _is_modifier_or_hotkey(evt_obj.name) and \
                            (evt_time - start_filter_time) < 0.5:
                             start_idx_to_keep = idx + 1
                         else:
@@ -213,14 +214,13 @@ class AppGUI:
                     for idx in range(len(events) - 1, -1, -1):
                         evt_time, (evt_obj, pos) = events[idx]
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
-                           evt_obj.name in ['f5', 'f6', 'f7', 'ctrl', 'alt', 'shift'] and \
+                           _is_modifier_or_hotkey(evt_obj.name) and \
                            (end_filter_time - evt_time) < 0.5:
                             end_idx_to_keep = idx
                         else:
                             break
                 
-                filtered_events = events[start_idx_to_keep:end_idx_to_keep]
-                self.macro_data['events'] = filtered_events
+                self.macro_data['events'] = events[start_idx_to_keep:end_idx_to_keep]
 
             self.add_log_message(f"Recorded {len(self.macro_data.get('events', []))} events.")
             self._populate_treeview()
@@ -353,188 +353,11 @@ class AppGUI:
         action_index = self.tree.index(item_id)
         action = self.visible_actions[action_index]
 
-        editor_window = tk.Toplevel(self.root)
-        editor_window.title("Edit Action")
-        editor_window.transient(self.root)
-        editor_window.grab_set()
-
-        time_frame = ttk.LabelFrame(editor_window, text="Time Edit")
-        time_frame.pack(padx=10, pady=10, fill="x")
-
-        if action_index == 0:
-            label_text = "Start Delay (s):"
-            current_delay = self.macro_data['events'][action.start_index][0]
-        else:
-            label_text = "Delay from previous (s):"
-            prev_action = self.visible_actions[action_index - 1]
-            current_delay = self.macro_data['events'][action.start_index][0] - self.macro_data['events'][prev_action.end_index][0]
-
-        ttk.Label(time_frame, text=label_text).pack(side="left", padx=5, pady=5)
-        delay_var = tk.StringVar(value=f"{current_delay:.4f}")
-        time_entry = ttk.Entry(time_frame, textvariable=delay_var, width=15)
-        time_entry.pack(side="left", padx=5, pady=5)
-
-        action_frame = ttk.LabelFrame(editor_window, text="Action Specific Edit")
-        action_frame.pack(padx=10, pady=5, fill="both", expand=True)
-
-        edit_params = {}
-        is_editable = False
-
-        if action.type in ['mouse_click', 'mouse_drag', 'raw_mouse']:
-            first_event_obj = None
-            for i in range(action.start_index, action.end_index + 1):
-                evt = _get_event_obj(self.macro_data['events'][i])
-                if isinstance(evt, mouse.ButtonEvent):
-                    first_event_obj = evt
-                    break
-            
-            if first_event_obj:
-                is_editable = True
-                click_type_var = tk.StringVar()
-                edit_params['click_type'] = click_type_var
-                ttk.Label(action_frame, text="Click Type:").grid(row=0, column=0, sticky="w", padx=5, pady=2)
-                ttk.Radiobutton(action_frame, text="Single", variable=click_type_var, value="single").grid(row=0, column=1, sticky="w")
-                ttk.Radiobutton(action_frame, text="Double", variable=click_type_var, value="double").grid(row=0, column=2, sticky="w")
-                is_double = any(isinstance(_get_event_obj(e), mouse.ButtonEvent) and _get_event_obj(e).event_type == 'double' for e in self.macro_data['events'][action.start_index:action.end_index+1])
-                click_type_var.set("double" if is_double else "single")
-
-                button_type_var = tk.StringVar()
-                edit_params['button_type'] = button_type_var
-                ttk.Label(action_frame, text="Button:").grid(row=1, column=0, sticky="w", padx=5, pady=2)
-                ttk.Radiobutton(action_frame, text="Left", variable=button_type_var, value="left").grid(row=1, column=1, sticky="w")
-                ttk.Radiobutton(action_frame, text="Right", variable=button_type_var, value="right").grid(row=1, column=2, sticky="w")
-                ttk.Radiobutton(action_frame, text="Middle", variable=button_type_var, value="middle").grid(row=1, column=3, sticky="w")
-                button_type_var.set(first_event_obj.button)
-
-        elif action.type in ['key_press', 'raw_key']:
-            is_editable = True
-            first_event_obj = _get_event_obj(self.macro_data['events'][action.start_index])
-            original_key = first_event_obj.name
-
-            ttk.Label(action_frame, text="Key:").pack(side="left", padx=5, pady=5)
-            key_var = tk.StringVar(value=original_key)
-            edit_params['new_key'] = key_var
-            key_entry = ttk.Entry(action_frame, textvariable=key_var, width=15)
-            key_entry.pack(side="left", padx=5, pady=5)
-            key_entry.focus_set()
-            key_entry.select_range(0, 'end')
-
-        if not is_editable:
-            ttk.Label(action_frame, text="(No action-specific edits available for this type)").pack(pady=10)
-
-        button_frame = ttk.Frame(editor_window)
-        button_frame.pack(pady=10)
-
-        def on_ok():
-            self.apply_action_edit(action_index, delay_var.get(), current_delay, edit_params)
-            editor_window.destroy()
-
-        ok_button = ttk.Button(button_frame, text="OK", command=on_ok)
-        ok_button.pack(side="left", padx=10)
-        cancel_button = ttk.Button(button_frame, text="Cancel", command=editor_window.destroy)
-        cancel_button.pack(side="left", padx=10)
-        editor_window.bind('<Return>', lambda e: on_ok())
-        editor_window.bind('<Escape>', lambda e: editor_window.destroy())
-        time_entry.focus_set()
-        time_entry.select_range(0, 'end')
-
-    def apply_action_edit(self, action_index, new_delay_str, old_delay, edit_params):
-        action = self.visible_actions[action_index]
-        
-        try:
-            new_delay = float(new_delay_str)
-            if new_delay < 0: raise ValueError("Delay cannot be negative.")
-        except ValueError as e:
-            messagebox.showerror("Invalid Input", f"Please enter a valid non-negative number for delay.\nError: {e}")
-            return
-
-        time_delta = new_delay - old_delay
-        if abs(time_delta) > 0.0001:
-            for i in range(action.start_index, len(self.macro_data['events'])):
-                original_time, event_data = self.macro_data['events'][i]
-                self.macro_data['events'][i] = (original_time + time_delta, event_data)
-            self.add_log_message(f"Action {action_index} delay adjusted by {time_delta:.2f}s.")
-
-        if action.type in ['mouse_click', 'mouse_drag', 'raw_mouse']:
-            if edit_params:
-                new_click_type = edit_params['click_type'].get()
-                new_button_type = edit_params['button_type'].get()
-                
-                original_event_index = -1
-                original_event_obj = None
-                for i in range(action.start_index, action.end_index + 1):
-                    evt = _get_event_obj(self.macro_data['events'][i])
-                    if isinstance(evt, mouse.ButtonEvent):
-                        original_event_index = i
-                        original_event_obj = evt
-                        break
-                
-                if original_event_obj is None: self._populate_treeview(); return
-
-                original_click_type = "double" if original_event_obj.event_type == 'double' else "single"
-
-                if original_event_obj.button != new_button_type:
-                    for i in range(action.start_index, action.end_index + 1):
-                        evt_time, (evt, pos) = self.macro_data['events'][i]
-                        if isinstance(evt, mouse.ButtonEvent):
-                            new_evt = mouse.ButtonEvent(evt.event_type, new_button_type, evt.time)
-                            self.macro_data['events'][i] = (evt_time, (new_evt, pos))
-                    self.add_log_message(f"Action {action_index}: Button changed to {new_button_type}")
-
-                if original_click_type != new_click_type:
-                    if new_click_type == 'double':
-                        up_event_index = -1
-                        for i in range(action.start_index, action.end_index + 1):
-                            if _get_event_obj(self.macro_data['events'][i]).event_type == mouse.UP:
-                                up_event_index = i
-                                break
-                        if up_event_index != -1: del self.macro_data['events'][up_event_index]
-                        
-                        evt_time, (evt, pos) = self.macro_data['events'][original_event_index]
-                        new_evt = mouse.ButtonEvent(mouse.DOUBLE, new_button_type, evt.time)
-                        self.macro_data['events'][original_event_index] = (evt_time, (new_evt, pos))
-                        self.add_log_message(f"Action {action_index}: Changed to Double Click.")
-                    else:
-                        evt_time, (evt, pos) = self.macro_data['events'][original_event_index]
-                        new_evt = mouse.ButtonEvent(mouse.DOWN, new_button_type, evt.time)
-                        self.macro_data['events'][original_event_index] = (evt_time, (new_evt, pos))
-
-                        down_time, (down_event, pos) = self.macro_data['events'][original_event_index]
-                        up_event_time = down_time + 0.05
-                        up_event = (up_event_time, (mouse.ButtonEvent(mouse.UP, new_button_type, time.time()), pos))
-                        self.macro_data['events'].insert(original_event_index + 1, up_event)
-
-                        for i in range(original_event_index + 2, len(self.macro_data['events'])):
-                            original_time, event_data = self.macro_data['events'][i]
-                            self.macro_data['events'][i] = (original_time + 0.05, event_data)
-                        self.add_log_message(f"Action {action_index}: Changed to Single Click.")
-        
-        elif action.type in ['key_press', 'raw_key']:
-            if edit_params:
-                new_key = edit_params['new_key'].get()
-                if not new_key:
-                    messagebox.showwarning("Invalid Key", "Key cannot be empty.")
-                    return
-                
-                self.add_log_message(f"--- Start Key Edit Debug ---")
-                self.add_log_message(f"Editing action index: {action_index}, from raw index {action.start_index} to {action.end_index}")
-                self.add_log_message(f"Attempting to change key to: '{new_key}'")
-
-                try:
-                    new_key_code = keyboard.key_to_scan_codes(new_key)[0]
-                except IndexError:
-                    messagebox.showerror("Invalid Key", f"Could not find a scan code for key: '{new_key}'")
-                    self.add_log_message(f"--- End Key Edit Debug ---")
-                    return
-
-                new_key_name = new_key[0].lower()
-                for i in range(action.start_index, action.end_index + 1):
-                    evt_time, (evt, pos) = self.macro_data['events'][i]
-                    if isinstance(evt, keyboard.KeyboardEvent):
-                        self.add_log_message(f"Modifying raw index {i}: event_name={evt.name}, event_type={evt.event_type}")
-                        new_evt = keyboard.KeyboardEvent(evt.event_type, scan_code=new_key_code, name=new_key_name)
-                        self.macro_data['events'][i] = (evt_time, (new_evt, pos))
-                self.add_log_message(f"Action {action_index}: Key changed to '{new_key_name}'")
-                self.add_log_message(f"--- End Key Edit Debug ---")
-
-        self._populate_treeview()
+        ActionEditorWindow(
+            parent=self.root,
+            action=action,
+            action_index=action_index,
+            visible_actions=self.visible_actions,
+            macro_data=self.macro_data,
+            on_complete_callback=self._populate_treeview
+        )

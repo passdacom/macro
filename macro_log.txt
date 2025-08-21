@@ -661,3 +661,623 @@
 [2025-08-20 09:33:24] Event: ButtonEvent(event_type='up', button='left', time=1755650004.2450848)
 [2025-08-20 09:33:24] Recording stopped.
 [2025-08-20 09:33:24] Recorded 201 events.
+[2025-08-20 09:42:00] Recording started in absolute mode...
+[2025-08-20 09:42:00] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 09:42:00] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 09:42:00] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 09:42:00] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 09:42:02] Event: ButtonEvent(event_type='down', button='left', time=1755650522.2433465)
+[2025-08-20 09:42:02] Event: ButtonEvent(event_type='up', button='left', time=1755650522.4665124)
+[2025-08-20 09:42:02] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 09:42:02] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 09:42:02] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 09:42:02] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 09:42:03] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 09:42:03] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 09:42:03] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 09:42:03] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 09:42:04] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 09:42:04] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:04] Recording stopped.
+[2025-08-20 09:42:04] Recorded 112 events.
+[2025-08-20 09:42:21] Recording started in absolute mode...
+[2025-08-20 09:42:21] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 09:42:21] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 09:42:21] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 09:42:21] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 09:42:22] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 09:42:22] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 09:42:22] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 09:42:22] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 09:42:22] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 09:42:22] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 09:42:22] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 09:42:22] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 09:42:23] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 09:42:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:42:24] Recording stopped.
+[2025-08-20 09:42:24] Recorded 10 events.
+[2025-08-20 09:49:42] Recording started in absolute mode...
+[2025-08-20 09:49:42] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 09:49:42] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 09:49:42] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 09:49:43] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 09:49:44] Event: ButtonEvent(event_type='down', button='left', time=1755650984.3739233)
+[2025-08-20 09:49:44] Event: ButtonEvent(event_type='up', button='left', time=1755650984.5905511)
+[2025-08-20 09:49:45] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 09:49:45] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 09:49:45] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 09:49:45] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 09:49:45] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 09:49:45] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 09:49:45] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 09:49:45] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 09:49:46] Normalized numpad key to '1'.
+[2025-08-20 09:49:46] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 09:49:46] Normalized numpad key to '3'.
+[2025-08-20 09:49:46] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 09:49:46] Normalized numpad key to '1'.
+[2025-08-20 09:49:46] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 09:49:46] Normalized numpad key to '3'.
+[2025-08-20 09:49:46] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 09:49:46] Normalized numpad key to '2'.
+[2025-08-20 09:49:46] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 09:49:47] Normalized numpad key to '2'.
+[2025-08-20 09:49:47] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 09:49:47] Normalized numpad key to '4'.
+[2025-08-20 09:49:47] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 09:49:47] Normalized numpad key to '4'.
+[2025-08-20 09:49:47] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 09:49:48] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 09:49:48] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 09:49:48] Recording stopped.
+[2025-08-20 09:49:48] Recorded 81 events.
+[2025-08-20 09:49:55] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 09:50:00] Playback finished.
+[2025-08-20 09:50:08] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 09:50:12] Playback finished.
+[2025-08-20 15:33:23] Recording started in absolute mode...
+[2025-08-20 15:33:23] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 15:33:24] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 15:33:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 15:33:24] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 15:33:25] Event: ButtonEvent(event_type='down', button='left', time=1755671605.0959053)
+[2025-08-20 15:33:25] Event: ButtonEvent(event_type='up', button='left', time=1755671605.315881)
+[2025-08-20 15:33:25] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-08-20 15:33:25] Event: ButtonEvent(event_type='double', button='left', time=1755671605.6976693)
+[2025-08-20 15:33:28] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-20 15:33:28] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-20 15:33:28] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-20 15:33:28] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-20 15:33:28] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:33:29] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:33:29] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:33:29] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:33:29] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:33:29] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:33:29] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:33:29] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:33:31] Normalized numpad key to '1'.
+[2025-08-20 15:33:31] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:33:31] Normalized numpad key to '1'.
+[2025-08-20 15:33:31] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:33:31] Normalized numpad key to '1'.
+[2025-08-20 15:33:31] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:33:31] Normalized numpad key to '1'.
+[2025-08-20 15:33:31] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:33:31] Normalized numpad key to '2'.
+[2025-08-20 15:33:31] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:33:31] Normalized numpad key to '2'.
+[2025-08-20 15:33:31] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:33:31] Normalized numpad key to '2'.
+[2025-08-20 15:33:31] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:33:31] Normalized numpad key to '2'.
+[2025-08-20 15:33:31] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:33:33] Event: ButtonEvent(event_type='down', button='left', time=1755671613.9464447)
+[2025-08-20 15:33:34] Event: ButtonEvent(event_type='up', button='left', time=1755671614.175861)
+[2025-08-20 15:33:34] Recording stopped.
+[2025-08-20 15:33:34] Recorded 291 events.
+[2025-08-20 15:33:35] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 15:33:45] Playback finished.
+[2025-08-20 15:35:48] Recording started in absolute mode...
+[2025-08-20 15:35:49] Event: ButtonEvent(event_type='down', button='left', time=1755671749.7382948)
+[2025-08-20 15:35:49] Event: ButtonEvent(event_type='up', button='left', time=1755671749.9551013)
+[2025-08-20 15:35:50] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-20 15:35:50] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-20 15:35:51] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:35:51] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:35:51] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:35:51] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:35:51] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:35:51] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:35:51] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:35:51] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:35:52] Normalized numpad key to '3'.
+[2025-08-20 15:35:52] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:35:52] Normalized numpad key to '3'.
+[2025-08-20 15:35:52] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:35:52] Normalized numpad key to '3'.
+[2025-08-20 15:35:52] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:35:52] Normalized numpad key to '3'.
+[2025-08-20 15:35:52] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:35:52] Normalized numpad key to '4'.
+[2025-08-20 15:35:52] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:35:52] Normalized numpad key to '4'.
+[2025-08-20 15:35:52] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:35:52] Normalized numpad key to '4'.
+[2025-08-20 15:35:52] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:35:52] Normalized numpad key to '4'.
+[2025-08-20 15:35:52] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:35:54] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 15:35:54] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 15:35:54] Recording stopped.
+[2025-08-20 15:35:54] Recorded 101 events.
+[2025-08-20 15:35:55] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 15:35:59] Playback finished.
+[2025-08-20 15:40:16] Recording started in absolute mode...
+[2025-08-20 15:40:16] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 15:40:16] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 15:40:16] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 15:40:16] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 15:40:17] Event: ButtonEvent(event_type='down', button='left', time=1755672017.8545268)
+[2025-08-20 15:40:18] Event: ButtonEvent(event_type='up', button='left', time=1755672018.0821745)
+[2025-08-20 15:40:18] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-20 15:40:18] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-20 15:40:19] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:40:19] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:40:19] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:40:19] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:40:19] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:40:19] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:40:19] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:40:19] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:40:21] Normalized numpad key to '3'.
+[2025-08-20 15:40:21] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:40:21] Normalized numpad key to '3'.
+[2025-08-20 15:40:21] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:40:21] Normalized numpad key to '3'.
+[2025-08-20 15:40:21] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:40:21] Normalized numpad key to '3'.
+[2025-08-20 15:40:21] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:40:21] Normalized numpad key to '4'.
+[2025-08-20 15:40:21] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:40:21] Normalized numpad key to '4'.
+[2025-08-20 15:40:21] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:40:21] Normalized numpad key to '4'.
+[2025-08-20 15:40:21] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:40:21] Normalized numpad key to '4'.
+[2025-08-20 15:40:21] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:40:22] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 15:40:22] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 15:40:23] Recording stopped.
+[2025-08-20 15:40:23] Recorded 20 events.
+[2025-08-20 15:40:24] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 15:40:29] Playback finished.
+[2025-08-20 15:42:44] Recording started in absolute mode...
+[2025-08-20 15:42:44] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 15:42:44] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 15:42:44] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 15:42:44] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 15:42:45] Event: ButtonEvent(event_type='down', button='left', time=1755672165.3084557)
+[2025-08-20 15:42:45] Event: ButtonEvent(event_type='up', button='left', time=1755672165.536446)
+[2025-08-20 15:42:46] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-20 15:42:46] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-20 15:42:46] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:42:47] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:42:47] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:42:47] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:42:47] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:42:47] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:42:47] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:42:47] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:42:48] Normalized numpad key to '3'.
+[2025-08-20 15:42:48] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:42:48] Normalized numpad key to '3'.
+[2025-08-20 15:42:48] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:42:48] Normalized numpad key to '3'.
+[2025-08-20 15:42:48] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:42:48] Normalized numpad key to '3'.
+[2025-08-20 15:42:48] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:42:48] Normalized numpad key to '4'.
+[2025-08-20 15:42:48] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:42:48] Normalized numpad key to '4'.
+[2025-08-20 15:42:48] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:42:48] Normalized numpad key to '4'.
+[2025-08-20 15:42:48] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:42:48] Normalized numpad key to '4'.
+[2025-08-20 15:42:48] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:42:50] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:42:50] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:42:50] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:42:50] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:42:50] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:42:50] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:42:50] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:42:50] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:42:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 15:42:52] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 15:42:53] Recording stopped.
+[2025-08-20 15:42:53] Recorded 61 events.
+[2025-08-20 15:42:54] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 15:43:00] Playback finished.
+[2025-08-20 15:44:22] Recording started in absolute mode...
+[2025-08-20 15:44:22] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 15:44:23] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 15:44:23] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 15:44:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 15:44:24] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-20 15:44:24] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-20 15:44:24] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:44:24] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:44:24] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:44:25] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:44:25] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:44:25] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:44:25] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:44:25] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:44:25] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:44:25] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:44:25] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:44:25] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:44:25] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:44:26] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:44:26] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:44:26] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:44:27] Normalized numpad key to '1'.
+[2025-08-20 15:44:27] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:44:27] Normalized numpad key to '2'.
+[2025-08-20 15:44:27] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:44:27] Normalized numpad key to '1'.
+[2025-08-20 15:44:27] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:44:27] Normalized numpad key to '2'.
+[2025-08-20 15:44:27] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:44:27] Normalized numpad key to '1'.
+[2025-08-20 15:44:27] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:44:27] Normalized numpad key to '2'.
+[2025-08-20 15:44:27] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:44:27] Normalized numpad key to '1'.
+[2025-08-20 15:44:27] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:44:27] Normalized numpad key to '2'.
+[2025-08-20 15:44:27] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:44:28] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 15:44:28] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 15:44:29] Recording stopped.
+[2025-08-20 15:44:29] Recorded 26 events.
+[2025-08-20 15:44:30] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 15:44:35] Playback finished.
+[2025-08-20 15:46:06] Recording started in absolute mode...
+[2025-08-20 15:46:06] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-20 15:46:06] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-20 15:46:06] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-20 15:46:06] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-20 15:46:09] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-20 15:46:10] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-20 15:46:10] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:46:10] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:46:10] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-20 15:46:10] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-20 15:46:10] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:46:10] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:46:10] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-20 15:46:10] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-20 15:46:11] Normalized numpad key to '3'.
+[2025-08-20 15:46:11] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:46:11] Normalized numpad key to '3'.
+[2025-08-20 15:46:11] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:46:12] Normalized numpad key to '3'.
+[2025-08-20 15:46:12] KeyboardEvent(name='3', scan_code=4, event_type=down)
+[2025-08-20 15:46:12] Normalized numpad key to '3'.
+[2025-08-20 15:46:12] KeyboardEvent(name='3', scan_code=4, event_type=up)
+[2025-08-20 15:46:12] Normalized numpad key to '4'.
+[2025-08-20 15:46:12] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:46:12] Normalized numpad key to '4'.
+[2025-08-20 15:46:12] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:46:12] Normalized numpad key to '4'.
+[2025-08-20 15:46:12] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-20 15:46:12] Normalized numpad key to '4'.
+[2025-08-20 15:46:12] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-20 15:46:13] Normalized numpad key to '5'.
+[2025-08-20 15:46:13] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-20 15:46:13] Normalized numpad key to '6'.
+[2025-08-20 15:46:13] KeyboardEvent(name='6', scan_code=7, event_type=down)
+[2025-08-20 15:46:13] Normalized numpad key to '5'.
+[2025-08-20 15:46:13] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-20 15:46:13] Normalized numpad key to '6'.
+[2025-08-20 15:46:13] KeyboardEvent(name='6', scan_code=7, event_type=up)
+[2025-08-20 15:46:16] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-20 15:46:16] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-20 15:46:16] Recording stopped.
+[2025-08-20 15:46:16] Recorded 22 events.
+[2025-08-20 15:46:17] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-20 15:46:25] Playback finished.
+[2025-08-21 08:45:05] Recording started in absolute mode...
+[2025-08-21 08:45:05] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-21 08:45:05] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-21 08:45:06] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-21 08:45:06] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-21 08:45:07] Event: ButtonEvent(event_type='down', button='left', time=1755733507.645852)
+[2025-08-21 08:45:07] Event: ButtonEvent(event_type='up', button='left', time=1755733507.86694)
+[2025-08-21 08:45:08] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-21 08:45:08] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-21 08:45:08] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-21 08:45:08] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-21 08:45:08] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-21 08:45:08] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-21 08:45:08] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-21 08:45:08] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-21 08:45:09] Normalized numpad key to '1'.
+[2025-08-21 08:45:09] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-21 08:45:09] Normalized numpad key to '2'.
+[2025-08-21 08:45:09] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-21 08:45:09] Normalized numpad key to '1'.
+[2025-08-21 08:45:09] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-21 08:45:09] Normalized numpad key to '2'.
+[2025-08-21 08:45:09] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-21 08:45:09] Normalized numpad key to '1'.
+[2025-08-21 08:45:09] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-21 08:45:09] Normalized numpad key to '2'.
+[2025-08-21 08:45:09] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-21 08:45:09] Normalized numpad key to '1'.
+[2025-08-21 08:45:09] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-21 08:45:09] Normalized numpad key to '2'.
+[2025-08-21 08:45:09] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-21 08:45:10] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-21 08:45:10] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-21 08:45:10] Recording stopped.
+[2025-08-21 08:45:10] Recorded 31 events.
+[2025-08-21 08:45:16] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-21 08:45:20] Playback finished.
+[2025-08-21 08:45:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-21 08:45:49] Playback finished.
+[2025-08-21 08:46:06] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-21 08:46:12] Playback finished.
+[2025-08-21 09:00:42] Recording started in absolute mode...
+[2025-08-21 09:00:42] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-21 09:00:42] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-21 09:00:42] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-21 09:00:42] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-21 09:00:43] Event: ButtonEvent(event_type='down', button='left', time=1755734443.5788686)
+[2025-08-21 09:00:43] Event: ButtonEvent(event_type='up', button='left', time=1755734443.8064332)
+[2025-08-21 09:00:44] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-08-21 09:00:44] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-08-21 09:00:45] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-21 09:00:45] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-21 09:00:45] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-21 09:00:45] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-21 09:00:45] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-21 09:00:45] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-21 09:00:46] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-21 09:00:46] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-21 09:00:47] Normalized numpad key to '4'.
+[2025-08-21 09:00:47] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-21 09:00:47] Normalized numpad key to '5'.
+[2025-08-21 09:00:47] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-21 09:00:47] Normalized numpad key to '4'.
+[2025-08-21 09:00:47] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-21 09:00:47] Normalized numpad key to '5'.
+[2025-08-21 09:00:47] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-21 09:00:47] Normalized numpad key to '4'.
+[2025-08-21 09:00:47] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-21 09:00:47] Normalized numpad key to '5'.
+[2025-08-21 09:00:47] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-21 09:00:47] Normalized numpad key to '4'.
+[2025-08-21 09:00:47] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-21 09:00:47] Normalized numpad key to '5'.
+[2025-08-21 09:00:47] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-21 09:00:48] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-21 09:00:48] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-21 09:00:48] Recording stopped.
+[2025-08-21 09:00:48] Recorded 20 events.
+[2025-08-21 09:00:53] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-21 09:00:57] Playback finished.
+[2025-08-22 08:14:50] Recording started in absolute mode...
+[2025-08-22 08:14:50] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:14:50] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:14:50] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:14:50] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:14:51] Event: ButtonEvent(event_type='down', button='left', time=1755818091.6557586)
+[2025-08-22 08:14:51] Event: ButtonEvent(event_type='up', button='left', time=1755818091.8797364)
+[2025-08-22 08:14:52] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:14:52] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:14:52] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:14:52] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:14:52] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:14:52] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:14:52] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:14:52] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:14:53] Normalized numpad key to '4'.
+[2025-08-22 08:14:53] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:14:53] Normalized numpad key to '5'.
+[2025-08-22 08:14:53] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:14:53] Normalized numpad key to '4'.
+[2025-08-22 08:14:53] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:14:53] Normalized numpad key to '4'.
+[2025-08-22 08:14:53] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:14:53] Normalized numpad key to '5'.
+[2025-08-22 08:14:53] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:14:53] Normalized numpad key to '5'.
+[2025-08-22 08:14:53] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:14:53] Normalized numpad key to '4'.
+[2025-08-22 08:14:53] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:14:53] Normalized numpad key to '5'.
+[2025-08-22 08:14:53] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:14:54] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-22 08:14:54] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-22 08:14:54] Recording stopped.
+[2025-08-22 08:14:54] Recorded 38 events.
+[2025-08-22 08:15:08] Recording started in absolute mode...
+[2025-08-22 08:15:09] Event: ButtonEvent(event_type='down', button='left', time=1755818109.6234996)
+[2025-08-22 08:15:09] Recording stopped.
+[2025-08-22 08:15:09] Recorded 16 events.
+[2025-08-22 08:17:52] Recording started in absolute mode...
+[2025-08-22 08:17:52] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:17:52] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:17:52] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:17:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:17:53] Event: ButtonEvent(event_type='down', button='left', time=1755818273.5804157)
+[2025-08-22 08:17:53] Event: ButtonEvent(event_type='up', button='left', time=1755818273.7988136)
+[2025-08-22 08:17:53] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:17:54] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:17:54] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:17:54] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:17:54] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:17:54] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:17:54] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:17:54] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:17:55] Normalized numpad key to '4'.
+[2025-08-22 08:17:55] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:17:55] Normalized numpad key to '5'.
+[2025-08-22 08:17:55] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:17:55] Normalized numpad key to '4'.
+[2025-08-22 08:17:55] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:17:55] Normalized numpad key to '5'.
+[2025-08-22 08:17:55] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:17:55] Normalized numpad key to '4'.
+[2025-08-22 08:17:55] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:17:55] Normalized numpad key to '5'.
+[2025-08-22 08:17:55] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:17:55] Normalized numpad key to '4'.
+[2025-08-22 08:17:55] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:17:55] Normalized numpad key to '5'.
+[2025-08-22 08:17:55] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:17:56] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-22 08:17:56] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-22 08:17:56] Recording stopped.
+[2025-08-22 08:17:56] Recorded 74 events.
+[2025-08-22 08:19:35] Recording started in absolute mode...
+[2025-08-22 08:19:35] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:19:35] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:19:36] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:19:36] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:19:36] Event: ButtonEvent(event_type='down', button='left', time=1755818376.949324)
+[2025-08-22 08:19:37] Event: ButtonEvent(event_type='up', button='left', time=1755818377.1647134)
+[2025-08-22 08:19:37] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:19:37] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:19:37] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:19:37] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:19:38] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:19:38] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:19:38] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:19:38] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:19:38] Normalized numpad key to '4'.
+[2025-08-22 08:19:38] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:19:38] Normalized numpad key to '5'.
+[2025-08-22 08:19:38] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:19:39] Normalized numpad key to '4'.
+[2025-08-22 08:19:39] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:19:39] Normalized numpad key to '5'.
+[2025-08-22 08:19:39] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:19:39] Normalized numpad key to '4'.
+[2025-08-22 08:19:39] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:19:39] Normalized numpad key to '5'.
+[2025-08-22 08:19:39] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:19:39] Normalized numpad key to '4'.
+[2025-08-22 08:19:39] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:19:39] Normalized numpad key to '5'.
+[2025-08-22 08:19:39] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:19:39] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-22 08:19:39] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-22 08:19:39] Recording stopped.
+[2025-08-22 08:19:39] Recorded 53 events.
+[2025-08-22 08:19:40] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:19:44] Playback finished.
+[2025-08-22 08:23:14] Recording started in absolute mode...
+[2025-08-22 08:23:14] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:23:14] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:23:14] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:23:14] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:23:16] Event: ButtonEvent(event_type='down', button='left', time=1755818596.0520763)
+[2025-08-22 08:23:16] Event: ButtonEvent(event_type='up', button='left', time=1755818596.2822592)
+[2025-08-22 08:23:16] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:23:16] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:23:16] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:23:16] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:23:16] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:23:16] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:23:16] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:23:16] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:23:17] Normalized numpad key to '4'.
+[2025-08-22 08:23:17] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:23:17] Normalized numpad key to '5'.
+[2025-08-22 08:23:17] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:23:17] Normalized numpad key to '4'.
+[2025-08-22 08:23:17] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:23:17] Normalized numpad key to '5'.
+[2025-08-22 08:23:17] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:23:17] Normalized numpad key to '4'.
+[2025-08-22 08:23:17] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:23:17] Normalized numpad key to '5'.
+[2025-08-22 08:23:17] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:23:17] Normalized numpad key to '4'.
+[2025-08-22 08:23:17] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:23:17] Normalized numpad key to '5'.
+[2025-08-22 08:23:17] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:23:18] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-22 08:23:18] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-22 08:23:18] Recording stopped.
+[2025-08-22 08:23:18] Recorded 77 events.
+[2025-08-22 08:23:20] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:23:24] Playback finished.
+[2025-08-22 08:23:48] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:23:52] Playback finished.
+[2025-08-22 08:23:58] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:24:01] Playback finished.
+[2025-08-22 08:24:26] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:24:30] Playback finished.
+[2025-08-22 08:24:41] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:24:45] Playback finished.
+[2025-08-22 08:25:02] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:25:07] Playback finished.
+[2025-08-22 08:30:29] Recording started in absolute mode...
+[2025-08-22 08:30:29] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:30:29] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:30:29] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:30:29] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:30:30] Event: ButtonEvent(event_type='down', button='left', time=1755819030.7330165)
+[2025-08-22 08:30:30] Event: ButtonEvent(event_type='up', button='left', time=1755819030.960272)
+[2025-08-22 08:30:31] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:30:31] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:30:31] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:30:31] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:30:31] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:30:31] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:30:31] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:30:31] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:30:32] Normalized numpad key to '4'.
+[2025-08-22 08:30:32] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:30:32] Normalized numpad key to '5'.
+[2025-08-22 08:30:32] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:30:32] Normalized numpad key to '4'.
+[2025-08-22 08:30:32] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:30:32] Normalized numpad key to '5'.
+[2025-08-22 08:30:32] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:30:32] Normalized numpad key to '4'.
+[2025-08-22 08:30:32] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:30:33] Normalized numpad key to '5'.
+[2025-08-22 08:30:33] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:30:33] Normalized numpad key to '4'.
+[2025-08-22 08:30:33] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:30:33] Normalized numpad key to '5'.
+[2025-08-22 08:30:33] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:30:34] Event: ButtonEvent(event_type='down', button='left', time=1755819034.7221112)
+[2025-08-22 08:30:34] Event: ButtonEvent(event_type='up', button='left', time=1755819034.945931)
+[2025-08-22 08:30:34] Recording stopped.
+[2025-08-22 08:30:34] Recorded 98 events.
+[2025-08-22 08:30:35] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:30:41] Playback finished.
+[2025-08-22 08:30:44] Deleted 80 raw event(s).
+[2025-08-22 08:31:04] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:31:10] Playback finished.
+[2025-08-22 08:31:28] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:31:37] Playback finished.

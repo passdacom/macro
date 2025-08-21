@@ -1283,3 +1283,109 @@
 [2025-08-22 08:31:37] Playback finished.
 [2025-08-22 08:38:29] Not recording.
 [2025-08-22 08:38:35] Not recording.
+[2025-08-22 08:48:11] Recording started in absolute mode...
+[2025-08-22 08:48:11] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:48:11] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:48:11] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:48:11] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:48:12] Event: ButtonEvent(event_type='down', button='left', time=1755820092.6756828)
+[2025-08-22 08:48:12] Event: ButtonEvent(event_type='up', button='left', time=1755820092.8918037)
+[2025-08-22 08:48:13] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-08-22 08:48:13] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-08-22 08:48:13] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-08-22 08:48:13] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-08-22 08:48:14] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:48:14] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:48:14] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:48:14] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:48:14] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:48:15] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:48:15] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:48:15] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:48:16] Normalized numpad key to '4'.
+[2025-08-22 08:48:16] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:48:16] Normalized numpad key to '5'.
+[2025-08-22 08:48:16] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:48:16] Normalized numpad key to '4'.
+[2025-08-22 08:48:16] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:48:16] Normalized numpad key to '5'.
+[2025-08-22 08:48:16] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:48:16] Normalized numpad key to '4'.
+[2025-08-22 08:48:16] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-08-22 08:48:16] Normalized numpad key to '5'.
+[2025-08-22 08:48:16] KeyboardEvent(name='5', scan_code=6, event_type=down)
+[2025-08-22 08:48:16] Normalized numpad key to '4'.
+[2025-08-22 08:48:16] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-08-22 08:48:16] Normalized numpad key to '5'.
+[2025-08-22 08:48:16] KeyboardEvent(name='5', scan_code=6, event_type=up)
+[2025-08-22 08:48:17] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-22 08:48:17] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-22 08:48:17] Recording stopped.
+[2025-08-22 08:48:17] Recorded 22 events.
+[2025-08-22 08:48:18] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:48:23] Playback finished.
+[2025-08-22 08:48:37] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:48:42] Playback finished.
+[2025-08-22 08:48:50] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:48:57] Playback finished.
+[2025-08-22 08:49:05] Playback started (repeating 1 times at 3.0x speed)...
+[2025-08-22 08:49:11] Playback finished.
+[2025-08-22 08:49:18] Playback started (repeating 2 times at 1.0x speed)...
+[2025-08-22 08:49:32] Playback finished.
+[2025-08-22 08:49:36] Recording started in absolute mode...
+[2025-08-22 08:49:38] Event: ButtonEvent(event_type='down', button='left', time=1755820178.3379018)
+[2025-08-22 08:49:38] Event: ButtonEvent(event_type='up', button='left', time=1755820178.5546694)
+[2025-08-22 08:49:38] Recording stopped.
+[2025-08-22 08:49:38] Recorded 166 events.
+[2025-08-22 08:49:40] Playback started (repeating 2 times at 1.0x speed)...
+[2025-08-22 08:49:45] Playback finished.
+[2025-08-22 08:49:49] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:49:50] Playback finished.
+[2025-08-22 08:49:56] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:49:59] Playback finished.
+[2025-08-22 08:50:00] Recording started in relative mode (Origin: (454, 420))...
+[2025-08-22 08:50:02] Event: ButtonEvent(event_type='down', button='left', time=1755820202.0864246)
+[2025-08-22 08:50:02] Event: ButtonEvent(event_type='up', button='left', time=1755820202.306284)
+[2025-08-22 08:50:02] Recording stopped.
+[2025-08-22 08:50:02] Recorded 2 events.
+[2025-08-22 08:50:03] Recording started in relative mode (Origin: (1740, 281))...
+[2025-08-22 08:50:03] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:50:04] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:50:04] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:50:04] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:50:05] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-08-22 08:50:05] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-08-22 08:50:06] Recording stopped.
+[2025-08-22 08:50:06] Recorded 92 events.
+[2025-08-22 08:50:07] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:50:09] Playback finished.
+[2025-08-22 08:50:12] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:50:13] Playback finished.
+[2025-08-22 08:50:34] Macro successfully saved to C:/cli/macro2/1.json
+[2025-08-22 08:50:37] Recording started in absolute mode...
+[2025-08-22 08:50:37] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-08-22 08:50:37] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-08-22 08:50:37] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-08-22 08:50:37] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-08-22 08:50:37] Event: ButtonEvent(event_type='down', button='left', time=1755820237.7786555)
+[2025-08-22 08:50:37] Event: ButtonEvent(event_type='up', button='left', time=1755820237.998923)
+[2025-08-22 08:50:38] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:50:38] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:50:38] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:50:38] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:50:38] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-08-22 08:50:38] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-08-22 08:50:38] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-08-22 08:50:38] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-08-22 08:50:40] Event: ButtonEvent(event_type='down', button='left', time=1755820240.647256)
+[2025-08-22 08:50:40] Event: ButtonEvent(event_type='up', button='left', time=1755820240.8756375)
+[2025-08-22 08:50:40] Recording stopped.
+[2025-08-22 08:50:40] Recorded 137 events.
+[2025-08-22 08:50:42] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:50:46] Playback finished.
+[2025-08-22 08:50:50] Macro successfully loaded from C:/cli/macro2/1.json
+[2025-08-22 08:50:50] Loaded 92 events.
+[2025-08-22 08:50:51] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:50:53] Playback finished.
+[2025-08-22 08:50:58] Playback started (repeating 1 times at 1.0x speed)...
+[2025-08-22 08:50:59] Playback finished.

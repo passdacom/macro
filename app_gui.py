@@ -65,8 +65,8 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v2.4")
-        self.root.geometry("650x600")
+        self.root.title("Advanced Macro Editor v2.5")
+        self.root.geometry("580x550")
 
         self.is_recording = False
         self.is_playing = False
@@ -76,7 +76,6 @@ class AppGUI:
         self.recorder = Recorder(log_callback=self.add_log_message)
         self.player = Player(on_finish_callback=self.on_playback_finished, log_callback=self.add_log_message, on_action_highlight_callback=self.highlight_playing_action)
         self.hotkey_manager = HotkeyManager(on_record_hotkey=self.toggle_recording, on_play_hotkey=self.start_playing, on_stop_hotkey=self.stop_playing)
-
         self.coord_var = tk.StringVar(value="absolute")
 
         menubar = Menu(self.root)
@@ -87,6 +86,11 @@ class AppGUI:
         file_menu.add_command(label="Load Macro", command=self.load_events)
         file_menu.add_separator()
         file_menu.add_command(label="Exit", command=self.on_close)
+
+        option_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Option", menu=option_menu)
+        option_menu.add_radiobutton(label="Absolute Coordinates", variable=self.coord_var, value="absolute")
+        option_menu.add_radiobutton(label="Relative Coordinates", variable=self.coord_var, value="relative")
 
         main_pane = ttk.PanedWindow(self.root, orient=tk.VERTICAL)
         main_pane.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)

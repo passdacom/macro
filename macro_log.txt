@@ -1281,3 +1281,5 @@
 [2025-08-22 08:31:10] Playback finished.
 [2025-08-22 08:31:28] Playback started (repeating 1 times at 1.0x speed)...
 [2025-08-22 08:31:37] Playback finished.
+[2025-08-22 08:38:29] Not recording.
+[2025-08-22 08:38:35] Not recording.

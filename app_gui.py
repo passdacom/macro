@@ -77,6 +77,8 @@ class AppGUI:
         self.player = Player(on_finish_callback=self.on_playback_finished, log_callback=self.add_log_message, on_action_highlight_callback=self.highlight_playing_action)
         self.hotkey_manager = HotkeyManager(on_record_hotkey=self.toggle_recording, on_play_hotkey=self.start_playing, on_stop_hotkey=self.stop_playing)
 
+        self.coord_var = tk.StringVar(value="absolute")
+
         menubar = Menu(self.root)
         self.root.config(menu=menubar)
         file_menu = Menu(menubar, tearoff=0)

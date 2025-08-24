@@ -11,11 +11,90 @@ class GroupedAction:
 
 # --- Constants and Helpers ---
 HUMAN_PAUSE_THRESHOLD = 0.7
+MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win'}
 
 def _get_event_time(event): return event[0]
 def _get_event_obj(event): return event[1][0]
+def _is_modifier(key_name): return key_name and key_name.lower() in MODIFIER_KEYS
 
-# --- Main Grouper Function (Final Algorithm) ---
+# --- Pattern Finder Functions ---
+
+def _find_shortcut(events, i):
+    start_event = _get_event_obj(events[i])
+    if not (isinstance(start_event, keyboard.KeyboardEvent) and start_event.event_type == 'down' and _is_modifier(start_event.name)):
+        return None
+
+    active_modifiers = {start_event.name.lower()}
+    pressed_action_keys = set()
+    end_index = i
+
+    for j in range(i + 1, len(events)):
+        evt = _get_event_obj(events[j])
+        is_mouse_interruption = isinstance(evt, mouse.ButtonEvent)
+        if is_mouse_interruption: break
+
+        if isinstance(evt, keyboard.KeyboardEvent):
+            if not evt.name: continue
+            key_name = evt.name.lower()
+
+            if evt.event_type == 'down':
+                if _is_modifier(key_name): active_modifiers.add(key_name)
+                else: pressed_action_keys.add(key_name)
+            elif evt.event_type == 'up':
+                if _is_modifier(key_name): active_modifiers.discard(key_name)
+        
+        end_index = j
+        if not active_modifiers:
+            break
+    
+    if not pressed_action_keys:
+        return None
+
+    mod_text = " + ".join(sorted([k.capitalize() for k in MODIFIER_KEYS if k in active_modifiers or k in {start_event.name.lower()}]))
+    key_text = " + ".join(sorted([k.capitalize() for k in pressed_action_keys]))
+    text = f"Shortcut: {mod_text} + {key_text}"
+    
+    indices = list(range(i, end_index + 1))
+    return GroupedAction(display_text=text, type='shortcut', start_index=i, indices=indices), end_index + 1
+
+def _find_key_press(events, i):
+    evt_obj = _get_event_obj(events[i])
+    if not (isinstance(evt_obj, keyboard.KeyboardEvent) and evt_obj.event_type == 'down'):
+        return None
+
+    for j in range(i + 1, len(events)):
+        next_evt = _get_event_obj(events[j])
+        if isinstance(next_evt, keyboard.KeyboardEvent) and next_evt.name == evt_obj.name and next_evt.event_type == 'up':
+            text = f"Key Press: {evt_obj.name.capitalize() if evt_obj.name else ''}"
+            return GroupedAction(display_text=text, type='key_press', start_index=i, indices=[i, j]), j + 1
+        
+        if not isinstance(next_evt, mouse.MoveEvent):
+            return None
+    return None
+
+def _find_mouse_action(events, i):
+    start_event = _get_event_obj(events[i])
+    if not isinstance(start_event, mouse.ButtonEvent) or start_event.event_type != 'down':
+        return None
+
+    is_drag = False
+    end_index = -1
+    for j in range(i + 1, len(events)):
+        evt = _get_event_obj(events[j])
+        if isinstance(evt, mouse.MoveEvent):
+            is_drag = True
+        elif isinstance(evt, mouse.ButtonEvent) and evt.button == start_event.button and evt.event_type == 'up':
+            end_index = j
+            break
+    
+    if end_index != -1:
+        action_type = 'mouse_drag' if is_drag else 'mouse_click'
+        text = f"Mouse Drag ({start_event.button})" if is_drag else f"Mouse Click ({start_event.button})"
+        indices = list(range(i, end_index + 1))
+        return GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices), end_index + 1
+    return None
+
+# --- Main Grouper Function ---
 def group_events(raw_events: list) -> list[GroupedAction]:
     if not raw_events:
         return []
@@ -23,58 +102,30 @@ def group_events(raw_events: list) -> list[GroupedAction]:
     actions = []
     processed_indices = set()
     
-    # Pass 1: Group sequential mouse events first (Click, Drag, Move, Wheel)
+    # Pass 1: Find non-interleaved, simple patterns first
     i = 0
     while i < len(raw_events):
-        if i in processed_indices:
+        if i in processed_indices: 
             i += 1
             continue
 
-        current_event = _get_event_obj(raw_events[i])
-        
-        # Mouse Click/Drag
-        if isinstance(current_event, mouse.ButtonEvent) and current_event.event_type == 'down':
-            is_drag = False
-            end_index = -1
-            # Find the corresponding 'up' event
-            for j in range(i + 1, len(raw_events)):
-                evt = _get_event_obj(raw_events[j])
-                if isinstance(evt, mouse.MoveEvent):
-                    is_drag = True
-                elif isinstance(evt, mouse.ButtonEvent) and evt.button == current_event.button and evt.event_type == 'up':
-                    end_index = j
-                    break
-            
-            if end_index != -1:
-                action_type = 'mouse_drag' if is_drag else 'mouse_click'
-                text = f"Mouse Drag ({current_event.button})" if is_drag else f"Mouse Click ({current_event.button})"
-                indices = list(range(i, end_index + 1))
-                actions.append(GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices))
-                processed_indices.update(indices)
-                i = end_index + 1
-                continue
+        result = (
+            _find_shortcut(raw_events, i) or
+            _find_mouse_action(raw_events, i) or
+            _find_key_press(raw_events, i)
+        )
 
-        # Mouse Move/Wheel Sequence
-        if isinstance(current_event, (mouse.MoveEvent, mouse.WheelEvent)):
-            event_type = type(current_event)
-            end_index = i
-            for j in range(i + 1, len(raw_events)):
-                if type(_get_event_obj(raw_events[j])) is not event_type or (_get_event_time(raw_events[j]) - _get_event_time(raw_events[j-1])) > HUMAN_PAUSE_THRESHOLD:
-                    break
-                end_index = j
-            
-            action_type = 'mouse_wheel' if event_type is mouse.WheelEvent else 'mouse_move'
-            text = "Mouse Wheel" if event_type is mouse.WheelEvent else "Mouse Move"
-            indices = list(range(i, end_index + 1))
-            actions.append(GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices))
-            processed_indices.update(indices)
-            i = end_index + 1
-            continue
-        
-        i += 1
+        if result:
+            action, next_i = result
+            actions.append(action)
+            processed_indices.update(action.indices)
+            i = next_i
+        else:
+            i += 1
 
-    # Pass 2: Group all remaining keyboard events statefully
+    # Pass 2: Group remaining (interleaved) keyboard events
     down_events = {}
+    remaining_key_actions = []
     for i, (t, (evt, p)) in enumerate(raw_events):
         if i in processed_indices: continue
 
@@ -86,9 +137,11 @@ def group_events(raw_events: list) -> list[GroupedAction]:
                 end_idx = i
                 down_evt_obj = _get_event_obj(raw_events[start_idx])
                 text = f"Key Press: {down_evt_obj.name.capitalize() if down_evt_obj.name else ''}"
-                actions.append(GroupedAction(display_text=text, type='key_press', start_index=start_idx, indices=[start_idx, end_idx]))
+                remaining_key_actions.append(GroupedAction(display_text=text, type='key_press', start_index=start_idx, indices=[start_idx, end_idx]))
                 processed_indices.add(start_idx)
                 processed_indices.add(end_idx)
+    
+    actions.extend(remaining_key_actions)
 
     # Pass 3: Handle any remaining raw events
     i = 0

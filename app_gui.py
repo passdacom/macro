@@ -104,6 +104,8 @@ class AppGUI:
 
         self.record_button = ttk.Button(controls_frame, text="Record (Ctrl+Alt+F5)", command=self.toggle_recording)
         self.record_button.pack(side="left", padx=5, pady=5)
+        self.continue_button = ttk.Button(controls_frame, text="Continue Record", command=self.start_continue_recording, state="disabled")
+        self.continue_button.pack(side="left", padx=5, pady=5)
         self.play_button = ttk.Button(controls_frame, text="Play (Ctrl+Alt+F6)", command=self.start_playing)
         self.play_button.pack(side="left", padx=5, pady=5)
         self.stop_button = ttk.Button(controls_frame, text="Stop (Ctrl+Alt+F7)", command=self.stop_playing)
@@ -190,13 +192,14 @@ class AppGUI:
         self.hotkey_manager.stop()
         self.root.destroy()
 
-    def toggle_recording(self):
+    def toggle_recording(self, is_continuation=False):
         if self.is_playing:
             return
         if not self.is_recording:
             self.is_recording = True
             self.record_button.config(text="Stop Record (Ctrl+Alt+F5)")
-            self.recorder.start_recording(self.coord_var.get())
+            existing_events = self.macro_data.get('events', []) if is_continuation else None
+            self.recorder.start_recording(self.coord_var.get(), existing_events=existing_events)
         else:
             self.is_recording = False
             self.record_button.config(text="Record (Ctrl+Alt+F5)")
@@ -205,7 +208,7 @@ class AppGUI:
             if self.macro_data and self.macro_data.get('events'):
                 events = self.macro_data['events']
                 start_idx_to_keep = 0
-                if events:
+                if events and not is_continuation:
                     start_filter_time = events[0][0]
                     for idx, (evt_time, (evt_obj, pos)) in enumerate(events):
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
@@ -231,6 +234,9 @@ class AppGUI:
             self.add_log_message(f"Recorded {len(self.macro_data.get('events', []))} events.")
             self._populate_treeview()
         self.update_button_states()
+
+    def start_continue_recording(self):
+        self.toggle_recording(is_continuation=True)
 
     def start_playing(self):
         if self.is_playing or self.is_recording:
@@ -261,13 +267,18 @@ class AppGUI:
 
     def update_button_states(self):
         can_edit = not self.is_recording and not self.is_playing
+        has_macro = self.macro_data.get('events')
+
         record_state = "disabled" if self.is_playing else "normal"
-        play_state = "disabled" if self.is_recording or self.is_playing or not self.macro_data.get('events') else "normal"
+        continue_state = "disabled" if self.is_recording or self.is_playing or not has_macro else "normal"
+        play_state = "disabled" if self.is_recording or self.is_playing or not has_macro else "normal"
         stop_state = "disabled" if not self.is_playing else "normal"
+
         self.record_button.config(state=record_state)
+        self.continue_button.config(state=continue_state)
         self.play_button.config(state=play_state)
         self.stop_button.config(state=stop_state)
-        self.delete_button.config(state="normal" if can_edit else "disabled")
+        self.delete_button.config(state="normal" if can_edit and has_macro else "disabled")
 
     def toggle_always_on_top(self):
         self.root.attributes("-topmost", self.always_on_top_var.get())

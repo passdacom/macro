@@ -1649,3 +1649,254 @@
 [2025-08-25 08:31:16] Playback finished.
 [2025-08-25 08:31:26] Playback started (repeating 1 times at 1.0x speed)...
 [2025-08-25 08:31:33] Playback finished.
+[2025-09-02 08:13:23] Recording started in absolute mode...
+[2025-09-02 08:13:24] Event: ButtonEvent(event_type='down', button='left', time=1756768404.5117507)
+[2025-09-02 08:13:24] Event: ButtonEvent(event_type='up', button='left', time=1756768404.7346892)
+[2025-09-02 08:13:24] Recording stopped.
+[2025-09-02 08:13:24] Recorded 2 events.
+[2025-09-02 08:13:27] Continue Record feature not yet fully implemented.
+[2025-09-02 08:13:28] Continue Record feature not yet fully implemented.
+[2025-09-02 08:21:12] Recording started in absolute mode...
+[2025-09-02 08:21:14] Event: ButtonEvent(event_type='down', button='left', time=1756768874.41132)
+[2025-09-02 08:21:14] Event: ButtonEvent(event_type='up', button='left', time=1756768874.6357698)
+[2025-09-02 08:21:14] Recording stopped.
+[2025-09-02 08:21:14] Recorded 171 events.
+[2025-09-02 08:21:16] Continuing recording from 171 existing events...
+[2025-09-02 08:21:19] Event: ButtonEvent(event_type='down', button='left', time=1756768879.0213864)
+[2025-09-02 08:21:19] Event: ButtonEvent(event_type='up', button='left', time=1756768879.2377224)
+[2025-09-02 08:21:19] Recording stopped.
+[2025-09-02 08:21:19] Recorded 336 events.
+[2025-09-02 08:21:20] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:21:25] Playback finished.
+[2025-09-02 08:21:31] Continuing recording from 336 existing events...
+[2025-09-02 08:21:32] Event: ButtonEvent(event_type='down', button='left', time=1756768892.9565542)
+[2025-09-02 08:21:33] Event: ButtonEvent(event_type='up', button='left', time=1756768893.1764665)
+[2025-09-02 08:21:33] Recording stopped.
+[2025-09-02 08:21:33] Recorded 442 events.
+[2025-09-02 08:21:34] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:21:40] Playback finished.
+[2025-09-02 08:26:08] Recording started in absolute mode...
+[2025-09-02 08:26:08] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-09-02 08:26:08] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-09-02 08:26:08] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-09-02 08:26:09] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-09-02 08:26:09] Event: ButtonEvent(event_type='down', button='left', time=1756769169.87478)
+[2025-09-02 08:26:10] Event: ButtonEvent(event_type='up', button='left', time=1756769170.0931401)
+[2025-09-02 08:26:10] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:10] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-09-02 08:26:10] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:10] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-09-02 08:26:10] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:10] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-09-02 08:26:10] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:10] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-09-02 08:26:11] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-02 08:26:11] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-09-02 08:26:12] Recording stopped.
+[2025-09-02 08:26:12] Recorded 10 events.
+[2025-09-02 08:26:14] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:26:16] Playback finished.
+[2025-09-02 08:26:21] Recording started in absolute mode...
+[2025-09-02 08:26:23] Event: ButtonEvent(event_type='down', button='left', time=1756769183.5005825)
+[2025-09-02 08:26:23] Event: ButtonEvent(event_type='up', button='left', time=1756769183.7205267)
+[2025-09-02 08:26:23] Recording stopped.
+[2025-09-02 08:26:23] Recorded 191 events.
+[2025-09-02 08:26:25] Continuing recording from 191 existing events...
+[2025-09-02 08:26:26] Event: ButtonEvent(event_type='down', button='left', time=1756769186.9099438)
+[2025-09-02 08:26:27] Event: ButtonEvent(event_type='up', button='left', time=1756769187.1294343)
+[2025-09-02 08:26:27] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:27] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:28] Event: ButtonEvent(event_type='down', button='left', time=1756769188.4611654)
+[2025-09-02 08:26:28] Event: ButtonEvent(event_type='up', button='left', time=1756769188.675548)
+[2025-09-02 08:26:28] Recording stopped.
+[2025-09-02 08:26:28] Recorded 407 events.
+[2025-09-02 08:26:30] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:26:35] Playback finished.
+[2025-09-02 08:26:44] Recording started in absolute mode...
+[2025-09-02 08:26:44] Event: ButtonEvent(event_type='down', button='left', time=1756769204.7129836)
+[2025-09-02 08:26:44] Event: ButtonEvent(event_type='up', button='left', time=1756769204.933234)
+[2025-09-02 08:26:45] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:45] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:46] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:26:46] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:26:47] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:47] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:26:47] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:47] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:26:47] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:26:47] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='u', scan_code=22, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='u', scan_code=22, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='g', scan_code=34, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='g', scan_code=34, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='t', scan_code=20, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='p', scan_code=25, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='t', scan_code=20, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='p', scan_code=25, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='y', scan_code=21, event_type=down)
+[2025-09-02 08:26:48] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:48] KeyboardEvent(name='y', scan_code=21, event_type=up)
+[2025-09-02 08:26:50] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-09-02 08:26:50] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-09-02 08:26:50] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-09-02 08:26:50] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='right alt', scan_code=56, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='right alt', scan_code=56, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='u', scan_code=22, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='u', scan_code=22, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='g', scan_code=34, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='g', scan_code=34, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='t', scan_code=20, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:26:51] KeyboardEvent(name='p', scan_code=25, event_type=down)
+[2025-09-02 08:26:51] KeyboardEvent(name='t', scan_code=20, event_type=up)
+[2025-09-02 08:26:52] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:26:52] KeyboardEvent(name='p', scan_code=25, event_type=up)
+[2025-09-02 08:26:52] KeyboardEvent(name='y', scan_code=21, event_type=down)
+[2025-09-02 08:26:52] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:26:52] KeyboardEvent(name='y', scan_code=21, event_type=up)
+[2025-09-02 08:26:53] Event: ButtonEvent(event_type='down', button='left', time=1756769213.877448)
+[2025-09-02 08:26:54] Event: ButtonEvent(event_type='up', button='left', time=1756769214.0925333)
+[2025-09-02 08:26:54] Recording stopped.
+[2025-09-02 08:26:54] Recorded 270 events.
+[2025-09-02 08:26:58] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:27:08] Playback finished.
+[2025-09-02 08:31:23] Recording started in absolute mode...
+[2025-09-02 08:31:23] KeyboardEvent(name='f5', scan_code=63, event_type=down)
+[2025-09-02 08:31:23] KeyboardEvent(name='f5', scan_code=63, event_type=up)
+[2025-09-02 08:31:24] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-09-02 08:31:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-09-02 08:31:25] Event: ButtonEvent(event_type='down', button='left', time=1756769485.1400664)
+[2025-09-02 08:31:25] Event: ButtonEvent(event_type='up', button='left', time=1756769485.3606548)
+[2025-09-02 08:31:25] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-09-02 08:31:25] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-09-02 08:31:25] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-09-02 08:31:26] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-09-02 08:31:26] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:31:26] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:31:26] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:31:26] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:31:26] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:31:26] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:31:26] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:31:26] KeyboardEvent(name='u', scan_code=22, event_type=down)
+[2025-09-02 08:31:26] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:31:26] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:31:26] KeyboardEvent(name='u', scan_code=22, event_type=up)
+[2025-09-02 08:31:26] KeyboardEvent(name='g', scan_code=34, event_type=down)
+[2025-09-02 08:31:27] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:31:27] KeyboardEvent(name='g', scan_code=34, event_type=up)
+[2025-09-02 08:31:27] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:31:27] KeyboardEvent(name='t', scan_code=20, event_type=down)
+[2025-09-02 08:31:27] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:31:27] KeyboardEvent(name='p', scan_code=25, event_type=down)
+[2025-09-02 08:31:27] KeyboardEvent(name='t', scan_code=20, event_type=up)
+[2025-09-02 08:31:27] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:31:27] KeyboardEvent(name='p', scan_code=25, event_type=up)
+[2025-09-02 08:31:27] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:31:28] KeyboardEvent(name='y', scan_code=21, event_type=down)
+[2025-09-02 08:31:28] KeyboardEvent(name='y', scan_code=21, event_type=up)
+[2025-09-02 08:31:28] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-02 08:31:28] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-09-02 08:31:28] Recording stopped.
+[2025-09-02 08:31:28] Recorded 101 events.
+[2025-09-02 08:31:36] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:31:40] Playback finished.
+[2025-09-02 08:31:46] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:31:51] Playback finished.
+[2025-09-02 08:32:58] Continuing recording from 101 existing events...
+[2025-09-02 08:32:59] Event: ButtonEvent(event_type='down', button='left', time=1756769579.7929692)
+[2025-09-02 08:33:00] Event: ButtonEvent(event_type='up', button='left', time=1756769580.0214372)
+[2025-09-02 08:33:00] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-02 08:33:00] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-02 08:33:00] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-02 08:33:00] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-02 08:33:02] Event: ButtonEvent(event_type='down', button='left', time=1756769582.2299292)
+[2025-09-02 08:33:02] Event: ButtonEvent(event_type='up', button='left', time=1756769582.445121)
+[2025-09-02 08:33:02] Recording stopped.
+[2025-09-02 08:33:02] Recorded 263 events.
+[2025-09-02 08:33:07] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:33:15] Playback finished.
+[2025-09-02 08:37:30] Recording started in absolute mode...
+[2025-09-02 08:37:32] Event: ButtonEvent(event_type='down', button='left', time=1756769852.0238807)
+[2025-09-02 08:37:32] Event: ButtonEvent(event_type='up', button='left', time=1756769852.2496212)
+[2025-09-02 08:37:32] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-02 08:37:32] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-02 08:37:32] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-02 08:37:32] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-02 08:37:33] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-09-02 08:37:33] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-09-02 08:37:33] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-09-02 08:37:33] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-09-02 08:37:33] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:37:33] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:37:33] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:37:33] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:37:33] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='u', scan_code=22, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='u', scan_code=22, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='g', scan_code=34, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='g', scan_code=34, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='t', scan_code=20, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='p', scan_code=25, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='t', scan_code=20, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='p', scan_code=25, event_type=up)
+[2025-09-02 08:37:34] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='y', scan_code=21, event_type=down)
+[2025-09-02 08:37:34] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-02 08:37:35] KeyboardEvent(name='y', scan_code=21, event_type=up)
+[2025-09-02 08:37:35] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-09-02 08:37:36] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-09-02 08:37:36] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-02 08:37:36] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-02 08:37:36] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-02 08:37:36] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-02 08:37:36] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-02 08:37:36] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-02 08:37:36] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-02 08:37:36] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-02 08:37:38] Event: ButtonEvent(event_type='down', button='left', time=1756769858.1755712)
+[2025-09-02 08:37:38] Event: ButtonEvent(event_type='up', button='left', time=1756769858.3991506)
+[2025-09-02 08:37:38] Recording stopped.
+[2025-09-02 08:37:38] Recorded 223 events.
+[2025-09-02 08:37:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:37:52] Playback finished.
+[2025-09-02 08:37:58] Deleted 94 raw event(s).
+[2025-09-02 08:38:01] Continuing recording from 129 existing events...
+[2025-09-02 08:38:01] Event: ButtonEvent(event_type='down', button='left', time=1756769881.8445034)
+[2025-09-02 08:38:02] Event: ButtonEvent(event_type='up', button='left', time=1756769882.0613627)
+[2025-09-02 08:38:02] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-02 08:38:02] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-02 08:38:02] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-02 08:38:03] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-02 08:38:04] Event: ButtonEvent(event_type='down', button='left', time=1756769884.7081509)
+[2025-09-02 08:38:04] Event: ButtonEvent(event_type='up', button='left', time=1756769884.933905)
+[2025-09-02 08:38:04] Recording stopped.
+[2025-09-02 08:38:04] Recorded 243 events.
+[2025-09-02 08:38:06] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-02 08:38:15] Playback finished.

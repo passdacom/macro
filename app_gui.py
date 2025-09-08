@@ -129,13 +129,15 @@ class AppGUI:
         editor_frame = ttk.LabelFrame(main_pane, text="Macro Editor")
         main_pane.add(editor_frame, weight=1)
 
-        self.tree = ttk.Treeview(editor_frame, columns=("Time", "Action", "Details"), show="headings")
+        self.tree = ttk.Treeview(editor_frame, columns=("No", "Time", "Action", "Details"), show="headings")
+        self.tree.heading("No", text="No.")
         self.tree.heading("Time", text="Time (s)")
         self.tree.heading("Action", text="Action")
         self.tree.heading("Details", text="Details")
+        self.tree.column("No", width=40, anchor="center")
         self.tree.column("Time", width=80, anchor="center")
-        self.tree.column("Action", width=150)
-        self.tree.column("Details", width=90)
+        self.tree.column("Action", width=120)
+        self.tree.column("Details", width=80)
         tree_scrollbar = ttk.Scrollbar(editor_frame, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=tree_scrollbar.set)
         tree_scrollbar.pack(side="right", fill="y")
@@ -164,7 +166,7 @@ class AppGUI:
         for i, action in enumerate(self.visible_actions):
             start_time = self.macro_data['events'][action.start_index][0]
             details = f"{len(action.indices)} raw events"
-            self.tree.insert("", "end", iid=i, values=(f"{start_time:.2f}", action.display_text, details))
+            self.tree.insert("", "end", iid=i, values=(i + 1, f"{start_time:.2f}", action.display_text, details))
 
     def delete_selected_event(self):
         selected_items = self.tree.selection()

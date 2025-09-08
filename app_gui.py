@@ -305,18 +305,74 @@ class AppGUI:
         if self.is_recording or self.is_playing:
             self.add_log_message("Cannot load macro while recording or playing.")
             return
-        file_path = filedialog.askopenfilename(defaultextension=".json", filetypes=[("JSON Macro Files", "*.json"), ("All Files", "*.*")] )
+
+        load_mode = 'replace' # Default to replace
+        if self.macro_data.get('events'):
+            # In Korean: "기존 매크로가 있습니다. 불러온 매크로를 뒤에 추가하시겠습니까?\n\n(Yes=추가, No=새로 쓰기)"
+            # Translation: "An existing macro is present. Would you like to append the new macro?\n\n(Yes=Append, No=Overwrite)"
+            user_choice = messagebox.askyesnocancel(
+                "Confirm Load", 
+                "기존 매크로가 있습니다. 불러온 매크로를 뒤에 추가하시겠습니까?\n\n(Yes=추가, No=새로 쓰기)"
+            )
+            if user_choice is None: # Cancel
+                self.add_log_message("Load operation cancelled.")
+                return
+            elif user_choice is True: # Yes -> Append
+                load_mode = 'append'
+            else: # No -> Replace
+                load_mode = 'replace'
+
+        file_path = filedialog.askopenfilename(
+            defaultextension=".json",
+            filetypes=[("JSON Macro Files", "*.json"), ("All Files", "*.* אמיתי")]
+        )
         if not file_path:
             return
+
         try:
             with open(file_path, 'r') as f:
                 loaded_data = json.load(f)
-            deserialized_events = [_deserialize_event(e) for e in loaded_data['events']]
-            self.macro_data = {'mode': loaded_data['mode'], 'origin': loaded_data['origin'], 'events': [e for e in deserialized_events if e is not None]}
-            self.add_log_message(f"Macro successfully loaded from {file_path}")
-            self.add_log_message(f"Loaded {len(self.macro_data.get('events', []))} events.")
+            
+            new_events = [_deserialize_event(e) for e in loaded_data.get('events', [])]
+            new_events = [e for e in new_events if e is not None]
+
+            if not new_events:
+                self.add_log_message("Loaded macro file contains no valid events.")
+                return
+
+            if load_mode == 'append':
+                old_events = self.macro_data.get('events', [])
+                if old_events:
+                    last_timestamp = old_events[-1][0] if old_events else 0
+                    # Add a 1-second delay between the end of the old macro and the start of the new one.
+                    time_offset = last_timestamp + 1.0 
+                    first_new_timestamp = new_events[0][0]
+                    adjustment = time_offset - first_new_timestamp
+                    
+                    adjusted_new_events = [(t + adjustment, e) for t, e in new_events]
+                    self.macro_data['events'].extend(adjusted_new_events)
+                    self.add_log_message(f"Appended {len(adjusted_new_events)} events from {file_path}")
+                else:
+                    # If old_events is empty, 'append' is the same as 'replace'
+                    self.macro_data = {
+                        'mode': loaded_data.get('mode', 'absolute'),
+                        'origin': loaded_data.get('origin', (0,0)),
+                        'events': new_events
+                    }
+                    self.add_log_message(f"Macro successfully loaded from {file_path}")
+
+            else: # 'replace'
+                self.macro_data = {
+                    'mode': loaded_data.get('mode', 'absolute'),
+                    'origin': loaded_data.get('origin', (0,0)),
+                    'events': new_events
+                }
+                self.add_log_message(f"Macro successfully loaded from {file_path}")
+
+            self.add_log_message(f"Total events: {len(self.macro_data.get('events', []))}.")
             self._populate_treeview()
             self.update_button_states()
+
         except FileNotFoundError:
             self.add_log_message(f"Error: File not found at {file_path}")
         except json.JSONDecodeError:

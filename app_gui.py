@@ -9,10 +9,12 @@ from event_player import Player
 from hotkey_manager import HotkeyManager
 import event_grouper
 from action_editor import ActionEditorWindow
+from key_mapper_manager import KeyMapperManager
+from key_mapper_gui import KeyMapperWindow
 
 def _get_event_obj(event):
     """Helper to extract the event object from a macro data entry."""
-    return event[1][0]
+    return event[1]['obj']
 
 def _is_modifier_or_hotkey(key_name):
     if not key_name: return False
@@ -21,8 +23,16 @@ def _is_modifier_or_hotkey(key_name):
 
 # --- Event Serialization/Deserialization Helpers ---
 def _serialize_event(event_data):
-    event_time, (event, pos) = event_data
+    event_time, data_dict = event_data
+    event = data_dict['obj']
+    pos = data_dict.get('pos')
+
     event_dict = {'time': event_time}
+    # Add all other keys from the data_dict, like 'remarks' in the future
+    for key, value in data_dict.items():
+        if key not in ['obj', 'pos']:
+            event_dict[key] = value
+
     if isinstance(event, keyboard.KeyboardEvent):
         event_dict['type'] = 'keyboard'
         event_dict['event_type'] = event.event_type
@@ -36,7 +46,7 @@ def _serialize_event(event_data):
         event_dict['type'] = 'mouse_button'
         event_dict['event_type'] = event.event_type
         event_dict['button'] = event.button
-        event_dict['pos'] = pos
+        if pos: event_dict['pos'] = pos
     elif isinstance(event, mouse.WheelEvent):
         event_dict['type'] = 'mouse_wheel'
         event_dict['delta'] = event.delta
@@ -47,19 +57,28 @@ def _serialize_event(event_data):
 def _deserialize_event(event_dict):
     event_type = event_dict.get('type')
     event_time = event_dict['time']
-    pos = None
+    
+    data_dict = {}
     event = None
+
     if event_type == 'keyboard':
         event = keyboard.KeyboardEvent(event_type=event_dict['event_type'], name=event_dict['name'], scan_code=event_dict['scan_code'])
     elif event_type == 'mouse_move':
         event = mouse.MoveEvent(event_dict['x'], event_dict['y'], event_dict['time'])
     elif event_type == 'mouse_button':
         event = mouse.ButtonEvent(event_type=event_dict['event_type'], button=event_dict['button'], time=event_dict['time'])
-        pos = event_dict.get('pos')
+        if 'pos' in event_dict:
+            data_dict['pos'] = event_dict['pos']
     elif event_type == 'mouse_wheel':
         event = mouse.WheelEvent(event_dict['delta'])
+    
     if event:
-        return (event_time, (event, pos))
+        data_dict['obj'] = event
+        # Restore any other metadata
+        for key, value in event_dict.items():
+            if key not in ['time', 'type', 'event_type', 'name', 'scan_code', 'x', 'y', 'button', 'pos', 'delta']:
+                data_dict[key] = value
+        return (event_time, data_dict)
     return None
 
 class AppGUI:
@@ -73,8 +92,14 @@ class AppGUI:
         self.macro_data = {}
         self.visible_actions = []
 
-        self.recorder = Recorder(log_callback=self.add_log_message)
-        self.player = Player(on_finish_callback=self.on_playback_finished, log_callback=self.add_log_message, on_action_highlight_callback=self.highlight_playing_action)
+        self.key_mapper_manager = KeyMapperManager()
+        self.recorder = Recorder(log_callback=self.add_log_message, mapper_manager=self.key_mapper_manager)
+        self.player = Player(
+            on_finish_callback=self.on_playback_finished, 
+            log_callback=self.add_log_message, 
+            on_action_highlight_callback=self.highlight_playing_action,
+            mapper_manager=self.key_mapper_manager
+        )
         self.hotkey_manager = HotkeyManager(on_record_hotkey=self.toggle_recording, on_play_hotkey=self.start_playing, on_stop_hotkey=self.stop_playing)
         self.coord_var = tk.StringVar(value="absolute")
 
@@ -91,6 +116,10 @@ class AppGUI:
         menubar.add_cascade(label="Option", menu=option_menu)
         option_menu.add_radiobutton(label="Absolute Coordinates", variable=self.coord_var, value="absolute")
         option_menu.add_radiobutton(label="Relative Coordinates", variable=self.coord_var, value="relative")
+
+        tools_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Tools", menu=tools_menu)
+        tools_menu.add_command(label="Keyboard Mapping...", command=self.open_key_mapper)
 
         main_pane = ttk.PanedWindow(self.root, orient=tk.VERTICAL)
         main_pane.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -160,13 +189,25 @@ class AppGUI:
         self.hotkey_manager.start()
         self.root.protocol("WM_DELETE_WINDOW", self.on_close)
 
+    def open_key_mapper(self):
+        KeyMapperWindow(self.root, self.key_mapper_manager)
+
     def _populate_treeview(self):
-        self.visible_actions = event_grouper.group_events(self.macro_data.get('events', []))
         self.tree.delete(*self.tree.get_children())
-        for i, action in enumerate(self.visible_actions):
-            start_time = self.macro_data['events'][action.start_index][0]
-            details = f"{len(action.indices)} raw events"
-            self.tree.insert("", "end", iid=i, values=(i + 1, f"{start_time:.2f}", action.display_text, details))
+        
+        try:
+            self.visible_actions = event_grouper.group_events(self.macro_data.get('events', []))
+            for i, action in enumerate(self.visible_actions):
+                start_time = self.macro_data['events'][action.start_index][0]
+                
+                # Check for remarks in the first event of the action
+                first_event_data = self.macro_data['events'][action.start_index][1]
+                details = first_event_data.get('remarks', f"{len(action.indices)} raw events")
+
+                self.tree.insert("", "end", iid=i, values=(i + 1, f"{start_time:.2f}", action.display_text, details))
+        except Exception as e:
+            self.add_log_message(f"Error populating editor: {e}")
+            messagebox.showerror("Error", f"Failed to display macro actions. The data might be inconsistent.\n\nDetails: {e}")
 
     def delete_selected_event(self):
         selected_items = self.tree.selection()
@@ -212,7 +253,8 @@ class AppGUI:
                 start_idx_to_keep = 0
                 if events and not is_continuation:
                     start_filter_time = events[0][0]
-                    for idx, (evt_time, (evt_obj, pos)) in enumerate(events):
+                    for idx, (evt_time, evt_data) in enumerate(events):
+                        evt_obj = evt_data['obj']
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
                            _is_modifier_or_hotkey(evt_obj.name) and \
                            (evt_time - start_filter_time) < 0.5:
@@ -223,7 +265,8 @@ class AppGUI:
                 if events:
                     end_filter_time = events[-1][0]
                     for idx in range(len(events) - 1, -1, -1):
-                        evt_time, (evt_obj, pos) = events[idx]
+                        evt_time, evt_data = events[idx]
+                        evt_obj = evt_data['obj']
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
                            _is_modifier_or_hotkey(evt_obj.name) and \
                            (end_filter_time - evt_time) < 0.5:

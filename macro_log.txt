@@ -1900,3 +1900,1133 @@
 [2025-09-02 08:38:04] Recorded 243 events.
 [2025-09-02 08:38:06] Playback started (repeating 1 times at 1.0x speed)...
 [2025-09-02 08:38:15] Playback finished.
+[2025-09-09 08:40:19] Recording started in absolute mode...
+[2025-09-09 08:40:20] Event: ButtonEvent(event_type='down', button='left', time=1757374820.320969)
+[2025-09-09 08:40:20] Event: ButtonEvent(event_type='up', button='left', time=1757374820.5502913)
+[2025-09-09 08:40:20] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-09 08:40:20] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-09-09 08:40:20] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-09 08:40:20] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-09-09 08:40:20] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-09 08:40:20] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-09-09 08:40:21] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-09 08:40:21] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-09-09 08:40:21] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-09 08:40:21] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-09 08:40:21] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-09 08:40:21] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-09 08:40:21] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-09 08:40:22] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-09 08:40:22] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-09 08:40:22] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-09 08:40:24] Event: ButtonEvent(event_type='down', button='left', time=1757374824.097855)
+[2025-09-09 08:40:24] Event: ButtonEvent(event_type='up', button='left', time=1757374824.3129485)
+[2025-09-09 08:40:24] Recording stopped.
+[2025-09-09 08:40:24] Recorded 165 events.
+[2025-09-09 08:40:28] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:40:33] Playback finished.
+[2025-09-09 08:40:37] Recording started in absolute mode...
+[2025-09-09 08:40:38] Event: ButtonEvent(event_type='down', button='left', time=1757374838.3207796)
+[2025-09-09 08:40:38] Event: ButtonEvent(event_type='up', button='left', time=1757374838.5492923)
+[2025-09-09 08:40:38] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-09-09 08:40:38] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-09-09 08:40:38] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-09-09 08:40:39] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-09-09 08:40:39] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-09 08:40:39] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-09 08:40:39] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-09 08:40:39] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-09 08:40:40] Event: ButtonEvent(event_type='down', button='left', time=1757374840.7656457)
+[2025-09-09 08:40:40] Event: ButtonEvent(event_type='up', button='left', time=1757374840.9882267)
+[2025-09-09 08:40:41] Recording stopped.
+[2025-09-09 08:40:41] Recorded 133 events.
+[2025-09-09 08:40:42] Continuing recording from 133 existing events...
+[2025-09-09 08:40:43] Event: ButtonEvent(event_type='down', button='left', time=1757374843.4531052)
+[2025-09-09 08:40:43] Event: ButtonEvent(event_type='up', button='left', time=1757374843.608649)
+[2025-09-09 08:40:43] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-09-09 08:40:43] Event: ButtonEvent(event_type='double', button='left', time=1757374843.61153)
+[2025-09-09 08:40:44] KeyboardEvent(name='backspace', scan_code=14, event_type=down)
+[2025-09-09 08:40:44] KeyboardEvent(name='backspace', scan_code=14, event_type=up)
+[2025-09-09 08:40:47] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:47] KeyboardEvent(name='z', scan_code=44, event_type=down)
+[2025-09-09 08:40:47] KeyboardEvent(name='z', scan_code=44, event_type=up)
+[2025-09-09 08:40:47] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-09-09 08:40:49] Event: ButtonEvent(event_type='down', button='left', time=1757374849.0500307)
+[2025-09-09 08:40:49] Event: ButtonEvent(event_type='up', button='left', time=1757374849.2673774)
+[2025-09-09 08:40:49] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:50] KeyboardEvent(name='a', scan_code=30, event_type=down)
+[2025-09-09 08:40:50] KeyboardEvent(name='a', scan_code=30, event_type=up)
+[2025-09-09 08:40:50] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-09-09 08:40:50] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='x', scan_code=45, event_type=down)
+[2025-09-09 08:40:52] KeyboardEvent(name='x', scan_code=45, event_type=up)
+[2025-09-09 08:40:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-09-09 08:40:53] Event: ButtonEvent(event_type='down', button='left', time=1757374853.782305)
+[2025-09-09 08:40:54] Event: ButtonEvent(event_type='up', button='left', time=1757374854.0052905)
+[2025-09-09 08:40:54] Recording stopped.
+[2025-09-09 08:40:54] Recorded 316 events.
+[2025-09-09 08:40:55] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:41:11] Playback finished.
+[2025-09-09 08:41:18] Deleted 118 raw event(s).
+[2025-09-09 08:45:43] Recording started in absolute mode...
+[2025-09-09 08:45:45] Event: ButtonEvent(event_type='down', button='left', time=1757375145.7562275)
+[2025-09-09 08:45:45] Event: ButtonEvent(event_type='up', button='left', time=1757375145.973326)
+[2025-09-09 08:45:46] Recording stopped.
+[2025-09-09 08:45:46] Recorded 179 events.
+[2025-09-09 08:45:47] Continuing recording from 179 existing events...
+[2025-09-09 08:45:50] Event: ButtonEvent(event_type='down', button='left', time=1757375150.245282)
+[2025-09-09 08:45:50] Event: ButtonEvent(event_type='up', button='left', time=1757375150.466166)
+[2025-09-09 08:45:50] Recording stopped.
+[2025-09-09 08:45:50] Recorded 373 events.
+[2025-09-09 08:45:52] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:45:57] Playback finished.
+[2025-09-09 08:46:11] Macro successfully saved to C:/cli/macro2/test.json
+[2025-09-09 08:46:17] Recording started in absolute mode...
+[2025-09-09 08:46:18] Event: ButtonEvent(event_type='down', button='left', time=1757375178.062662)
+[2025-09-09 08:46:18] Event: ButtonEvent(event_type='up', button='left', time=1757375178.290619)
+[2025-09-09 08:46:18] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-09-09 08:46:18] Event: ButtonEvent(event_type='double', button='left', time=1757375178.684888)
+[2025-09-09 08:46:19] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-09 08:46:19] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-09 08:46:19] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-09 08:46:19] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-09 08:46:19] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-09-09 08:46:19] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-09-09 08:46:19] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-09-09 08:46:19] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-09-09 08:46:21] Event: ButtonEvent(event_type='down', button='left', time=1757375181.7426252)
+[2025-09-09 08:46:21] Event: ButtonEvent(event_type='up', button='left', time=1757375181.9578857)
+[2025-09-09 08:46:22] Event: ButtonEvent(event_type='down', button='left', time=1757375182.9338799)
+[2025-09-09 08:46:23] Event: ButtonEvent(event_type='up', button='left', time=1757375183.159345)
+[2025-09-09 08:46:23] Recording stopped.
+[2025-09-09 08:46:23] Recorded 262 events.
+[2025-09-09 08:46:32] Load operation cancelled.
+[2025-09-09 08:46:46] Appended 373 events from C:/cli/macro2/test.json
+[2025-09-09 08:46:46] Total events: 635.
+[2025-09-09 08:46:48] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:47:00] Playback finished.
+[2025-09-09 08:47:11] Macro successfully loaded from C:/cli/macro2/test.json
+[2025-09-09 08:47:11] Total events: 373.
+[2025-09-09 08:47:12] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:47:17] Playback finished.
+[2025-09-09 08:47:24] Appended 373 events from C:/cli/macro2/test.json
+[2025-09-09 08:47:24] Total events: 746.
+[2025-09-09 08:47:26] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:47:36] Playback finished.
+[2025-09-09 08:47:43] Recording started in absolute mode...
+[2025-09-09 08:47:45] Event: ButtonEvent(event_type='down', button='left', time=1757375265.8114982)
+[2025-09-09 08:47:46] Event: ButtonEvent(event_type='up', button='left', time=1757375266.0400543)
+[2025-09-09 08:47:46] Recording stopped.
+[2025-09-09 08:47:46] Recorded 161 events.
+[2025-09-09 08:47:47] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:47:49] Playback finished.
+[2025-09-09 08:47:56] Macro successfully saved to C:/cli/macro2/test.json
+[2025-09-09 08:47:58] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:48:00] Playback finished.
+[2025-09-09 08:48:07] Appended 161 events from C:/cli/macro2/test.json
+[2025-09-09 08:48:07] Total events: 322.
+[2025-09-09 08:48:08] Playback started (repeating 1 times at 1.0x speed)...
+[2025-09-09 08:48:13] Playback finished.
+[2025-11-17 09:19:30] Recording started in absolute mode...
+[2025-11-17 09:19:31] Event: ButtonEvent(event_type='down', button='left', time=1763338771.8423517)
+[2025-11-17 09:19:31] Event: ButtonEvent(event_type='up', button='left', time=1763338771.9027195)
+[2025-11-17 09:19:31] Recording stopped.
+[2025-11-17 09:19:31] Recorded 91 events.
+[2025-11-17 09:28:15] Recording started in absolute mode...
+[2025-11-17 09:28:17] Event: ButtonEvent(event_type='down', button='left', time=1763339297.3404002)
+[2025-11-17 09:28:17] Event: ButtonEvent(event_type='up', button='left', time=1763339297.4085498)
+[2025-11-17 09:28:17] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:28:17] Event: ButtonEvent(event_type='double', button='left', time=1763339297.7307956)
+[2025-11-17 09:28:18] Event: ButtonEvent(event_type='down', button='left', time=1763339298.3376014)
+[2025-11-17 09:28:18] Event: ButtonEvent(event_type='up', button='left', time=1763339298.3828404)
+[2025-11-17 09:28:18] Recording stopped.
+[2025-11-17 09:28:18] Recorded 260 events.
+[2025-11-17 09:31:19] Recording started in absolute mode...
+[2025-11-17 09:31:21] Event: ButtonEvent(event_type='down', button='left', time=1763339481.6776655)
+[2025-11-17 09:31:21] Event: ButtonEvent(event_type='up', button='left', time=1763339481.7451105)
+[2025-11-17 09:31:22] Event: ButtonEvent(event_type='down', button='left', time=1763339482.435035)
+[2025-11-17 09:31:22] Event: ButtonEvent(event_type='up', button='left', time=1763339482.4951437)
+[2025-11-17 09:31:22] Recording stopped.
+[2025-11-17 09:31:22] Recorded 272 events.
+[2025-11-17 09:32:46] Recording started in absolute mode...
+[2025-11-17 09:32:47] Event: ButtonEvent(event_type='down', button='left', time=1763339567.1416585)
+[2025-11-17 09:32:47] Event: ButtonEvent(event_type='up', button='left', time=1763339567.201958)
+[2025-11-17 09:32:47] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:32:47] Event: ButtonEvent(event_type='double', button='left', time=1763339567.4191825)
+[2025-11-17 09:32:47] Event: ButtonEvent(event_type='double', button='left', time=1763339567.951759)
+[2025-11-17 09:32:48] Event: ButtonEvent(event_type='down', button='left', time=1763339568.9037278)
+[2025-11-17 09:32:48] Event: ButtonEvent(event_type='up', button='left', time=1763339568.979007)
+[2025-11-17 09:32:49] Recording stopped.
+[2025-11-17 09:32:49] Recorded 263 events.
+[2025-11-17 09:32:58] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:34:28] Recording started in absolute mode...
+[2025-11-17 09:34:29] Event: ButtonEvent(event_type='down', button='left', time=1763339669.48654)
+[2025-11-17 09:34:29] Event: ButtonEvent(event_type='up', button='left', time=1763339669.5315702)
+[2025-11-17 09:34:29] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:34:29] Event: ButtonEvent(event_type='double', button='left', time=1763339669.6971643)
+[2025-11-17 09:34:29] Event: ButtonEvent(event_type='double', button='left', time=1763339669.959715)
+[2025-11-17 09:34:30] Event: ButtonEvent(event_type='double', button='left', time=1763339670.4918258)
+[2025-11-17 09:34:30] Recording stopped.
+[2025-11-17 09:34:30] Recorded 174 events.
+[2025-11-17 09:34:32] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:35:47] Recording started in absolute mode...
+[2025-11-17 09:35:47] Event: ButtonEvent(event_type='down', button='left', time=1763339747.9071114)
+[2025-11-17 09:35:47] Event: ButtonEvent(event_type='up', button='left', time=1763339747.945475)
+[2025-11-17 09:35:48] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:35:48] Event: ButtonEvent(event_type='double', button='left', time=1763339748.124128)
+[2025-11-17 09:35:48] Event: ButtonEvent(event_type='double', button='left', time=1763339748.3495739)
+[2025-11-17 09:35:48] Event: ButtonEvent(event_type='double', button='left', time=1763339748.5443535)
+[2025-11-17 09:35:49] Event: ButtonEvent(event_type='down', button='left', time=1763339749.2641172)
+[2025-11-17 09:35:49] Event: ButtonEvent(event_type='up', button='left', time=1763339749.301613)
+[2025-11-17 09:35:49] Recording stopped.
+[2025-11-17 09:35:49] Recorded 149 events.
+[2025-11-17 09:35:50] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:35:50] Starting playback thread (Speed: 1.0x, Repeat: 1)
+[2025-11-17 09:36:14] Recording started in absolute mode...
+[2025-11-17 09:36:14] Event: ButtonEvent(event_type='down', button='left', time=1763339774.7051656)
+[2025-11-17 09:36:14] Event: ButtonEvent(event_type='up', button='left', time=1763339774.7795353)
+[2025-11-17 09:36:14] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:36:14] Event: ButtonEvent(event_type='double', button='left', time=1763339774.8546097)
+[2025-11-17 09:36:15] Event: ButtonEvent(event_type='double', button='left', time=1763339775.1101236)
+[2025-11-17 09:36:15] Event: ButtonEvent(event_type='double', button='left', time=1763339775.2745562)
+[2025-11-17 09:36:15] Event: ButtonEvent(event_type='double', button='left', time=1763339775.7624068)
+[2025-11-17 09:36:15] Recording stopped.
+[2025-11-17 09:36:15] Recorded 181 events.
+[2025-11-17 09:36:16] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:36:16] Starting playback thread (Speed: 1.0x, Repeat: 1)
+[2025-11-17 09:36:40] Recording started in absolute mode...
+[2025-11-17 09:36:40] Event: ButtonEvent(event_type='down', button='left', time=1763339800.6776502)
+[2025-11-17 09:36:40] Event: ButtonEvent(event_type='up', button='left', time=1763339800.7216516)
+[2025-11-17 09:36:40] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:36:40] Event: ButtonEvent(event_type='double', button='left', time=1763339800.849633)
+[2025-11-17 09:36:41] Event: ButtonEvent(event_type='double', button='left', time=1763339801.0743597)
+[2025-11-17 09:36:41] Event: ButtonEvent(event_type='down', button='left', time=1763339801.8915756)
+[2025-11-17 09:36:41] Event: ButtonEvent(event_type='up', button='left', time=1763339801.9592192)
+[2025-11-17 09:36:42] Recording stopped.
+[2025-11-17 09:36:42] Recorded 131 events.
+[2025-11-17 09:36:42] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:36:42] Starting playback thread (Speed: 1.0x, Repeat: 1)
+[2025-11-17 09:36:42] Starting loop 1/1
+[2025-11-17 09:36:57] Recording started in absolute mode...
+[2025-11-17 09:36:57] Event: ButtonEvent(event_type='down', button='left', time=1763339817.7475107)
+[2025-11-17 09:36:57] Event: ButtonEvent(event_type='up', button='left', time=1763339817.7995377)
+[2025-11-17 09:36:57] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:36:57] Event: ButtonEvent(event_type='double', button='left', time=1763339817.9424727)
+[2025-11-17 09:36:58] Event: ButtonEvent(event_type='double', button='left', time=1763339818.174309)
+[2025-11-17 09:36:58] Event: ButtonEvent(event_type='down', button='left', time=1763339818.7294486)
+[2025-11-17 09:36:58] Event: ButtonEvent(event_type='up', button='left', time=1763339818.79747)
+[2025-11-17 09:36:58] Recording stopped.
+[2025-11-17 09:36:58] Recorded 128 events.
+[2025-11-17 09:36:59] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:36:59] Starting playback thread (Speed: 1.0x, Repeat: 1)
+[2025-11-17 09:36:59] Starting loop 1/1
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:36:59] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: release() got an unexpected keyword argument 'x'
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: release() got an unexpected keyword argument 'x'
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:00] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:01] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:01] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:01] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:01] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:01] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:01] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:01] Error executing event: press() got an unexpected keyword argument 'x'
+[2025-11-17 09:37:01] Error executing event: release() got an unexpected keyword argument 'x'
+[2025-11-17 09:37:01] Playback finished.
+[2025-11-17 09:37:02] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:37:02] Starting playback thread (Speed: 1.0x, Repeat: 1)
+[2025-11-17 09:37:02] Starting loop 1/1
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:02] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: release() got an unexpected keyword argument 'x'
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: release() got an unexpected keyword argument 'x'
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:03] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:04] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:04] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:04] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:35] Recording started in absolute mode...
+[2025-11-17 09:37:35] Event: ButtonEvent(event_type='down', button='left', time=1763339855.6304178)
+[2025-11-17 09:37:35] Event: ButtonEvent(event_type='up', button='left', time=1763339855.6825922)
+[2025-11-17 09:37:35] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:37:35] Event: ButtonEvent(event_type='double', button='left', time=1763339855.9229178)
+[2025-11-17 09:37:36] Event: ButtonEvent(event_type='down', button='left', time=1763339856.521993)
+[2025-11-17 09:37:36] Event: ButtonEvent(event_type='up', button='left', time=1763339856.5748026)
+[2025-11-17 09:37:36] Recording stopped.
+[2025-11-17 09:37:36] Recorded 124 events.
+[2025-11-17 09:37:37] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:37:37] Starting playback thread (Speed: 1.0x, Repeat: 1)
+[2025-11-17 09:37:37] Starting loop 1/1
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:37] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:38] Playback finished.
+[2025-11-17 09:37:40] Recording started in absolute mode...
+[2025-11-17 09:37:41] Event: ButtonEvent(event_type='down', button='left', time=1763339861.8470147)
+[2025-11-17 09:37:41] Event: ButtonEvent(event_type='up', button='left', time=1763339861.8924446)
+[2025-11-17 09:37:41] Recording stopped.
+[2025-11-17 09:37:41] Recorded 141 events.
+[2025-11-17 09:37:42] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:37:42] Starting playback thread (Speed: 1.0x, Repeat: 1)
+[2025-11-17 09:37:42] Starting loop 1/1
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:42] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:37:43] Error executing event: cannot unpack non-iterable NoneType object
+[2025-11-17 09:38:54] Recording started in absolute mode...
+[2025-11-17 09:38:55] Event: ButtonEvent(event_type='down', button='left', time=1763339935.2649727)
+[2025-11-17 09:38:55] Event: ButtonEvent(event_type='up', button='left', time=1763339935.3252203)
+[2025-11-17 09:38:55] Recording stopped.
+[2025-11-17 09:38:55] Recorded 108 events.
+[2025-11-17 09:38:55] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:38:56] Playback finished.
+[2025-11-17 09:38:57] Recording started in absolute mode...
+[2025-11-17 09:38:59] Event: ButtonEvent(event_type='down', button='left', time=1763339939.2554073)
+[2025-11-17 09:38:59] Event: ButtonEvent(event_type='up', button='left', time=1763339939.3077278)
+[2025-11-17 09:38:59] Recording stopped.
+[2025-11-17 09:38:59] Recorded 189 events.
+[2025-11-17 09:38:59] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:39:01] Playback finished.
+[2025-11-17 09:39:04] Recording started in absolute mode...
+[2025-11-17 09:39:04] Event: ButtonEvent(event_type='down', button='left', time=1763339944.8883495)
+[2025-11-17 09:39:04] Event: ButtonEvent(event_type='up', button='left', time=1763339944.9634943)
+[2025-11-17 09:39:05] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:39:05] Event: ButtonEvent(event_type='double', button='left', time=1763339945.4580429)
+[2025-11-17 09:39:05] Event: ButtonEvent(event_type='double', button='left', time=1763339945.8549793)
+[2025-11-17 09:39:06] Event: ButtonEvent(event_type='double', button='left', time=1763339946.0807605)
+[2025-11-17 09:39:06] Event: ButtonEvent(event_type='double', button='left', time=1763339946.4025984)
+[2025-11-17 09:39:06] Event: ButtonEvent(event_type='down', button='left', time=1763339946.972545)
+[2025-11-17 09:39:07] Event: ButtonEvent(event_type='up', button='left', time=1763339947.0180879)
+[2025-11-17 09:39:07] Recording stopped.
+[2025-11-17 09:39:07] Recorded 183 events.
+[2025-11-17 09:39:07] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:39:10] Playback finished.
+[2025-11-17 09:39:12] Recording started in absolute mode...
+[2025-11-17 09:39:13] Event: ButtonEvent(event_type='down', button='left', time=1763339953.6706614)
+[2025-11-17 09:39:13] Event: ButtonEvent(event_type='up', button='left', time=1763339953.7453382)
+[2025-11-17 09:39:14] Event: ButtonEvent(event_type='down', button='left', time=1763339954.2625375)
+[2025-11-17 09:39:14] Event: ButtonEvent(event_type='up', button='left', time=1763339954.322811)
+[2025-11-17 09:39:15] Event: ButtonEvent(event_type='down', button='left', time=1763339955.395103)
+[2025-11-17 09:39:15] Event: ButtonEvent(event_type='up', button='left', time=1763339955.457037)
+[2025-11-17 09:39:16] Event: ButtonEvent(event_type='down', button='left', time=1763339956.5350366)
+[2025-11-17 09:39:16] Event: ButtonEvent(event_type='up', button='left', time=1763339956.6025536)
+[2025-11-17 09:39:16] Recording stopped.
+[2025-11-17 09:39:16] Recorded 324 events.
+[2025-11-17 09:39:17] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:39:21] Playback finished.
+[2025-11-17 09:43:51] Recording started in absolute mode...
+[2025-11-17 09:43:51] Event: ButtonEvent(event_type='down', button='left', time=1763340231.700311)
+[2025-11-17 09:43:51] Event: ButtonEvent(event_type='up', button='left', time=1763340231.7731943)
+[2025-11-17 09:43:52] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:43:52] Event: ButtonEvent(event_type='double', button='left', time=1763340232.0209715)
+[2025-11-17 09:43:52] Event: ButtonEvent(event_type='double', button='left', time=1763340232.2458012)
+[2025-11-17 09:43:52] Event: ButtonEvent(event_type='double', button='left', time=1763340232.7791)
+[2025-11-17 09:43:52] Recording stopped.
+[2025-11-17 09:43:55] Recording started in absolute mode...
+[2025-11-17 09:43:56] Event: ButtonEvent(event_type='double', button='left', time=1763340236.1908991)
+[2025-11-17 09:43:56] Event: ButtonEvent(event_type='double', button='left', time=1763340236.4409828)
+[2025-11-17 09:43:56] Event: ButtonEvent(event_type='double', button='left', time=1763340236.6415591)
+[2025-11-17 09:43:57] Event: ButtonEvent(event_type='double', button='left', time=1763340237.1054673)
+[2025-11-17 09:43:57] Recording stopped.
+[2025-11-17 09:44:49] Recording started in absolute mode...
+[2025-11-17 09:44:49] Event: ButtonEvent(event_type='down', button='left', time=1763340289.8374379)
+[2025-11-17 09:44:49] Event: ButtonEvent(event_type='up', button='left', time=1763340289.8978798)
+[2025-11-17 09:44:50] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:44:50] Event: ButtonEvent(event_type='double', button='left', time=1763340290.0562236)
+[2025-11-17 09:44:50] Event: ButtonEvent(event_type='double', button='left', time=1763340290.5877864)
+[2025-11-17 09:44:50] Recording stopped.
+[2025-11-17 09:44:50] Recorded 100 events.
+[2025-11-17 09:44:51] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:44:52] Playback finished.
+[2025-11-17 09:46:10] Recording started in absolute mode...
+[2025-11-17 09:46:10] Event: ButtonEvent(event_type='down', button='left', time=1763340370.822332)
+[2025-11-17 09:46:10] Event: ButtonEvent(event_type='up', button='left', time=1763340370.8826537)
+[2025-11-17 09:46:11] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:46:11] Event: ButtonEvent(event_type='double', button='left', time=1763340371.0327368)
+[2025-11-17 09:46:11] Event: ButtonEvent(event_type='double', button='left', time=1763340371.2798803)
+[2025-11-17 09:46:11] Event: ButtonEvent(event_type='down', button='left', time=1763340371.879538)
+[2025-11-17 09:46:11] Event: ButtonEvent(event_type='up', button='left', time=1763340371.9545374)
+[2025-11-17 09:46:11] Recording stopped.
+[2025-11-17 09:46:11] Recorded 148 events.
+[2025-11-17 09:46:13] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:46:15] Playback finished.
+[2025-11-17 09:46:16] Recording started in absolute mode...
+[2025-11-17 09:46:16] Event: ButtonEvent(event_type='down', button='left', time=1763340376.784994)
+[2025-11-17 09:46:16] Event: ButtonEvent(event_type='up', button='left', time=1763340376.852601)
+[2025-11-17 09:46:17] Event: ButtonEvent(event_type='down', button='left', time=1763340377.5135972)
+[2025-11-17 09:46:17] Event: ButtonEvent(event_type='up', button='left', time=1763340377.5729074)
+[2025-11-17 09:46:18] Event: ButtonEvent(event_type='down', button='left', time=1763340378.3447244)
+[2025-11-17 09:46:18] Event: ButtonEvent(event_type='up', button='left', time=1763340378.4197407)
+[2025-11-17 09:46:18] Recording stopped.
+[2025-11-17 09:46:18] Recorded 207 events.
+[2025-11-17 09:46:18] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:46:21] Playback finished.
+[2025-11-17 09:46:24] Recording started in absolute mode...
+[2025-11-17 09:46:25] Event: ButtonEvent(event_type='down', button='left', time=1763340385.6271663)
+[2025-11-17 09:46:25] Event: ButtonEvent(event_type='up', button='left', time=1763340385.680472)
+[2025-11-17 09:46:26] KeyboardEvent(name='r', scan_code=19, event_type=down)
+[2025-11-17 09:46:26] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-17 09:46:26] KeyboardEvent(name='r', scan_code=19, event_type=up)
+[2025-11-17 09:46:26] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-17 09:46:26] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-17 09:46:26] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-17 09:46:26] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-17 09:46:26] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-17 09:46:28] Event: ButtonEvent(event_type='down', button='left', time=1763340388.21504)
+[2025-11-17 09:46:28] Event: ButtonEvent(event_type='up', button='left', time=1763340388.2747433)
+[2025-11-17 09:46:29] Event: ButtonEvent(event_type='down', button='left', time=1763340389.362403)
+[2025-11-17 09:46:29] Event: ButtonEvent(event_type='up', button='left', time=1763340389.4222126)
+[2025-11-17 09:46:29] Recording stopped.
+[2025-11-17 09:46:29] Recorded 312 events.
+[2025-11-17 09:46:30] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:46:35] Playback finished.
+[2025-11-17 09:46:48] Recording started in absolute mode...
+[2025-11-17 09:46:49] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-17 09:46:49] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-17 09:46:49] Event: ButtonEvent(event_type='down', button='left', time=1763340409.7994428)
+[2025-11-17 09:46:49] Event: ButtonEvent(event_type='up', button='left', time=1763340409.866968)
+[2025-11-17 09:46:49] Recording stopped.
+[2025-11-17 09:46:49] Recorded 4 events.
+[2025-11-17 09:46:56] Error populating editor: too many values to unpack (expected 2)
+[2025-11-17 09:50:38] Recording started in absolute mode...
+[2025-11-17 09:50:39] Event: ButtonEvent(event_type='down', button='left', time=1763340639.0400727)
+[2025-11-17 09:50:39] Event: ButtonEvent(event_type='up', button='left', time=1763340639.0998466)
+[2025-11-17 09:50:39] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:50:39] Event: ButtonEvent(event_type='double', button='left', time=1763340639.2797399)
+[2025-11-17 09:50:39] Event: ButtonEvent(event_type='double', button='left', time=1763340639.8271883)
+[2025-11-17 09:50:39] Recording stopped.
+[2025-11-17 09:50:39] Recorded 117 events.
+[2025-11-17 09:50:42] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:50:43] Playback finished.
+[2025-11-17 09:50:44] Continuing recording from 117 existing events...
+[2025-11-17 09:50:44] Event: ButtonEvent(event_type='double', button='left', time=1763340644.5147748)
+[2025-11-17 09:50:44] Event: ButtonEvent(event_type='double', button='left', time=1763340644.7323868)
+[2025-11-17 09:50:45] Event: ButtonEvent(event_type='down', button='left', time=1763340645.7671895)
+[2025-11-17 09:50:45] Event: ButtonEvent(event_type='up', button='left', time=1763340645.8195615)
+[2025-11-17 09:50:45] Recording stopped.
+[2025-11-17 09:50:45] Recorded 276 events.
+[2025-11-17 09:50:46] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:50:49] Playback finished.
+[2025-11-17 09:50:52] Error populating editor: too many values to unpack (expected 2)
+[2025-11-17 09:53:06] Recording started in absolute mode...
+[2025-11-17 09:53:06] Event: ButtonEvent(event_type='down', button='left', time=1763340786.7973044)
+[2025-11-17 09:53:06] Event: ButtonEvent(event_type='up', button='left', time=1763340786.8498967)
+[2025-11-17 09:53:06] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:53:06] Event: ButtonEvent(event_type='double', button='left', time=1763340786.9926238)
+[2025-11-17 09:53:07] Event: ButtonEvent(event_type='double', button='left', time=1763340787.480008)
+[2025-11-17 09:53:07] Recording stopped.
+[2025-11-17 09:53:07] Recorded 101 events.
+[2025-11-17 09:53:08] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:53:09] Playback finished.
+[2025-11-17 09:53:11] Error populating editor: too many values to unpack (expected 2)
+[2025-11-17 09:56:54] Recording started in absolute mode...
+[2025-11-17 09:56:54] Event: ButtonEvent(event_type='down', button='left', time=1763341014.873226)
+[2025-11-17 09:56:54] Event: ButtonEvent(event_type='up', button='left', time=1763341014.9182928)
+[2025-11-17 09:56:55] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 09:56:55] Event: ButtonEvent(event_type='double', button='left', time=1763341015.075702)
+[2025-11-17 09:56:55] Event: ButtonEvent(event_type='down', button='left', time=1763341015.6608548)
+[2025-11-17 09:56:55] Event: ButtonEvent(event_type='up', button='left', time=1763341015.7358189)
+[2025-11-17 09:56:55] Recording stopped.
+[2025-11-17 09:56:55] Recorded 111 events.
+[2025-11-17 09:56:56] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:56:57] Playback finished.
+[2025-11-17 09:57:02] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:57:03] Playback finished.
+[2025-11-17 09:57:08] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:57:09] Playback finished.
+[2025-11-17 09:57:11] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:57:12] Playback finished.
+[2025-11-17 09:57:14] Recording started in absolute mode...
+[2025-11-17 09:57:15] Event: ButtonEvent(event_type='down', button='left', time=1763341035.8356652)
+[2025-11-17 09:57:15] Event: ButtonEvent(event_type='up', button='left', time=1763341035.8881683)
+[2025-11-17 09:57:16] Event: ButtonEvent(event_type='down', button='left', time=1763341036.6533322)
+[2025-11-17 09:57:16] Event: ButtonEvent(event_type='up', button='left', time=1763341036.7056336)
+[2025-11-17 09:57:16] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-11-17 09:57:16] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-17 09:57:17] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-11-17 09:57:17] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-17 09:57:18] Event: ButtonEvent(event_type='down', button='left', time=1763341038.011872)
+[2025-11-17 09:57:18] Event: ButtonEvent(event_type='up', button='left', time=1763341038.0709574)
+[2025-11-17 09:57:18] Recording stopped.
+[2025-11-17 09:57:18] Recorded 353 events.
+[2025-11-17 09:57:20] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:57:24] Playback finished.
+[2025-11-17 09:57:35] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:57:39] Playback finished.
+[2025-11-17 09:57:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:57:49] Playback finished.
+[2025-11-17 09:57:54] Recording started in absolute mode...
+[2025-11-17 09:57:55] Event: ButtonEvent(event_type='down', button='left', time=1763341075.8480713)
+[2025-11-17 09:57:55] Event: ButtonEvent(event_type='up', button='left', time=1763341075.9012601)
+[2025-11-17 09:57:56] Event: ButtonEvent(event_type='down', button='left', time=1763341076.7257261)
+[2025-11-17 09:57:56] Event: ButtonEvent(event_type='up', button='left', time=1763341076.8007379)
+[2025-11-17 09:57:57] KeyboardEvent(name='r', scan_code=19, event_type=down)
+[2025-11-17 09:57:57] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-17 09:57:57] KeyboardEvent(name='r', scan_code=19, event_type=up)
+[2025-11-17 09:57:57] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-17 09:57:57] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-17 09:57:57] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-17 09:57:57] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-17 09:57:57] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-17 09:57:58] KeyboardEvent(name='right alt', scan_code=56, event_type=down)
+[2025-11-17 09:57:58] KeyboardEvent(name='right alt', scan_code=56, event_type=up)
+[2025-11-17 09:57:58] KeyboardEvent(name='r', scan_code=19, event_type=down)
+[2025-11-17 09:57:58] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-17 09:57:58] KeyboardEvent(name='r', scan_code=19, event_type=up)
+[2025-11-17 09:57:58] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-17 09:57:58] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-17 09:57:59] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-17 09:57:59] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-17 09:57:59] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-17 09:57:59] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-11-17 09:57:59] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-17 09:57:59] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-11-17 09:57:59] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-17 09:58:00] Event: ButtonEvent(event_type='down', button='left', time=1763341080.7455046)
+[2025-11-17 09:58:00] Event: ButtonEvent(event_type='up', button='left', time=1763341080.828301)
+[2025-11-17 09:58:00] Recording stopped.
+[2025-11-17 09:58:00] Recorded 316 events.
+[2025-11-17 09:58:02] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 09:58:08] Playback finished.
+[2025-11-17 10:19:15] Recording started in absolute mode...
+[2025-11-17 10:19:15] Event: ButtonEvent(event_type='down', button='left', time=1763342355.6739042)
+[2025-11-17 10:19:15] Event: ButtonEvent(event_type='up', button='left', time=1763342355.7265165)
+[2025-11-17 10:19:15] Double-click detected for 'left' button. Cleaning up previous click event.
+[2025-11-17 10:19:15] Event: ButtonEvent(event_type='double', button='left', time=1763342355.8696206)
+[2025-11-17 10:19:16] Event: ButtonEvent(event_type='double', button='left', time=1763342356.4244068)
+[2025-11-17 10:19:16] Recording stopped.
+[2025-11-17 10:19:16] Recorded 107 events.
+[2025-11-17 10:19:17] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:19:18] Playback finished.
+[2025-11-17 10:19:22] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:19:23] Playback finished.
+[2025-11-17 10:19:25] Recording started in absolute mode...
+[2025-11-17 10:19:25] Event: ButtonEvent(event_type='down', button='left', time=1763342365.633851)
+[2025-11-17 10:19:25] Event: ButtonEvent(event_type='up', button='left', time=1763342365.7089083)
+[2025-11-17 10:19:26] Event: ButtonEvent(event_type='down', button='left', time=1763342366.4439645)
+[2025-11-17 10:19:26] Event: ButtonEvent(event_type='up', button='left', time=1763342366.519328)
+[2025-11-17 10:19:27] Event: ButtonEvent(event_type='down', button='left', time=1763342367.3664112)
+[2025-11-17 10:19:27] Event: ButtonEvent(event_type='up', button='left', time=1763342367.411385)
+[2025-11-17 10:19:27] Recording stopped.
+[2025-11-17 10:19:27] Recorded 97 events.
+[2025-11-17 10:22:11] Recording started in absolute mode...
+[2025-11-17 10:22:12] Event: ButtonEvent(event_type='down', button='left', time=1763342532.7195406)
+[2025-11-17 10:22:12] Event: ButtonEvent(event_type='up', button='left', time=1763342532.7794452)
+[2025-11-17 10:22:13] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-11-17 10:22:13] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-11-17 10:22:13] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-11-17 10:22:13] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-11-17 10:22:14] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-11-17 10:22:14] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-11-17 10:22:14] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-11-17 10:22:14] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-11-17 10:22:16] KeyboardEvent(name='right alt', scan_code=56, event_type=down)
+[2025-11-17 10:22:16] KeyboardEvent(name='right alt', scan_code=56, event_type=up)
+[2025-11-17 10:22:16] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-11-17 10:22:16] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-11-17 10:22:16] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-11-17 10:22:16] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-11-17 10:22:17] Event: ButtonEvent(event_type='down', button='left', time=1763342537.6095202)
+[2025-11-17 10:22:17] Event: ButtonEvent(event_type='up', button='left', time=1763342537.6851037)
+[2025-11-17 10:22:17] Recording stopped.
+[2025-11-17 10:22:17] Recorded 153 events.
+[2025-11-17 10:22:19] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:23:39] Recording started in absolute mode...
+[2025-11-17 10:23:39] Event: ButtonEvent(event_type='down', button='left', time=1763342619.870193)
+[2025-11-17 10:23:39] Event: ButtonEvent(event_type='up', button='left', time=1763342619.9151187)
+[2025-11-17 10:23:40] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-11-17 10:23:40] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-11-17 10:23:40] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-11-17 10:23:40] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-11-17 10:23:41] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-11-17 10:23:41] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-11-17 10:23:41] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-11-17 10:23:41] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-11-17 10:23:42] KeyboardEvent(name='right alt', scan_code=56, event_type=down)
+[2025-11-17 10:23:42] KeyboardEvent(name='right alt', scan_code=56, event_type=up)
+[2025-11-17 10:23:42] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-11-17 10:23:42] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-11-17 10:23:42] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-11-17 10:23:42] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-11-17 10:23:43] Event: ButtonEvent(event_type='down', button='left', time=1763342623.5000997)
+[2025-11-17 10:23:43] Event: ButtonEvent(event_type='up', button='left', time=1763342623.567481)
+[2025-11-17 10:23:43] Recording stopped.
+[2025-11-17 10:23:43] Recorded 148 events.
+[2025-11-17 10:23:44] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:23:48] Playback finished.
+[2025-11-17 10:24:22] Recording started in absolute mode...
+[2025-11-17 10:24:22] Event: ButtonEvent(event_type='double', button='left', time=1763342662.5749698)
+[2025-11-17 10:24:23] KeyboardEvent(name='right alt', scan_code=56, event_type=down)
+[2025-11-17 10:24:23] KeyboardEvent(name='right alt', scan_code=56, event_type=up)
+[2025-11-17 10:24:24] KeyboardEvent(name='h', scan_code=35, event_type=down)
+[2025-11-17 10:24:24] KeyboardEvent(name='h', scan_code=35, event_type=up)
+[2025-11-17 10:24:25] Event: ButtonEvent(event_type='down', button='left', time=1763342665.2149663)
+[2025-11-17 10:24:25] Event: ButtonEvent(event_type='up', button='left', time=1763342665.304896)
+[2025-11-17 10:24:25] Recording stopped.
+[2025-11-17 10:24:25] Recorded 118 events.
+[2025-11-17 10:24:27] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:24:30] Playback finished.
+[2025-11-17 10:26:22] Recording started in absolute mode...
+[2025-11-17 10:26:23] Event: ButtonEvent(event_type='down', button='left', time=1763342783.1245596)
+[2025-11-17 10:26:23] Event: ButtonEvent(event_type='up', button='left', time=1763342783.1695764)
+[2025-11-17 10:26:23] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-11-17 10:26:23] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-11-17 10:26:23] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-11-17 10:26:23] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-11-17 10:26:24] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:26:24] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=down)
+[2025-11-17 10:26:24] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:26:24] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=up)
+[2025-11-17 10:26:25] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-11-17 10:26:25] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-11-17 10:26:25] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-11-17 10:26:25] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-11-17 10:26:25] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:26:25] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=down)
+[2025-11-17 10:26:25] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:26:25] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=up)
+[2025-11-17 10:26:26] KeyboardEvent(name='d', scan_code=32, event_type=down)
+[2025-11-17 10:26:26] KeyboardEvent(name='d', scan_code=32, event_type=up)
+[2025-11-17 10:26:26] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-11-17 10:26:26] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-11-17 10:26:27] Event: ButtonEvent(event_type='down', button='left', time=1763342787.5270321)
+[2025-11-17 10:26:27] Event: ButtonEvent(event_type='up', button='left', time=1763342787.6017869)
+[2025-11-17 10:26:27] Recording stopped.
+[2025-11-17 10:26:27] Recorded 128 events.
+[2025-11-17 10:26:29] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:26:31] Playing mapped key 'Hangul/English Toggle' as scan code 56
+[2025-11-17 10:26:31] Playing mapped key 'Hangul/English Toggle' as scan code 56
+[2025-11-17 10:26:32] Playing mapped key 'Hangul/English Toggle' as scan code 56
+[2025-11-17 10:26:32] Playing mapped key 'Hangul/English Toggle' as scan code 56
+[2025-11-17 10:26:34] Playback finished.
+[2025-11-17 10:31:53] Recording started in absolute mode...
+[2025-11-17 10:31:53] Event: ButtonEvent(event_type='down', button='left', time=1763343113.6983855)
+[2025-11-17 10:31:53] Event: ButtonEvent(event_type='up', button='left', time=1763343113.7734287)
+[2025-11-17 10:31:54] KeyboardEvent(name='a', scan_code=30, event_type=down)
+[2025-11-17 10:31:54] KeyboardEvent(name='a', scan_code=30, event_type=up)
+[2025-11-17 10:31:54] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-17 10:31:54] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-17 10:31:55] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:31:55] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=down)
+[2025-11-17 10:31:55] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:31:55] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=up)
+[2025-11-17 10:31:55] KeyboardEvent(name='a', scan_code=30, event_type=down)
+[2025-11-17 10:31:55] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-17 10:31:55] KeyboardEvent(name='a', scan_code=30, event_type=up)
+[2025-11-17 10:31:55] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-17 10:31:55] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-17 10:31:55] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-17 10:31:56] Event: ButtonEvent(event_type='down', button='left', time=1763343116.878273)
+[2025-11-17 10:31:56] Event: ButtonEvent(event_type='up', button='left', time=1763343116.9458535)
+[2025-11-17 10:31:57] Recording stopped.
+[2025-11-17 10:31:57] Recorded 146 events.
+[2025-11-17 10:31:57] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:31:59] Playing mapped key 'Hangul/English Toggle' as name 'right alt'
+[2025-11-17 10:31:59] Playing mapped key 'Hangul/English Toggle' as name 'right alt'
+[2025-11-17 10:32:01] Playback finished.
+[2025-11-17 10:32:08] Recording started in absolute mode...
+[2025-11-17 10:32:09] Event: ButtonEvent(event_type='down', button='left', time=1763343129.5307302)
+[2025-11-17 10:32:09] Event: ButtonEvent(event_type='up', button='left', time=1763343129.6134565)
+[2025-11-17 10:32:10] Normalized numpad key to '2'.
+[2025-11-17 10:32:10] KeyboardEvent(name='2', scan_code=3, event_type=down)
+[2025-11-17 10:32:10] Normalized numpad key to '2'.
+[2025-11-17 10:32:10] KeyboardEvent(name='2', scan_code=3, event_type=up)
+[2025-11-17 10:32:10] Normalized numpad key to '4'.
+[2025-11-17 10:32:10] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-11-17 10:32:10] Normalized numpad key to '4'.
+[2025-11-17 10:32:10] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-11-17 10:32:10] Normalized numpad key to '4'.
+[2025-11-17 10:32:10] KeyboardEvent(name='4', scan_code=5, event_type=down)
+[2025-11-17 10:32:10] Normalized numpad key to '4'.
+[2025-11-17 10:32:10] KeyboardEvent(name='4', scan_code=5, event_type=up)
+[2025-11-17 10:32:11] Event: ButtonEvent(event_type='down', button='left', time=1763343131.4808085)
+[2025-11-17 10:32:11] Event: ButtonEvent(event_type='up', button='left', time=1763343131.5481682)
+[2025-11-17 10:32:11] Recording stopped.
+[2025-11-17 10:32:11] Recorded 129 events.
+[2025-11-17 10:32:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:32:48] Playback finished.
+[2025-11-17 10:32:50] Recording started in absolute mode...
+[2025-11-17 10:32:51] Event: ButtonEvent(event_type='down', button='left', time=1763343171.1557724)
+[2025-11-17 10:32:51] Event: ButtonEvent(event_type='up', button='left', time=1763343171.2081418)
+[2025-11-17 10:32:52] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:32:52] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=down)
+[2025-11-17 10:32:52] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:32:52] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=up)
+[2025-11-17 10:32:54] Event: ButtonEvent(event_type='down', button='left', time=1763343174.065804)
+[2025-11-17 10:32:54] Event: ButtonEvent(event_type='up', button='left', time=1763343174.1482854)
+[2025-11-17 10:32:54] Recording stopped.
+[2025-11-17 10:32:54] Recorded 134 events.
+[2025-11-17 10:32:54] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:32:57] Playing mapped key 'Hangul/English Toggle' as name 'right alt'
+[2025-11-17 10:32:57] Playing mapped key 'Hangul/English Toggle' as name 'right alt'
+[2025-11-17 10:32:58] Playback finished.
+[2025-11-17 10:35:55] Recording started in absolute mode...
+[2025-11-17 10:35:56] Event: ButtonEvent(event_type='down', button='left', time=1763343356.0701003)
+[2025-11-17 10:35:56] Event: ButtonEvent(event_type='up', button='left', time=1763343356.1447396)
+[2025-11-17 10:35:56] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:35:56] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=down)
+[2025-11-17 10:35:56] Mapped key 'right alt' to 'Hangul/English Toggle'.
+[2025-11-17 10:35:56] KeyboardEvent(name='Hangul/English Toggle', scan_code=56, event_type=up)
+[2025-11-17 10:35:57] Event: ButtonEvent(event_type='down', button='left', time=1763343357.4123766)
+[2025-11-17 10:35:57] Event: ButtonEvent(event_type='up', button='left', time=1763343357.4802969)
+[2025-11-17 10:35:57] Recording stopped.
+[2025-11-17 10:35:57] Recorded 175 events.
+[2025-11-17 10:35:58] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:35:59] Simulating tap for mapped key 'Hangul/English Toggle' as 'right alt'
+[2025-11-17 10:36:00] Playback finished.
+[2025-11-17 10:36:09] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:36:11] Playback finished.
+[2025-11-17 10:36:45] Recording started in absolute mode...
+[2025-11-17 10:36:46] Event: ButtonEvent(event_type='down', button='left', time=1763343406.0802467)
+[2025-11-17 10:36:46] Event: ButtonEvent(event_type='up', button='left', time=1763343406.140305)
+[2025-11-17 10:36:47] KeyboardEvent(name='left', scan_code=75, event_type=down)
+[2025-11-17 10:36:47] KeyboardEvent(name='left', scan_code=75, event_type=up)
+[2025-11-17 10:36:47] KeyboardEvent(name='right', scan_code=77, event_type=down)
+[2025-11-17 10:36:47] KeyboardEvent(name='right', scan_code=77, event_type=up)
+[2025-11-17 10:36:47] KeyboardEvent(name='down', scan_code=80, event_type=down)
+[2025-11-17 10:36:47] KeyboardEvent(name='down', scan_code=80, event_type=up)
+[2025-11-17 10:36:47] KeyboardEvent(name='up', scan_code=72, event_type=down)
+[2025-11-17 10:36:47] KeyboardEvent(name='up', scan_code=72, event_type=up)
+[2025-11-17 10:36:49] Event: ButtonEvent(event_type='down', button='left', time=1763343409.1025853)
+[2025-11-17 10:36:49] Event: ButtonEvent(event_type='up', button='left', time=1763343409.1701696)
+[2025-11-17 10:36:49] Recording stopped.
+[2025-11-17 10:36:49] Recorded 172 events.
+[2025-11-17 10:36:51] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:36:55] Playback finished.
+[2025-11-17 10:41:02] Recording started in absolute mode...
+[2025-11-17 10:41:03] Event: ButtonEvent(event_type='down', button='left', time=1763343663.526369)
+[2025-11-17 10:41:03] Event: ButtonEvent(event_type='up', button='left', time=1763343663.601233)
+[2025-11-17 10:41:05] KeyboardEvent(name='a', scan_code=30, event_type=down)
+[2025-11-17 10:41:05] KeyboardEvent(name='a', scan_code=30, event_type=up)
+[2025-11-17 10:41:05] KeyboardEvent(name='a', scan_code=30, event_type=down)
+[2025-11-17 10:41:05] KeyboardEvent(name='a', scan_code=30, event_type=up)
+[2025-11-17 10:41:06] KeyboardEvent(name='right alt', scan_code=56, event_type=down)
+[2025-11-17 10:41:06] KeyboardEvent(name='right alt', scan_code=56, event_type=up)
+[2025-11-17 10:41:07] KeyboardEvent(name='a', scan_code=30, event_type=down)
+[2025-11-17 10:41:07] KeyboardEvent(name='a', scan_code=30, event_type=up)
+[2025-11-17 10:41:08] Event: ButtonEvent(event_type='down', button='left', time=1763343668.2287068)
+[2025-11-17 10:41:08] Event: ButtonEvent(event_type='up', button='left', time=1763343668.2813456)
+[2025-11-17 10:41:08] Recording stopped.
+[2025-11-17 10:41:08] Recorded 272 events.
+[2025-11-17 10:41:10] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:41:15] Playback finished.
+[2025-11-17 10:41:34] Recording started in absolute mode...
+[2025-11-17 10:41:35] Event: ButtonEvent(event_type='double', button='left', time=1763343695.3414834)
+[2025-11-17 10:41:36] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:36] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:37] Event: ButtonEvent(event_type='down', button='left', time=1763343697.3211796)
+[2025-11-17 10:41:37] Event: ButtonEvent(event_type='up', button='left', time=1763343697.3741426)
+[2025-11-17 10:41:37] Recording stopped.
+[2025-11-17 10:41:37] Recorded 136 events.
+[2025-11-17 10:41:37] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:41:40] Playback finished.
+[2025-11-17 10:41:44] Recording started in absolute mode...
+[2025-11-17 10:41:45] Event: ButtonEvent(event_type='down', button='left', time=1763343705.2038846)
+[2025-11-17 10:41:45] Event: ButtonEvent(event_type='up', button='left', time=1763343705.2640831)
+[2025-11-17 10:41:45] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:45] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:46] KeyboardEvent(name='j', scan_code=36, event_type=down)
+[2025-11-17 10:41:46] KeyboardEvent(name='j', scan_code=36, event_type=up)
+[2025-11-17 10:41:47] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:47] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:47] KeyboardEvent(name='j', scan_code=36, event_type=down)
+[2025-11-17 10:41:47] KeyboardEvent(name='j', scan_code=36, event_type=up)
+[2025-11-17 10:41:48] Event: ButtonEvent(event_type='down', button='left', time=1763343708.7661378)
+[2025-11-17 10:41:48] Event: ButtonEvent(event_type='up', button='left', time=1763343708.833792)
+[2025-11-17 10:41:48] Recording stopped.
+[2025-11-17 10:41:48] Recorded 151 events.
+[2025-11-17 10:41:49] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:41:53] Playback finished.
+[2025-11-17 10:41:55] Recording started in absolute mode...
+[2025-11-17 10:41:56] Event: ButtonEvent(event_type='down', button='left', time=1763343716.1690147)
+[2025-11-17 10:41:56] Event: ButtonEvent(event_type='up', button='left', time=1763343716.2288465)
+[2025-11-17 10:41:56] KeyboardEvent(name='j', scan_code=36, event_type=down)
+[2025-11-17 10:41:56] KeyboardEvent(name='j', scan_code=36, event_type=up)
+[2025-11-17 10:41:57] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:57] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:41:57] KeyboardEvent(name='j', scan_code=36, event_type=down)
+[2025-11-17 10:41:57] KeyboardEvent(name='j', scan_code=36, event_type=up)
+[2025-11-17 10:41:59] Event: ButtonEvent(event_type='down', button='left', time=1763343719.0863986)
+[2025-11-17 10:41:59] Event: ButtonEvent(event_type='up', button='left', time=1763343719.1464772)
+[2025-11-17 10:41:59] Recording stopped.
+[2025-11-17 10:41:59] Recorded 122 events.
+[2025-11-17 10:42:00] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:42:03] Playback finished.
+[2025-11-17 10:42:05] Recording started in absolute mode...
+[2025-11-17 10:42:05] Event: ButtonEvent(event_type='down', button='left', time=1763343725.8063872)
+[2025-11-17 10:42:05] Event: ButtonEvent(event_type='up', button='left', time=1763343725.851286)
+[2025-11-17 10:42:06] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:42:06] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:42:06] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:42:06] Overriding key 'right alt' with 'hangul'.
+[2025-11-17 10:42:08] Event: ButtonEvent(event_type='down', button='left', time=1763343728.2364166)
+[2025-11-17 10:42:08] Event: ButtonEvent(event_type='up', button='left', time=1763343728.2962298)
+[2025-11-17 10:42:08] Recording stopped.
+[2025-11-17 10:42:08] Recorded 197 events.
+[2025-11-17 10:44:08] Recording started in absolute mode...
+[2025-11-17 10:44:09] Event: ButtonEvent(event_type='down', button='left', time=1763343849.2941072)
+[2025-11-17 10:44:09] Event: ButtonEvent(event_type='up', button='left', time=1763343849.3687546)
+[2025-11-17 10:44:10] Overriding key 'right alt' with virtual key 'hangul'.
+[2025-11-17 10:44:10] KeyboardEvent(name='hangul', scan_code=56, event_type=down)
+[2025-11-17 10:44:10] Overriding key 'right alt' with virtual key 'hangul'.
+[2025-11-17 10:44:10] KeyboardEvent(name='hangul', scan_code=56, event_type=up)
+[2025-11-17 10:44:12] Event: ButtonEvent(event_type='down', button='left', time=1763343852.15994)
+[2025-11-17 10:44:12] Event: ButtonEvent(event_type='up', button='left', time=1763343852.226754)
+[2025-11-17 10:44:12] Recording stopped.
+[2025-11-17 10:44:12] Recorded 134 events.
+[2025-11-17 10:44:15] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:44:17] Playing virtual key 'hangul' using scan code 56
+[2025-11-17 10:44:18] Playback finished.
+[2025-11-17 10:44:21] Recording started in absolute mode...
+[2025-11-17 10:44:21] Event: ButtonEvent(event_type='double', button='left', time=1763343861.9840393)
+[2025-11-17 10:44:22] KeyboardEvent(name='f', scan_code=33, event_type=down)
+[2025-11-17 10:44:22] KeyboardEvent(name='f', scan_code=33, event_type=up)
+[2025-11-17 10:44:22] KeyboardEvent(name='h', scan_code=35, event_type=down)
+[2025-11-17 10:44:22] KeyboardEvent(name='h', scan_code=35, event_type=up)
+[2025-11-17 10:44:23] Event: ButtonEvent(event_type='down', button='left', time=1763343863.5514336)
+[2025-11-17 10:44:23] Event: ButtonEvent(event_type='up', button='left', time=1763343863.619184)
+[2025-11-17 10:44:23] Recording stopped.
+[2025-11-17 10:44:23] Recorded 186 events.
+[2025-11-17 10:44:24] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:44:26] Playback finished.
+[2025-11-17 10:44:27] Recording started in absolute mode...
+[2025-11-17 10:44:27] Event: ButtonEvent(event_type='down', button='left', time=1763343867.5790584)
+[2025-11-17 10:44:27] Event: ButtonEvent(event_type='up', button='left', time=1763343867.631361)
+[2025-11-17 10:44:29] KeyboardEvent(name='h', scan_code=35, event_type=down)
+[2025-11-17 10:44:29] KeyboardEvent(name='h', scan_code=35, event_type=up)
+[2025-11-17 10:44:29] Overriding key 'right alt' with virtual key 'hangul'.
+[2025-11-17 10:44:29] KeyboardEvent(name='hangul', scan_code=56, event_type=down)
+[2025-11-17 10:44:29] Overriding key 'right alt' with virtual key 'hangul'.
+[2025-11-17 10:44:29] KeyboardEvent(name='hangul', scan_code=56, event_type=up)
+[2025-11-17 10:44:29] KeyboardEvent(name='h', scan_code=35, event_type=down)
+[2025-11-17 10:44:30] KeyboardEvent(name='h', scan_code=35, event_type=up)
+[2025-11-17 10:44:31] Event: ButtonEvent(event_type='down', button='left', time=1763343871.0286236)
+[2025-11-17 10:44:31] Event: ButtonEvent(event_type='up', button='left', time=1763343871.111462)
+[2025-11-17 10:44:31] Recording stopped.
+[2025-11-17 10:44:31] Recorded 129 events.
+[2025-11-17 10:44:32] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-17 10:44:34] Playing virtual key 'hangul' using scan code 56
+[2025-11-17 10:44:36] Playback finished.
+[2025-11-17 10:44:37] Recording started in absolute mode...
+[2025-11-17 10:44:38] Event: ButtonEvent(event_type='down', button='left', time=1763343878.4698899)
+[2025-11-17 10:44:38] Event: ButtonEvent(event_type='up', button='left', time=1763343878.5143006)
+[2025-11-17 10:44:38] Recording stopped.
+[2025-11-17 10:44:38] Recorded 2 events.

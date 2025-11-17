@@ -5,7 +5,7 @@ import keyboard
 import mouse
 
 def _get_event_obj(event):
-    return event[1][0]
+    return event[1]['obj']
 
 class ActionEditorWindow(tk.Toplevel):
     def __init__(self, parent, action, action_index, visible_actions, macro_data, on_complete_callback):
@@ -51,6 +51,16 @@ class ActionEditorWindow(tk.Toplevel):
 
         if not is_editable:
             ttk.Label(action_frame, text="(No action-specific edits available for this type)").pack(pady=20)
+
+        remarks_frame = ttk.LabelFrame(self, text="Remarks")
+        remarks_frame.pack(padx=10, pady=5, fill="x")
+        self.remarks_var = tk.StringVar()
+        remarks_entry = ttk.Entry(remarks_frame, textvariable=self.remarks_var)
+        remarks_entry.pack(fill="x", expand=True, padx=5, pady=5)
+
+        # Load existing remarks
+        first_event_data = self.macro_data['events'][self.action.start_index][1]
+        self.remarks_var.set(first_event_data.get('remarks', ''))
 
         button_frame = ttk.Frame(self)
         button_frame.pack(pady=10)
@@ -110,8 +120,18 @@ class ActionEditorWindow(tk.Toplevel):
         return False
 
     def _on_ok(self):
+        self._apply_remarks_edit()
         self._apply_action_edit()
         self.destroy()
+
+    def _apply_remarks_edit(self):
+        new_remarks = self.remarks_var.get()
+        first_event_data = self.macro_data['events'][self.action.start_index][1]
+        
+        if new_remarks:
+            first_event_data['remarks'] = new_remarks
+        elif 'remarks' in first_event_data:
+            del first_event_data['remarks']
 
     def _apply_action_edit(self):
         try:
@@ -155,10 +175,11 @@ class ActionEditorWindow(tk.Toplevel):
 
         if original_event_obj.button != new_button_type:
             for i in self.action.indices:
-                evt_time, (evt, pos) = self.macro_data['events'][i]
+                evt_time, evt_data = self.macro_data['events'][i]
+                evt = evt_data['obj']
                 if isinstance(evt, mouse.ButtonEvent):
                     new_evt = mouse.ButtonEvent(evt.event_type, new_button_type, evt.time)
-                    self.macro_data['events'][i] = (evt_time, (new_evt, pos))
+                    evt_data['obj'] = new_evt
 
         if original_click_type != new_click_type:
             if new_click_type == 'double':
@@ -169,17 +190,21 @@ class ActionEditorWindow(tk.Toplevel):
                         break
                 if up_event_index != -1: del self.macro_data['events'][up_event_index]
                 
-                evt_time, (evt, pos) = self.macro_data['events'][original_event_index]
+                evt_time, evt_data = self.macro_data['events'][original_event_index]
+                evt = evt_data['obj']
                 new_evt = mouse.ButtonEvent(mouse.DOUBLE, new_button_type, evt.time)
-                self.macro_data['events'][original_event_index] = (evt_time, (new_evt, pos))
+                evt_data['obj'] = new_evt
             else:
-                evt_time, (evt, pos) = self.macro_data['events'][original_event_index]
+                evt_time, evt_data = self.macro_data['events'][original_event_index]
+                evt = evt_data['obj']
                 new_evt = mouse.ButtonEvent(mouse.DOWN, new_button_type, evt.time)
-                self.macro_data['events'][original_event_index] = (evt_time, (new_evt, pos))
+                evt_data['obj'] = new_evt
 
-                down_time, (down_event, pos) = self.macro_data['events'][original_event_index]
+                down_time, _ = self.macro_data['events'][original_event_index]
                 up_event_time = down_time + 0.05
-                up_event = (up_event_time, (mouse.ButtonEvent(mouse.UP, new_button_type, time.time()), pos))
+                up_event_obj = mouse.ButtonEvent(mouse.UP, new_button_type, time.time())
+                up_event_data = {'obj': up_event_obj, 'pos': evt_data.get('pos')}
+                up_event = (up_event_time, up_event_data)
                 self.macro_data['events'].insert(original_event_index + 1, up_event)
 
                 for i in range(original_event_index + 2, len(self.macro_data['events'])):
@@ -201,7 +226,8 @@ class ActionEditorWindow(tk.Toplevel):
 
         for i in self.action.indices:
             if i < len(self.macro_data['events']):
-                evt_time, (evt, pos) = self.macro_data['events'][i]
+                evt_time, evt_data = self.macro_data['events'][i]
+                evt = evt_data['obj']
                 if isinstance(evt, keyboard.KeyboardEvent):
                     new_evt = keyboard.KeyboardEvent(evt.event_type, scan_code=new_key_code, name=new_key)
-                    self.macro_data['events'][i] = (evt_time, (new_evt, pos))
+                    evt_data['obj'] = new_evt

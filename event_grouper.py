@@ -14,7 +14,7 @@ HUMAN_PAUSE_THRESHOLD = 0.7
 MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win'}
 
 def _get_event_time(event): return event[0]
-def _get_event_obj(event): return event[1][0]
+def _get_event_obj(event): return event[1]['obj']
 def _is_modifier(key_name): return key_name and key_name.lower() in MODIFIER_KEYS
 
 # --- Pattern Finder Functions ---
@@ -136,9 +136,10 @@ def group_events(raw_events: list) -> list[GroupedAction]:
 
     # Pass 2: Group remaining keyboard events statefully (handles interleaving)
     down_events = {}
-    for i, (t, (evt, p)) in enumerate(raw_events):
+    for i, event_tuple in enumerate(raw_events):
         if i in processed_indices: continue
 
+        evt = _get_event_obj(event_tuple)
         if isinstance(evt, keyboard.KeyboardEvent):
             if evt.event_type == 'down' and evt.scan_code is not None:
                 down_events[evt.scan_code] = i
@@ -160,6 +161,7 @@ def group_events(raw_events: list) -> list[GroupedAction]:
         evt_obj = _get_event_obj(raw_events[i])
         text = f"Event: {evt_obj}"
         actions.append(GroupedAction(display_text=text, type='raw', start_index=i, indices=[i]))
+        processed_indices.add(i) # Mark as processed
         i += 1
 
     # Final sort to ensure chronological order

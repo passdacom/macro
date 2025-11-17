@@ -18,8 +18,9 @@ NUMPAD_SCAN_CODES = {
 }
 
 class Recorder:
-    def __init__(self, log_callback):
+    def __init__(self, log_callback, mapper_manager=None):
         self.log_callback = log_callback
+        self.mapper_manager = mapper_manager
         self.recording = False
         self.events = []
         self.new_events = []
@@ -34,10 +35,21 @@ class Recorder:
         if not self.recording:
             return
 
+        if isinstance(event, keyboard.KeyboardEvent) and self.mapper_manager:
+            lookup_key = f"'{event.name}' (Scan Code: {event.scan_code})"
+            target_name = self.mapper_manager.get_override(lookup_key)
+            if target_name:
+                self.log_callback(f"Overriding key '{event.name}' with virtual key '{target_name}'.")
+                # Only change the name to the virtual key name. Keep the original scan code.
+                event.name = target_name
+
+        # Numpad normalization (should happen after override)
         if isinstance(event, keyboard.KeyboardEvent) and event.scan_code in NUMPAD_SCAN_CODES:
-            mapping = NUMPAD_SCAN_CODES[event.scan_code]
-            event = keyboard.KeyboardEvent(event.event_type, mapping['scan_code'], name=mapping['name'])
-            self.log_callback(f"Normalized numpad key to '{mapping['name']}'.")
+            # Only normalize if the key is already being interpreted as a number, not an arrow key.
+            if 'num' in event.name or event.name.isdigit():
+                mapping = NUMPAD_SCAN_CODES[event.scan_code]
+                event = keyboard.KeyboardEvent(event.event_type, mapping['scan_code'], name=mapping['name'])
+                self.log_callback(f"Normalized numpad key to '{mapping['name']}'.")
 
         if isinstance(event, mouse.ButtonEvent) and event.event_type == mouse.UP and event.button == self.button_to_ignore_up:
             self.button_to_ignore_up = None
@@ -50,7 +62,8 @@ class Recorder:
             # Look backwards in the combined list of old and new events
             combined_events = self.events + self.new_events
             for i in range(len(combined_events) - 1, -1, -1):
-                _, (evt, _) = combined_events[i]
+                _, evt_data = combined_events[i]
+                evt = evt_data['obj']
                 if isinstance(evt, mouse.ButtonEvent) and evt.event_type == mouse.UP:
                     last_button_up = evt.button
                     break
@@ -63,7 +76,8 @@ class Recorder:
                 last_up_index = -1
                 last_down_index = -1
                 for i in range(len(self.new_events) - 1, -1, -1):
-                    _, (evt, _) = self.new_events[i]
+                    _, evt_data = self.new_events[i]
+                    evt = evt_data['obj']
                     if isinstance(evt, mouse.ButtonEvent) and evt.button == event.button:
                         if evt.event_type == mouse.UP and last_up_index == -1:
                             last_up_index = i
@@ -79,7 +93,7 @@ class Recorder:
                 self.button_to_ignore_up = event.button
 
         pos = mouse.get_position() if isinstance(event, mouse.ButtonEvent) else None
-        event_to_store = (event, pos)
+        event_to_store = {'obj': event, 'pos': pos}
         self.new_events.append((event_time, event_to_store))
 
         if not isinstance(event, mouse.MoveEvent):
@@ -120,7 +134,12 @@ class Recorder:
 
         if self.events:
             self.log_callback(f"Continuing recording from {len(self.events)} existing events...")
-            self.origin_pos = self.events[0][1][1] if self.events[0][1][1] else mouse.get_position()
+            # Safely get origin_pos from the first event that has one
+            self.origin_pos = (0,0)
+            for _, evt_data in self.events:
+                if 'pos' in evt_data and evt_data['pos'] is not None:
+                    self.origin_pos = evt_data['pos']
+                    break
         else:
             self.origin_pos = mouse.get_position()
             self.log_callback(f"Recording started in {coordinate_mode} mode...")

@@ -3,12 +3,14 @@ import time
 import threading
 import keyboard
 import mouse
+from key_mapper_gui import SUGGESTED_TARGET_KEYS
 
 class Player:
-    def __init__(self, on_finish_callback, log_callback=None, on_action_highlight_callback=None):
+    def __init__(self, on_finish_callback, log_callback=None, on_action_highlight_callback=None, mapper_manager=None):
         self.on_finish_callback = on_finish_callback
         self.log_callback = log_callback if log_callback else lambda msg: None
         self.on_action_highlight_callback = on_action_highlight_callback if on_action_highlight_callback else lambda idx: None
+        # mapper_manager is no longer needed by the player
         self.playing = False
         self.thread = None
 
@@ -40,7 +42,10 @@ class Player:
                 # Play all raw events within this grouped action
                 for event_list_idx in action.indices:
                     if not self.playing: break
-                    event_time, (event, recorded_pos) = events[event_list_idx]
+                    
+                    event_time, event_data = events[event_list_idx]
+                    event = event_data['obj']
+                    recorded_pos = event_data.get('pos')
 
                     current_delay = time.time() - start_time
                     wait_time = event_time - current_delay
@@ -49,13 +54,24 @@ class Player:
                     if sleep_duration > 0:
                         time.sleep(sleep_duration)
                     else:
-                        # 대기 시간이 없거나 이미 지났더라도, 다른 스레드(단축키 감지 등)가
-                        # 실행될 수 있도록 CPU 제어권을 잠시 양보합니다.
                         time.sleep(0)
 
                     # --- Correct Event Playback Logic ---
                     if isinstance(event, keyboard.KeyboardEvent):
-                        keyboard.play([event])
+                        # If the key is a special 'virtual' key, use its original scan code to play.
+                        if event.name in SUGGESTED_TARGET_KEYS:
+                            if event.event_type == 'down':
+                                self.log_callback(f"Playing virtual key '{event.name}' using scan code {event.scan_code}")
+                                keyboard.press_and_release(event.scan_code)
+                            # Ignore 'up' event for virtual keys
+                            continue
+
+                        # For all other normal keys, play by name.
+                        if event.event_type == 'down':
+                            keyboard.press(event.name)
+                        elif event.event_type == 'up':
+                            keyboard.release(event.name)
+                            
                     elif isinstance(event, mouse.MoveEvent):
                         if mode == 'relative':
                             offset_x = event.x - origin[0]
@@ -64,14 +80,8 @@ class Player:
                         else:
                             mouse.move(event.x, event.y)
                     elif isinstance(event, mouse.ButtonEvent):
-                        # If a position was recorded for this button event, move there first.
-                        # This ensures that even if a preceding MoveEvent was deleted,
-                        # the click happens at the correct recorded location.
                         if recorded_pos:
                             if mode == 'relative':
-                                # In relative mode, calculate the target position based on
-                                # the offset from the recording's origin, applied to the
-                                # playback's starting position.
                                 offset_x = recorded_pos[0] - origin[0]
                                 offset_y = recorded_pos[1] - origin[1]
                                 target_x = current_pos_origin[0] + offset_x
@@ -80,7 +90,6 @@ class Player:
                             else: # Absolute mode
                                 mouse.move(recorded_pos[0], recorded_pos[1])
 
-                        # Now perform the click/press/release action at the new cursor position
                         if event.event_type == mouse.DOUBLE:
                             mouse.double_click(event.button)
                         elif event.event_type == mouse.DOWN:

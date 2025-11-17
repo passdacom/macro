@@ -2,6 +2,8 @@ from dataclasses import dataclass
 import keyboard
 import mouse
 
+import math
+
 @dataclass(kw_only=True)
 class GroupedAction:
     display_text: str
@@ -12,6 +14,7 @@ class GroupedAction:
 # --- Constants and Helpers ---
 HUMAN_PAUSE_THRESHOLD = 0.7
 MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win'}
+DRAG_THRESHOLD_PIXELS = 10 # The minimum pixel distance to be considered a drag
 
 def _get_event_time(event): return event[0]
 def _get_event_obj(event): return event[1]['obj']
@@ -63,29 +66,62 @@ def _find_shortcut(events, i, processed_indices):
 
 def _find_mouse_action(events, i, processed_indices):
     if i in processed_indices: return None
-    start_event = _get_event_obj(events[i])
-    if not isinstance(start_event, mouse.ButtonEvent) or start_event.event_type != 'down':
+    
+    start_event_data = events[i]
+    start_event_obj = start_event_data[1].get('obj')
+    
+    if not isinstance(start_event_obj, mouse.ButtonEvent) or start_event_obj.event_type != 'down':
         return None
 
-    is_drag = False
+    start_pos = start_event_data[1].get('pos')
+    if not start_pos: return None # Cannot determine drag without a start position
+
+    max_distance_sq = 0
+    move_indices = []
     end_index = -1
-    temp_indices = {i}
+    
     for j in range(i + 1, len(events)):
         if j in processed_indices: continue
-        evt = _get_event_obj(events[j])
-        temp_indices.add(j)
-        if isinstance(evt, mouse.MoveEvent):
-            is_drag = True
-        elif isinstance(evt, mouse.ButtonEvent) and evt.button == start_event.button and evt.event_type == 'up':
+        
+        current_event_data = events[j]
+        current_event_obj = current_event_data[1].get('obj')
+
+        # If we find the matching UP event
+        if (isinstance(current_event_obj, mouse.ButtonEvent) and 
+            current_event_obj.button == start_event_obj.button and 
+            current_event_obj.event_type == 'up'):
             end_index = j
             break
+
+        # If we find a move event, check distance
+        elif isinstance(current_event_obj, mouse.MoveEvent):
+            move_indices.append(j)
+            dist_sq = (current_event_obj.x - start_pos[0])**2 + (current_event_obj.y - start_pos[1])**2
+            if dist_sq > max_distance_sq:
+                max_distance_sq = dist_sq
+        
+        # If we find any other type of event (like a keyboard press), it's an interruption.
+        else:
+            break
+            
+    # If we didn't find a matching UP event, this isn't a complete click/drag action.
+    if end_index == -1:
+        return None
+
+    is_drag = math.sqrt(max_distance_sq) > DRAG_THRESHOLD_PIXELS
     
-    if end_index != -1:
-        action_type = 'mouse_drag' if is_drag else 'mouse_click'
-        text = f"Mouse Drag ({start_event.button})" if is_drag else f"Mouse Click ({start_event.button})"
-        indices = sorted(list(temp_indices))
-        return GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices), indices
-    return None
+    # The indices to be consumed by this action. For both clicks and drags,
+    # we consume the intermediate moves to avoid cluttering the editor.
+    indices = sorted([i] + move_indices + [end_index])
+
+    if is_drag:
+        action_type = 'mouse_drag'
+        text = f"Mouse Drag ({start_event_obj.button})"
+    else:
+        action_type = 'mouse_click'
+        text = f"Mouse Click ({start_event_obj.button})"
+
+    return GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices), indices
 
 def _find_mouse_sequence(events, i, processed_indices):
     if i in processed_indices: return None
@@ -104,6 +140,8 @@ def _find_mouse_sequence(events, i, processed_indices):
     text = "Mouse Wheel" if event_type is mouse.WheelEvent else "Mouse Move"
     indices = list(range(i, end_index + 1))
     return GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices), indices
+
+# --- Post-processing Functions ---
 
 # --- Main Grouper Function ---
 def group_events(raw_events: list) -> list[GroupedAction]:
@@ -164,6 +202,6 @@ def group_events(raw_events: list) -> list[GroupedAction]:
         processed_indices.add(i) # Mark as processed
         i += 1
 
-    # Final sort to ensure chronological order
+    # Final sort and post-processing
     actions.sort(key=lambda x: x.start_index)
     return actions

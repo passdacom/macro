@@ -177,6 +177,8 @@ class AppGUI:
         editor_button_frame.pack(fill='y', side='right', padx=5)
         self.delete_button = ttk.Button(editor_button_frame, text="Delete Selected", command=self.delete_selected_event)
         self.delete_button.pack(pady=5)
+        self.bulk_delete_moves_button = ttk.Button(editor_button_frame, text="Delete All Moves", command=self.bulk_delete_mouse_moves)
+        self.bulk_delete_moves_button.pack(pady=5)
 
         log_frame = ttk.LabelFrame(main_pane, text="Logs")
         main_pane.add(log_frame, weight=0)
@@ -209,23 +211,56 @@ class AppGUI:
             self.add_log_message(f"Error populating editor: {e}")
             messagebox.showerror("Error", f"Failed to display macro actions. The data might be inconsistent.\n\nDetails: {e}")
 
+    def bulk_delete_mouse_moves(self):
+        if not self.macro_data.get('events'):
+            messagebox.showwarning("No Macro", "There is no macro data to modify.")
+            return
+
+        if not messagebox.askyesno("Confirm Delete", "Are you sure you want to delete ALL mouse move actions?\nThis action cannot be undone."):
+            return
+
+        # We need to get a fresh grouping to ensure we have the right actions
+        grouped_actions = event_grouper.group_events(self.macro_data.get('events', []))
+        
+        indices_to_delete = set()
+        for action in grouped_actions:
+            if action.type == 'mouse_move':
+                indices_to_delete.update(action.indices)
+        
+        if not indices_to_delete:
+            messagebox.showinfo("No Moves", "No mouse move actions were found to delete.")
+            return
+
+        # Delete from the raw event list in reverse order to avoid index shifting issues
+        for i in sorted(list(indices_to_delete), reverse=True):
+            del self.macro_data['events'][i]
+
+        self.add_log_message(f"Bulk deleted {len(indices_to_delete)} raw mouse move event(s).")
+        self._populate_treeview()
+        self.update_button_states()
+
     def delete_selected_event(self):
         selected_items = self.tree.selection()
         if not selected_items:
             messagebox.showwarning("No Selection", "Please select an action to delete.")
             return
-
-        selected_indices = sorted([int(item) for item in selected_items], reverse=True)
-        raw_indices_to_delete = []
-        for i in selected_indices:
-            action = self.visible_actions[i]
-            raw_indices_to_delete.extend(action.indices)
         
-        final_delete_indices = sorted(list(set(raw_indices_to_delete)), reverse=True)
-        for i in final_delete_indices:
+        if not messagebox.askyesno("Confirm Delete", "Are you sure you want to delete the selected action(s)?"):
+            return
+
+        selected_indices = sorted([int(self.tree.item(item, "values")[0]) - 1 for item in selected_items], reverse=True)
+        
+        raw_indices_to_delete = set()
+        for i in selected_indices:
+            if i < len(self.visible_actions):
+                action = self.visible_actions[i]
+                raw_indices_to_delete.update(action.indices)
+        
+        # Delete from the raw event list in reverse order
+        for i in sorted(list(raw_indices_to_delete), reverse=True):
             del self.macro_data['events'][i]
 
-        self.add_log_message(f"Deleted {len(final_delete_indices)} raw event(s).")
+        self.add_log_message(f"Deleted {len(raw_indices_to_delete)} raw event(s).")
         self._populate_treeview()
         self.update_button_states()
 

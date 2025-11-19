@@ -1,207 +1,205 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+import time
+from collections import deque
 import keyboard
 import mouse
 
-import math
+# --- Configuration Constants ---
+DOUBLE_CLICK_TIME = 0.4  # seconds
+DRAG_THRESHOLD_SQUARED = 10**2  # pixels squared, cheaper than sqrt
+HUMAN_PAUSE_THRESHOLD = 0.3 # Time in seconds to consider an action complete
+MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win', 'left ctrl', 'right ctrl', 'left shift', 'right shift', 'left alt', 'right alt'}
 
+# --- Data Class for Actions ---
 @dataclass(kw_only=True)
 class GroupedAction:
-    display_text: str
-    start_index: int
-    indices: list[int]
     type: str
+    display_text: str
+    start_time: float
+    end_time: float
+    start_index: int
+    end_index: int
+    indices: list[int] = field(default_factory=list)
+    details: dict = field(default_factory=dict)
 
-# --- Constants and Helpers ---
-HUMAN_PAUSE_THRESHOLD = 0.7
-MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win'}
-DRAG_THRESHOLD_PIXELS = 10 # The minimum pixel distance to be considered a drag
+    def __repr__(self):
+        return f"Action({self.display_text} @ {self.start_time:.2f}s, {len(self.indices)} events)"
 
-def _get_event_time(event): return event[0]
-def _get_event_obj(event): return event[1]['obj']
-def _is_modifier(key_name): return key_name and key_name.lower() in MODIFIER_KEYS
-
-# --- Pattern Finder Functions ---
-
-def _find_shortcut(events, i, processed_indices):
-    if i in processed_indices: return None
-    start_event = _get_event_obj(events[i])
-    if not (isinstance(start_event, keyboard.KeyboardEvent) and start_event.event_type == 'down' and _is_modifier(start_event.name)):
-        return None
-
-    active_modifiers = {start_event.name.lower()}
-    pressed_action_keys = set()
-    end_index = i
-    temp_indices = {i}
-
-    for j in range(i + 1, len(events)):
-        if j in processed_indices: continue
-        evt = _get_event_obj(events[j])
-        is_mouse_interruption = isinstance(evt, mouse.ButtonEvent)
-        if is_mouse_interruption: break
-
-        if isinstance(evt, keyboard.KeyboardEvent):
-            if not evt.name: continue
-            key_name = evt.name.lower()
-            temp_indices.add(j)
-
-            if evt.event_type == 'down':
-                if _is_modifier(key_name): active_modifiers.add(key_name)
-                else: pressed_action_keys.add(key_name)
-            elif evt.event_type == 'up':
-                if _is_modifier(key_name): active_modifiers.discard(key_name)
+# --- Main Grouper Class ---
+class EventGrouper:
+    def __init__(self, raw_events, log_callback=None):
+        self.raw_events = [(i, evt_time, evt_data) for i, (evt_time, evt_data) in enumerate(raw_events)]
+        self.actions = []
+        self.processed_indices = set()
+        self.log_callback = log_callback if log_callback else lambda msg: None
         
-        end_index = j
-        if not active_modifiers:
-            break
-    
-    if not pressed_action_keys:
-        return None
+        self.state = 'IDLE'
+        self.buffer = deque()
 
-    mod_text = " + ".join(sorted([k.capitalize() for k in active_modifiers.union({start_event.name.lower()})]))
-    key_text = " + ".join(sorted([k.capitalize() for k in pressed_action_keys]))
-    text = f"Shortcut: {mod_text} + {key_text}"
-    
-    indices = sorted(list(temp_indices))
-    return GroupedAction(display_text=text, type='shortcut', start_index=i, indices=indices), indices
+    def _get_obj(self, event_tuple): return event_tuple[2]['obj']
+    def _get_time(self, event_tuple): return event_tuple[1]
+    def _get_pos(self, event_tuple):
+        evt_obj = self._get_obj(event_tuple)
+        if isinstance(evt_obj, mouse.MoveEvent): return (evt_obj.x, evt_obj.y)
+        return event_tuple[2].get('pos')
 
-def _find_mouse_action(events, i, processed_indices):
-    if i in processed_indices: return None
-    
-    start_event_data = events[i]
-    start_event_obj = start_event_data[1].get('obj')
-    
-    if not isinstance(start_event_obj, mouse.ButtonEvent) or start_event_obj.event_type != 'down':
-        return None
+    def _finalize_action(self, action: GroupedAction):
+        self.log_callback(f"GROUPER: Finalized action -> {action.display_text}")
+        self.actions.append(action)
+        self.processed_indices.update(action.indices)
+        self.buffer.clear()
+        self.state = 'IDLE'
 
-    start_pos = start_event_data[1].get('pos')
-    if not start_pos: return None # Cannot determine drag without a start position
+    def _flush_buffer(self):
+        if not self.buffer:
+            self.state = 'IDLE'
+            return
 
-    max_distance_sq = 0
-    move_indices = []
-    end_index = -1
-    
-    for j in range(i + 1, len(events)):
-        if j in processed_indices: continue
+        if self.state == 'KEY_DOWN':
+            self._finalize_key_sequence()
+        elif self.state == 'SEQUENCE':
+            self._finalize_sequence()
         
-        current_event_data = events[j]
-        current_event_obj = current_event_data[1].get('obj')
-
-        # If we find the matching UP event
-        if (isinstance(current_event_obj, mouse.ButtonEvent) and 
-            current_event_obj.button == start_event_obj.button and 
-            current_event_obj.event_type == 'up'):
-            end_index = j
-            break
-
-        # If we find a move event, check distance
-        elif isinstance(current_event_obj, mouse.MoveEvent):
-            move_indices.append(j)
-            dist_sq = (current_event_obj.x - start_pos[0])**2 + (current_event_obj.y - start_pos[1])**2
-            if dist_sq > max_distance_sq:
-                max_distance_sq = dist_sq
+        if self.buffer:
+            for event_tuple in self.buffer:
+                if event_tuple[0] in self.processed_indices: continue
+                # Do not log raw flushes to keep the log clean as requested
+                # self.log_callback(f"GROUPER: Flushed as raw -> {self._get_obj(event_tuple)}")
+                action = GroupedAction(type='raw', display_text=f"Unprocessed: {self._get_obj(event_tuple)}", start_time=self._get_time(event_tuple), end_time=self._get_time(event_tuple), start_index=event_tuple[0], end_index=event_tuple[0], indices=[event_tuple[0]])
+                self.actions.append(action)
+                self.processed_indices.add(event_tuple[0])
+            self.buffer.clear()
         
-        # If we find any other type of event (like a keyboard press), it's an interruption.
-        else:
-            break
+        self.state = 'IDLE'
+        
+    def _finalize_key_sequence(self):
+        is_modifier = lambda name: name and name.lower() in MODIFIER_KEYS
+        down_events_in_buffer = [e for e in self.buffer if isinstance(self._get_obj(e), keyboard.KeyboardEvent) and self._get_obj(e).event_type == 'down']
+        
+        final_mods = {self._get_obj(e).name.lower() for e in down_events_in_buffer if is_modifier(self._get_obj(e).name)}
+        final_actions = {self._get_obj(e).name.lower() for e in down_events_in_buffer if not is_modifier(self._get_obj(e).name)}
+
+        if final_mods and final_actions:
+            mod_text = " + ".join(sorted([k.capitalize() for k in final_mods]))
+            key_text = " + ".join(sorted([k.capitalize() for k in final_actions]))
+            action = GroupedAction(type='shortcut', display_text=f"Shortcut: {mod_text} + {key_text}", start_time=self._get_time(self.buffer[0]), end_time=self._get_time(self.buffer[-1]), start_index=self.buffer[0][0], end_index=self.buffer[-1][0], indices=[e[0] for e in self.buffer], details={'keys': list(final_mods.union(final_actions))})
+            self._finalize_action(action)
+        elif len(final_actions) >= 1 and not final_mods:
+            # Group multiple key presses into a single typing action
+            typed_string = "".join([self._get_obj(e).name for e in down_events_in_buffer])
+            action = GroupedAction(type='typing', display_text=f"Type: '{typed_string}'", start_time=self._get_time(self.buffer[0]), end_time=self._get_time(self.buffer[-1]), start_index=self.buffer[0][0], end_index=self.buffer[-1][0], indices=[e[0] for e in self.buffer], details={'text': typed_string})
+            self._finalize_action(action)
+
+    def _finalize_sequence(self):
+        if not self.buffer: return
+        first_event_obj = self._get_obj(self.buffer[0])
+        action_type = 'mouse_wheel' if isinstance(first_event_obj, mouse.WheelEvent) else 'mouse_move'
+        display_text = "Mouse Wheel" if action_type == 'mouse_wheel' else "Mouse Move"
+        action = GroupedAction(type=action_type, display_text=display_text, start_time=self._get_time(self.buffer[0]), end_time=self._get_time(self.buffer[-1]), start_index=self.buffer[0][0], end_index=self.buffer[-1][0], indices=[e[0] for e in self.buffer], details={'count': len(self.buffer)})
+        self._finalize_action(action)
+
+    def _handle_idle(self, current_event):
+        evt_obj = self._get_obj(current_event)
+        # Double click is a special case that modifies a *previous* action
+        if isinstance(evt_obj, mouse.ButtonEvent) and evt_obj.event_type == 'double':
+            last_action = self.actions[-1] if self.actions else None
+            if (last_action and last_action.type == 'mouse_click' and 
+                last_action.details.get('button') == evt_obj.button and
+                (self._get_time(current_event) - last_action.end_time) < DOUBLE_CLICK_TIME):
+                
+                self.log_callback(f"GROUPER: Mutating previous click to Double Click.")
+                last_action.type = 'mouse_double_click'
+                last_action.display_text = f"Mouse Double Click ({evt_obj.button})"
+                
+                final_up_index = -1
+                for j in range(current_event[0] + 1, len(self.raw_events)):
+                    up_cand_tuple = self.raw_events[j]
+                    up_cand_obj = self._get_obj(up_cand_tuple)
+                    if isinstance(up_cand_obj, mouse.ButtonEvent) and up_cand_obj.event_type == 'up' and up_cand_obj.button == evt_obj.button:
+                        final_up_index = up_cand_tuple[0]
+                        break
+                
+                end_index = final_up_index if final_up_index != -1 else current_event[0]
+                last_action.end_time = self._get_time(self.raw_events[end_index])
+                last_action.end_index = end_index
+                
+                new_indices = list(range(last_action.start_index, end_index + 1))
+                self.processed_indices.update(new_indices)
+                last_action.indices = new_indices
+                return # Event consumed
+
+        # If not a double click, start a new action
+        self.buffer.append(current_event)
+        if isinstance(evt_obj, mouse.ButtonEvent) and evt_obj.event_type == 'down': self.state = 'MOUSE_DOWN'
+        elif isinstance(evt_obj, keyboard.KeyboardEvent) and evt_obj.event_type == 'down': self.state = 'KEY_DOWN'
+        elif isinstance(evt_obj, (mouse.MoveEvent, mouse.WheelEvent)): self.state = 'SEQUENCE'
+        else: self._flush_buffer()
+
+    def _handle_mouse_down(self, current_event):
+        self.buffer.append(current_event)
+        evt_obj = self._get_obj(current_event)
+        down_obj = self._get_obj(self.buffer[0])
+
+        if isinstance(evt_obj, mouse.ButtonEvent) and evt_obj.event_type == 'up' and evt_obj.button == down_obj.button:
+            max_dist_sq = 0
+            start_pos = self._get_pos(self.buffer[0])
+            for e in self.buffer:
+                if isinstance(self._get_obj(e), mouse.MoveEvent):
+                    dist_sq = (self._get_pos(e)[0] - start_pos[0])**2 + (self._get_pos(e)[1] - start_pos[1])**2
+                    max_dist_sq = max(max_dist_sq, dist_sq)
             
-    # If we didn't find a matching UP event, this isn't a complete click/drag action.
-    if end_index == -1:
-        return None
+            action_type = 'mouse_drag' if max_dist_sq > DRAG_THRESHOLD_SQUARED else 'mouse_click'
+            display_text = f"Mouse Drag ({down_obj.button})" if action_type == 'mouse_drag' else f"Mouse Click ({down_obj.button})"
+            action = GroupedAction(type=action_type, display_text=display_text, start_time=self._get_time(self.buffer[0]), end_time=self._get_time(current_event), start_index=self.buffer[0][0], end_index=current_event[0], indices=[e[0] for e in self.buffer], details={'button': down_obj.button, 'start_pos': start_pos, 'end_pos': self._get_pos(current_event)})
+            self._finalize_action(action)
+        elif not isinstance(evt_obj, mouse.MoveEvent):
+            self._flush_buffer()
+            self._handle_idle(current_event)
 
-    is_drag = math.sqrt(max_distance_sq) > DRAG_THRESHOLD_PIXELS
-    
-    # The indices to be consumed by this action. For both clicks and drags,
-    # we consume the intermediate moves to avoid cluttering the editor.
-    indices = sorted([i] + move_indices + [end_index])
+    def _handle_key_down(self, current_event):
+        evt_obj = self._get_obj(current_event)
+        if isinstance(evt_obj, keyboard.KeyboardEvent):
+            self.buffer.append(current_event)
+        else: # Interruption
+            self._flush_buffer()
+            self._handle_idle(current_event)
 
-    if is_drag:
-        action_type = 'mouse_drag'
-        text = f"Mouse Drag ({start_event_obj.button})"
-    else:
-        action_type = 'mouse_click'
-        text = f"Mouse Click ({start_event_obj.button})"
-
-    return GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices), indices
-
-def _find_mouse_sequence(events, i, processed_indices):
-    if i in processed_indices: return None
-    start_event = _get_event_obj(events[i])
-    if not isinstance(start_event, (mouse.MoveEvent, mouse.WheelEvent)):
-        return None
-    
-    event_type = type(start_event)
-    end_index = i
-    for j in range(i + 1, len(events)):
-        if j in processed_indices or type(_get_event_obj(events[j])) is not event_type or (_get_event_time(events[j]) - _get_event_time(events[j-1])) > HUMAN_PAUSE_THRESHOLD:
-            break
-        end_index = j
-
-    action_type = 'mouse_wheel' if event_type is mouse.WheelEvent else 'mouse_move'
-    text = "Mouse Wheel" if event_type is mouse.WheelEvent else "Mouse Move"
-    indices = list(range(i, end_index + 1))
-    return GroupedAction(display_text=text, type=action_type, start_index=i, indices=indices), indices
-
-# --- Post-processing Functions ---
-
-# --- Main Grouper Function ---
-def group_events(raw_events: list) -> list[GroupedAction]:
-    if not raw_events:
-        return []
-
-    actions = []
-    processed_indices = set()
-    
-    # Pass 1: Find complex and sequential patterns first
-    i = 0
-    while i < len(raw_events):
-        if i in processed_indices: 
-            i += 1
-            continue
-        
-        result = (
-            _find_shortcut(raw_events, i, processed_indices) or 
-            _find_mouse_action(raw_events, i, processed_indices) or
-            _find_mouse_sequence(raw_events, i, processed_indices)
-        )
-        
-        if result:
-            action, indices = result
-            actions.append(action)
-            processed_indices.update(indices)
-            i = indices[-1] + 1
+    def _handle_sequence(self, current_event):
+        evt_obj = self._get_obj(current_event)
+        if self.buffer and type(evt_obj) is type(self._get_obj(self.buffer[0])):
+            self.buffer.append(current_event)
         else:
-            i += 1
+            self._flush_buffer()
+            self._handle_idle(current_event)
 
-    # Pass 2: Group remaining keyboard events statefully (handles interleaving)
-    down_events = {}
-    for i, event_tuple in enumerate(raw_events):
-        if i in processed_indices: continue
+    def group(self):
+        if not self.raw_events: return []
 
-        evt = _get_event_obj(event_tuple)
-        if isinstance(evt, keyboard.KeyboardEvent):
-            if evt.event_type == 'down' and evt.scan_code is not None:
-                down_events[evt.scan_code] = i
-            elif evt.event_type == 'up' and evt.scan_code in down_events:
-                start_idx = down_events.pop(evt.scan_code)
-                end_idx = i
-                down_evt_obj = _get_event_obj(raw_events[start_idx])
-                text = f"Key Press: {down_evt_obj.name.capitalize() if down_evt_obj.name else ''}"
-                actions.append(GroupedAction(display_text=text, type='key_press', start_index=start_idx, indices=[start_idx, end_idx]))
-                processed_indices.add(start_idx)
-                processed_indices.add(end_idx)
+        for i, evt_time, evt_data in self.raw_events:
+            if i in self.processed_indices: continue
+            current_event = (i, evt_time, evt_data)
+            
+            if self.buffer and (evt_time - self._get_time(self.buffer[-1])) > HUMAN_PAUSE_THRESHOLD:
+                self._flush_buffer()
+            
+            # If buffer was flushed, it's now empty. current_event needs to start a new action.
+            if not self.buffer:
+                self.state = 'IDLE'
 
-    # Pass 3: Handle any remaining raw events
-    i = 0
-    while i < len(raw_events):
-        if i in processed_indices: 
-            i += 1
-            continue
-        evt_obj = _get_event_obj(raw_events[i])
-        text = f"Event: {evt_obj}"
-        actions.append(GroupedAction(display_text=text, type='raw', start_index=i, indices=[i]))
-        processed_indices.add(i) # Mark as processed
-        i += 1
+            if self.state == 'IDLE':
+                self._handle_idle(current_event)
+            elif self.state == 'MOUSE_DOWN':
+                self._handle_mouse_down(current_event)
+            elif self.state == 'KEY_DOWN':
+                self._handle_key_down(current_event)
+            elif self.state == 'SEQUENCE':
+                self._handle_sequence(current_event)
+        
+        self._flush_buffer()
+        self.actions.sort(key=lambda a: a.start_index)
+        return self.actions
 
-    # Final sort and post-processing
-    actions.sort(key=lambda x: x.start_index)
-    return actions
+def group_events(raw_events: list, log_callback=None) -> list[GroupedAction]:
+    if not raw_events: return []
+    grouper = EventGrouper(raw_events, log_callback=log_callback)
+    return grouper.group()

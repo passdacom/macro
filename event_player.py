@@ -39,7 +39,41 @@ class Player:
                 # Highlight the current action in the UI
                 self.on_action_highlight_callback(action_idx)
 
-                # Play all raw events within this grouped action
+                # --- Action-Aware Playback Logic ---
+                first_event_time = events[action.start_index][0]
+                current_delay = time.time() - start_time
+                wait_time = first_event_time - current_delay
+                sleep_duration = wait_time / speed_multiplier
+
+                if sleep_duration > 0:
+                    time.sleep(sleep_duration)
+                else:
+                    time.sleep(0)
+                
+                if not self.playing: break
+
+                # For special actions, perform a high-level command
+                if action.type == 'mouse_double_click':
+                    details = action.details
+                    button = details.get('button', 'left')
+                    pos = details.get('start_pos')
+                    if pos:
+                        mouse.move(pos[0], pos[1])
+                    self.log_callback(f"Player: Executing high-level double-click.")
+                    mouse.double_click(button)
+                    continue # Skip the raw event loop for this action
+
+                if action.type == 'mouse_drag':
+                    details = action.details
+                    button = details.get('button', 'left')
+                    start_pos = details.get('start_pos')
+                    end_pos = details.get('end_pos')
+                    if start_pos and end_pos:
+                        self.log_callback(f"Player: Executing high-level drag.")
+                        mouse.drag(start_pos[0], start_pos[1], end_pos[0], end_pos[1], absolute=True, duration=0.2)
+                    continue # Skip the raw event loop for this action
+
+                # Fallback to playing raw events for other action types
                 for event_list_idx in action.indices:
                     if not self.playing: break
                     
@@ -47,26 +81,21 @@ class Player:
                     event = event_data['obj']
                     recorded_pos = event_data.get('pos')
 
+                    # This is the original, correct timing logic. It calculates the delay
+                    # for each individual event based on its recorded timestamp.
                     current_delay = time.time() - start_time
                     wait_time = event_time - current_delay
                     sleep_duration = wait_time / speed_multiplier
 
                     if sleep_duration > 0:
                         time.sleep(sleep_duration)
-                    else:
-                        time.sleep(0)
 
-                    # --- Correct Event Playback Logic ---
+                    # --- Raw Event Playback Logic ---
                     if isinstance(event, keyboard.KeyboardEvent):
-                        # If the key is a special 'virtual' key, use its original scan code to play.
                         if event.name in SUGGESTED_TARGET_KEYS:
                             if event.event_type == 'down':
-                                self.log_callback(f"Playing virtual key '{event.name}' using scan code {event.scan_code}")
                                 keyboard.press_and_release(event.scan_code)
-                            # Ignore 'up' event for virtual keys
                             continue
-
-                        # For all other normal keys, play by name.
                         if event.event_type == 'down':
                             keyboard.press(event.name)
                         elif event.event_type == 'up':
@@ -80,21 +109,26 @@ class Player:
                         else:
                             mouse.move(event.x, event.y)
                     elif isinstance(event, mouse.ButtonEvent):
-                        if recorded_pos:
-                            if mode == 'relative':
-                                offset_x = recorded_pos[0] - origin[0]
-                                offset_y = recorded_pos[1] - origin[1]
-                                target_x = current_pos_origin[0] + offset_x
-                                target_y = current_pos_origin[1] + offset_y
-                                mouse.move(target_x, target_y)
-                            else: # Absolute mode
-                                mouse.move(recorded_pos[0], recorded_pos[1])
-
-                        if event.event_type == mouse.DOUBLE:
-                            mouse.double_click(event.button)
-                        elif event.event_type == mouse.DOWN:
-                            mouse.press(event.button)
+                        # This part will now only handle single clicks, as double-clicks are handled above.
+                        # We also ignore the 'double' event type here since it's not a primitive.
+                        if event.event_type == mouse.DOWN:
+                             if recorded_pos:
+                                if mode == 'relative':
+                                    offset_x = recorded_pos[0] - origin[0]
+                                    offset_y = recorded_pos[1] - origin[1]
+                                    mouse.move(current_pos_origin[0] + offset_x, current_pos_origin[1] + offset_y)
+                                else:
+                                    mouse.move(recorded_pos[0], recorded_pos[1])
+                             mouse.press(event.button)
                         elif event.event_type == mouse.UP:
+                            if recorded_pos:
+                                 # Move to final position on up event as well for consistency
+                                 if mode == 'relative':
+                                     offset_x = recorded_pos[0] - origin[0]
+                                     offset_y = recorded_pos[1] - origin[1]
+                                     mouse.move(current_pos_origin[0] + offset_x, current_pos_origin[1] + offset_y)
+                                 else:
+                                     mouse.move(recorded_pos[0], recorded_pos[1])
                             mouse.release(event.button)
                     elif isinstance(event, mouse.WheelEvent):
                         mouse.wheel(event.delta)

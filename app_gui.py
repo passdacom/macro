@@ -198,7 +198,10 @@ class AppGUI:
         self.tree.delete(*self.tree.get_children())
         
         try:
-            self.visible_actions = event_grouper.group_events(self.macro_data.get('events', []))
+            self.visible_actions = event_grouper.group_events(
+                self.macro_data.get('events', []),
+                log_callback=self.add_log_message
+            )
             for i, action in enumerate(self.visible_actions):
                 start_time = self.macro_data['events'][action.start_index][0]
                 
@@ -220,7 +223,10 @@ class AppGUI:
             return
 
         # We need to get a fresh grouping to ensure we have the right actions
-        grouped_actions = event_grouper.group_events(self.macro_data.get('events', []))
+        grouped_actions = event_grouper.group_events(
+            self.macro_data.get('events', []),
+            log_callback=self.add_log_message
+        )
         
         indices_to_delete = set()
         for action in grouped_actions:

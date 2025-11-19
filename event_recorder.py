@@ -57,41 +57,6 @@ class Recorder:
 
         event_time = time.time() - self.start_time
 
-        if isinstance(event, mouse.ButtonEvent) and event.event_type == mouse.DOUBLE:
-            last_button_up = None
-            # Look backwards in the combined list of old and new events
-            combined_events = self.events + self.new_events
-            for i in range(len(combined_events) - 1, -1, -1):
-                _, evt_data = combined_events[i]
-                evt = evt_data['obj']
-                if isinstance(evt, mouse.ButtonEvent) and evt.event_type == mouse.UP:
-                    last_button_up = evt.button
-                    break
-            
-            if last_button_up and last_button_up != event.button:
-                self.log_callback(f"Correcting spurious double-click event for '{event.button}' button.")
-                event = mouse.ButtonEvent(event_type=mouse.DOWN, button=event.button, time=event.time)
-            else:
-                # This logic needs to check the new_events list for cleanup
-                last_up_index = -1
-                last_down_index = -1
-                for i in range(len(self.new_events) - 1, -1, -1):
-                    _, evt_data = self.new_events[i]
-                    evt = evt_data['obj']
-                    if isinstance(evt, mouse.ButtonEvent) and evt.button == event.button:
-                        if evt.event_type == mouse.UP and last_up_index == -1:
-                            last_up_index = i
-                        elif evt.event_type == mouse.DOWN and last_down_index == -1:
-                            last_down_index = i
-                            break
-                
-                if last_down_index != -1 and last_up_index != -1:
-                    self.log_callback(f"Double-click detected for '{event.button}' button. Cleaning up previous click event.")
-                    del self.new_events[last_up_index]
-                    del self.new_events[last_down_index]
-                
-                self.button_to_ignore_up = event.button
-
         pos = mouse.get_position() if isinstance(event, mouse.ButtonEvent) else None
         event_to_store = {'obj': event, 'pos': pos}
         self.new_events.append((event_time, event_to_store))

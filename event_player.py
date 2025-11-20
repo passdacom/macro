@@ -3,6 +3,7 @@ import time
 import threading
 import keyboard
 import mouse
+from collections import deque
 from key_mapper_gui import SUGGESTED_TARGET_KEYS
 
 class Player:
@@ -13,12 +14,30 @@ class Player:
         # mapper_manager is no longer needed by the player
         self.playing = False
         self.thread = None
+        self.esc_press_times = deque(maxlen=3)  # Track last 3 ESC presses
+        self.esc_listener_hook = None
+
+    def _esc_emergency_stop(self, event):
+        """Callback for ESC key detection during playback"""
+        if event.name == 'esc' and event.event_type == 'down':
+            current_time = time.time()
+            self.esc_press_times.append(current_time)
+            
+            # Check if we have 3 ESC presses within 0.5 seconds
+            if len(self.esc_press_times) == 3:
+                if (self.esc_press_times[-1] - self.esc_press_times[0]) < 0.5:
+                    self.log_callback("EMERGENCY STOP: ESC pressed 3 times rapidly!")
+                    self.playing = False
 
     def _play_events_task(self, macro_data, repeat_count, speed_multiplier):
         self.playing = True
+        self.esc_press_times.clear()
         events = macro_data.get('events', [])
         mode = macro_data.get('mode', 'absolute')
         origin = macro_data.get('origin', (0, 0))
+
+        # Set up ESC emergency stop listener
+        self.esc_listener_hook = keyboard.on_press(self._esc_emergency_stop)
 
         # Group events for playback highlighting
         import event_grouper # Import here to avoid circular dependency
@@ -27,6 +46,10 @@ class Player:
         for i in range(repeat_count):
             if not self.playing:
                 break
+            
+            # Log repeat progress if repeat_count > 1
+            if repeat_count > 1:
+                self.log_callback(f"Playing: {i + 1}/{repeat_count}")
 
             current_pos_origin = mouse.get_position()
             start_time = time.time()
@@ -61,6 +84,19 @@ class Player:
                         mouse.move(pos[0], pos[1])
                     self.log_callback(f"Player: Executing high-level double-click.")
                     mouse.double_click(button)
+                    continue # Skip the raw event loop for this action
+
+                if action.type == 'mouse_triple_click':
+                    details = action.details
+                    button = details.get('button', 'left')
+                    pos = details.get('start_pos') # Triple click inherits details from the double click (which has start_pos)
+                    if pos:
+                        mouse.move(pos[0], pos[1])
+                    self.log_callback(f"Player: Executing high-level triple-click.")
+                    # Execute double click then single click rapidly
+                    mouse.double_click(button)
+                    time.sleep(0.05) # Tiny pause to ensure distinct events but fast enough for OS
+                    mouse.click(button)
                     continue # Skip the raw event loop for this action
 
                 if action.type == 'mouse_drag':
@@ -137,6 +173,12 @@ class Player:
                 time.sleep(0.5)
 
         self.playing = False
+        
+        # Remove ESC listener
+        if self.esc_listener_hook is not None:
+            keyboard.unhook(self.esc_listener_hook)
+            self.esc_listener_hook = None
+        
         self.on_action_highlight_callback(-1) # Clear highlight when finished
         if self.on_finish_callback:
             self.on_finish_callback()

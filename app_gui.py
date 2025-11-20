@@ -8,6 +8,7 @@ from event_recorder import Recorder
 from event_player import Player
 from hotkey_manager import HotkeyManager
 import event_grouper
+import event_utils
 from action_editor import ActionEditorWindow
 from key_mapper_manager import KeyMapperManager
 from key_mapper_gui import KeyMapperWindow
@@ -84,7 +85,7 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v2.5")
+        self.root.title("Advanced Macro Editor v3.0")
         self.root.geometry("580x550")
 
         self.is_recording = False
@@ -154,6 +155,21 @@ class AppGUI:
 
         self.always_on_top_var = tk.BooleanVar()
         ttk.Checkbutton(options_frame, text="Always on Top", variable=self.always_on_top_var, command=self.toggle_always_on_top).pack(side="left", padx=(10,0))
+
+        # Partial playback controls
+        partial_frame = ttk.LabelFrame(top_frame, text="Partial Playback")
+        partial_frame.grid(row=2, column=0, padx=5, pady=5, sticky="ew")
+        
+        ttk.Label(partial_frame, text="From:").pack(side="left", padx=5)
+        self.from_var = tk.StringVar(value="1")
+        ttk.Entry(partial_frame, textvariable=self.from_var, width=8).pack(side="left")
+        
+        ttk.Label(partial_frame, text="To:").pack(side="left", padx=5)
+        self.to_var = tk.StringVar(value="")
+        ttk.Entry(partial_frame, textvariable=self.to_var, width=8).pack(side="left")
+        
+        self.partial_play_btn = ttk.Button(partial_frame, text="Play Range", command=self.play_partial)
+        self.partial_play_btn.pack(side="left", padx=5)
 
         editor_frame = ttk.LabelFrame(main_pane, text="Macro Editor")
         main_pane.add(editor_frame, weight=1)
@@ -280,6 +296,21 @@ class AppGUI:
         if self.is_playing:
             return
         if not self.is_recording:
+            # Check if there's existing data and ask for confirmation
+            if self.macro_data.get('events') and not is_continuation:
+                response = messagebox.askyesnocancel(
+                    "기존 녹화 확인",
+                    "이미 녹화된 내용이 있습니다.\n\n"
+                    "예: 기존 내용 삭제하고 새로 녹화\n"
+                    "아니오: 저장 후 새로 녹화\n"
+                    "취소: 녹화 취소"
+                )
+                
+                if response is None:  # Cancel
+                    return
+                elif response is False:  # No - Save first
+                    self.save_events()
+            
             self.is_recording = True
             self.record_button.config(text="Stop Record (Ctrl+Alt+F5)")
             existing_events = self.macro_data.get('events', []) if is_continuation else None
@@ -317,6 +348,10 @@ class AppGUI:
                 
                 self.macro_data['events'] = events[start_idx_to_keep:end_idx_to_keep]
 
+            # Remove redundant paste events (Win+V fix)
+            if self.macro_data.get('events'):
+                self.macro_data['events'] = event_utils.remove_redundant_paste_events(self.macro_data['events'])
+
             self.add_log_message(f"Recorded {len(self.macro_data.get('events', []))} events.")
             self._populate_treeview()
         self.update_button_states()
@@ -340,6 +375,52 @@ class AppGUI:
         self.update_button_states()
         self.add_log_message(f"Playback started (repeating {repeat_count} times at {speed_multiplier}x speed)...")
         self.player.play_events(self.macro_data, repeat_count, speed_multiplier)
+
+
+    def play_partial(self):
+        if self.is_playing or self.is_recording:
+            return
+        if not self.visible_actions:
+            self.add_log_message("No macro actions to play.")
+            return
+        
+        try:
+            from_idx = int(self.from_var.get()) - 1  # Convert to 0-indexed
+            to_str = self.to_var.get().strip()
+            to_idx = int(to_str) - 1 if to_str else len(self.visible_actions) - 1
+            
+            if from_idx < 0 or to_idx >= len(self.visible_actions) or from_idx > to_idx:
+                messagebox.showerror("Invalid Range", "Please enter a valid range.")
+                return
+            
+            # Create partial events from selected action range
+            partial_events = []
+            for i in range(from_idx, to_idx + 1):
+                action = self.visible_actions[i]
+                for idx in action.indices:
+                    partial_events.append(self.macro_data['events'][idx])
+            
+            # Adjust timestamps to start from 0
+            if partial_events:
+                first_time = partial_events[0][0]
+                partial_events = [(t - first_time, data) for t, data in partial_events]
+            
+            partial_macro = {
+                'mode': self.macro_data['mode'],
+                'origin': self.macro_data['origin'],
+                'events': partial_events
+            }
+            
+            repeat_count = int(self.repeat_spinbox.get())
+            speed_multiplier = float(self.speed_spinbox.get())
+            
+            self.is_playing = True
+            self.update_button_states()
+            self.add_log_message(f"Partial playback started (actions {from_idx+1} to {to_idx+1})...")
+            self.player.play_events(partial_macro, repeat_count, speed_multiplier)
+            
+        except ValueError:
+            messagebox.showerror("Invalid Input", "Please enter valid numbers.")
 
     def stop_playing(self):
         if not self.is_playing:

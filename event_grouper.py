@@ -5,7 +5,7 @@ import keyboard
 import mouse
 
 # --- Configuration Constants ---
-DOUBLE_CLICK_TIME = 0.4  # seconds
+DOUBLE_CLICK_TIME = 0.3  # seconds (reduced from 0.4 for better detection)
 DRAG_THRESHOLD_SQUARED = 10**2  # pixels squared, cheaper than sqrt
 HUMAN_PAUSE_THRESHOLD = 0.3 # Time in seconds to consider an action complete
 MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win', 'left ctrl', 'right ctrl', 'left shift', 'right shift', 'left alt', 'right alt'}
@@ -44,6 +44,26 @@ class EventGrouper:
         return event_tuple[2].get('pos')
 
     def _finalize_action(self, action: GroupedAction):
+        # Check for Triple Click:
+        # If current action is 'mouse_click' and previous was 'mouse_double_click'
+        # and they are close in time and same button -> Merge into Triple Click
+        if action.type == 'mouse_click' and self.actions:
+            last_action = self.actions[-1]
+            if (last_action.type == 'mouse_double_click' and
+                last_action.details.get('button') == action.details.get('button') and
+                (action.start_time - last_action.end_time) < DOUBLE_CLICK_TIME):
+                
+                self.log_callback(f"GROUPER: Merging click into Triple Click.")
+                last_action.type = 'mouse_triple_click'
+                last_action.display_text = f"Mouse Triple Click ({action.details.get('button')})"
+                last_action.end_time = action.end_time
+                last_action.end_index = action.end_index
+                last_action.indices.extend(action.indices)
+                self.processed_indices.update(action.indices)
+                self.buffer.clear()
+                self.state = 'IDLE'
+                return
+
         self.log_callback(f"GROUPER: Finalized action -> {action.display_text}")
         self.actions.append(action)
         self.processed_indices.update(action.indices)
@@ -63,9 +83,30 @@ class EventGrouper:
         if self.buffer:
             for event_tuple in self.buffer:
                 if event_tuple[0] in self.processed_indices: continue
-                # Do not log raw flushes to keep the log clean as requested
-                # self.log_callback(f"GROUPER: Flushed as raw -> {self._get_obj(event_tuple)}")
-                action = GroupedAction(type='raw', display_text=f"Unprocessed: {self._get_obj(event_tuple)}", start_time=self._get_time(event_tuple), end_time=self._get_time(event_tuple), start_index=event_tuple[0], end_index=event_tuple[0], indices=[event_tuple[0]])
+                
+                evt_obj = self._get_obj(event_tuple)
+                
+                # Filter out orphaned events that shouldn't be displayed:
+                # 1. Key Up/Down without matching pair
+                # 2. Mouse Button Up/Down without matching pair  
+                # 3. Standalone 'double' events (these are OS-generated, not user actions)
+                is_key_up = isinstance(evt_obj, keyboard.KeyboardEvent) and evt_obj.event_type == 'up'
+                is_key_down = isinstance(evt_obj, keyboard.KeyboardEvent) and evt_obj.event_type == 'down'
+                is_mouse_up = isinstance(evt_obj, mouse.ButtonEvent) and evt_obj.event_type == 'up'
+                is_mouse_down = isinstance(evt_obj, mouse.ButtonEvent) and evt_obj.event_type == 'down'
+                is_standalone_double = isinstance(evt_obj, mouse.ButtonEvent) and evt_obj.event_type == 'double'
+                
+                # Filter orphaned up/down events and standalone doubles
+                if is_key_up or is_key_down or is_mouse_up or is_mouse_down or is_standalone_double:
+                    # Log what we're filtering out for debugging purposes
+                    self.log_callback(f"GROUPER: Filtered orphaned event -> {evt_obj}")
+                    # Mark as processed so we don't visit it again, but don't create an action
+                    self.processed_indices.add(event_tuple[0])
+                    continue
+
+                # If we reach here, it's truly unprocessed - log it and create action
+                self.log_callback(f"GROUPER: Unprocessed event -> {evt_obj}")
+                action = GroupedAction(type='raw', display_text=f"Unprocessed: {evt_obj}", start_time=self._get_time(event_tuple), end_time=self._get_time(event_tuple), start_index=event_tuple[0], end_index=event_tuple[0], indices=[event_tuple[0]])
                 self.actions.append(action)
                 self.processed_indices.add(event_tuple[0])
             self.buffer.clear()
@@ -110,6 +151,32 @@ class EventGrouper:
                 self.log_callback(f"GROUPER: Mutating previous click to Double Click.")
                 last_action.type = 'mouse_double_click'
                 last_action.display_text = f"Mouse Double Click ({evt_obj.button})"
+                
+                final_up_index = -1
+                for j in range(current_event[0] + 1, len(self.raw_events)):
+                    up_cand_tuple = self.raw_events[j]
+                    up_cand_obj = self._get_obj(up_cand_tuple)
+                    if isinstance(up_cand_obj, mouse.ButtonEvent) and up_cand_obj.event_type == 'up' and up_cand_obj.button == evt_obj.button:
+                        final_up_index = up_cand_tuple[0]
+                        break
+                
+                end_index = final_up_index if final_up_index != -1 else current_event[0]
+                last_action.end_time = self._get_time(self.raw_events[end_index])
+                last_action.end_index = end_index
+                
+                new_indices = list(range(last_action.start_index, end_index + 1))
+                self.processed_indices.update(new_indices)
+                last_action.indices = new_indices
+                return # Event consumed
+
+            # Case 2: Double Click -> Triple Click
+            if (last_action and last_action.type == 'mouse_double_click' and 
+                last_action.details.get('button') == evt_obj.button and
+                (self._get_time(current_event) - last_action.end_time) < DOUBLE_CLICK_TIME):
+                
+                self.log_callback(f"GROUPER: Mutating previous Double Click to Triple Click.")
+                last_action.type = 'mouse_triple_click'
+                last_action.display_text = f"Mouse Triple Click ({evt_obj.button})"
                 
                 final_up_index = -1
                 for j in range(current_event[0] + 1, len(self.raw_events)):

@@ -133,9 +133,15 @@ class Player:
                                 keyboard.press_and_release(event.scan_code)
                             continue
                         if event.event_type == 'down':
-                            keyboard.press(event.name)
+                            if event.name in ('left windows', 'right windows', 'win'):
+                                keyboard.press(event.name)
+                            else:
+                                keyboard.press(event.scan_code)
                         elif event.event_type == 'up':
-                            keyboard.release(event.name)
+                            if event.name in ('left windows', 'right windows', 'win'):
+                                keyboard.release(event.name)
+                            else:
+                                keyboard.release(event.scan_code)
                             
                     elif isinstance(event, mouse.MoveEvent):
                         if mode == 'relative':

@@ -8,6 +8,7 @@ from event_recorder import Recorder
 from event_player import Player
 from hotkey_manager import HotkeyManager
 import event_grouper
+from event_grouper import GroupedAction
 import event_utils
 from action_editor import ActionEditorWindow
 from key_mapper_manager import KeyMapperManager
@@ -85,7 +86,7 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v3.0")
+        self.root.title("Advanced Macro Editor v3.1")
         self.root.geometry("580x550")
 
         self.is_recording = False
@@ -214,10 +215,16 @@ class AppGUI:
         self.tree.delete(*self.tree.get_children())
         
         try:
-            self.visible_actions = event_grouper.group_events(
-                self.macro_data.get('events', []),
-                log_callback=self.add_log_message
-            )
+            # Use loaded grouped actions if available (perfect compatibility)
+            # Otherwise re-group from raw events
+            if self.macro_data.get('grouped_actions'):
+                self.visible_actions = self.macro_data['grouped_actions']
+                self.add_log_message("Using pre-grouped actions from file.")
+            else:
+                self.visible_actions = event_grouper.group_events(
+                    self.macro_data.get('events', []),
+                    log_callback=self.add_log_message
+                )
             for i, action in enumerate(self.visible_actions):
                 start_time = self.macro_data['events'][action.start_index][0]
                 
@@ -459,7 +466,28 @@ class AppGUI:
             return
         try:
             serializable_events = [_serialize_event(e) for e in self.macro_data['events']]
-            serializable_macro_data = {'mode': self.macro_data['mode'], 'origin': self.macro_data['origin'], 'events': [e for e in serializable_events if e is not None]}
+            # Serialize grouped actions for perfect compatibility
+            serializable_actions = []
+            if self.visible_actions:
+                for action in self.visible_actions:
+                    action_dict = {
+                        'type': action.type,
+                        'display_text': action.display_text,
+                        'start_time': action.start_time,
+                        'end_time': action.end_time,
+                        'start_index': action.start_index,
+                        'end_index': action.end_index,
+                        'indices': action.indices,
+                        'details': action.details
+                    }
+                    serializable_actions.append(action_dict)
+            
+            serializable_macro_data = {
+                'mode': self.macro_data['mode'],
+                'origin': self.macro_data['origin'],
+                'events': [e for e in serializable_events if e is not None],
+                'grouped_actions': serializable_actions  # NEW: Store grouped actions
+            }
             with open(file_path, 'w') as f:
                 json.dump(serializable_macro_data, f, indent=4)
             self.add_log_message(f"Macro successfully saved to {file_path}")
@@ -524,6 +552,22 @@ class AppGUI:
                         'origin': loaded_data.get('origin', (0,0)),
                         'events': new_events
                     }
+                    # Load grouped actions if available (for perfect compatibility)
+                    loaded_groups = loaded_data.get('grouped_actions')
+                    if loaded_groups:
+                        self.macro_data['grouped_actions'] = []
+                        for action_dict in loaded_groups:
+                            action = GroupedAction(
+                                type=action_dict['type'],
+                                display_text=action_dict['display_text'],
+                                start_time=action_dict['start_time'],
+                                end_time=action_dict['end_time'],
+                                start_index=action_dict['start_index'],
+                                end_index=action_dict['end_index'],
+                                indices=action_dict['indices'],
+                                details=action_dict.get('details', {})
+                            )
+                            self.macro_data['grouped_actions'].append(action)
                     self.add_log_message(f"Macro successfully loaded from {file_path}")
 
             else: # 'replace'

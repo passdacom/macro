@@ -8,7 +8,7 @@ import mouse
 DOUBLE_CLICK_TIME = 0.3  # seconds (reduced from 0.4 for better detection)
 DRAG_THRESHOLD_SQUARED = 10**2  # pixels squared, cheaper than sqrt
 HUMAN_PAUSE_THRESHOLD = 0.3 # Time in seconds to consider an action complete
-MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win', 'left ctrl', 'right ctrl', 'left shift', 'right shift', 'left alt', 'right alt'}
+MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win', 'left ctrl', 'right ctrl', 'left shift', 'right shift', 'left alt', 'right alt', 'left windows', 'right windows'}
 
 # --- Data Class for Actions ---
 @dataclass(kw_only=True)
@@ -226,11 +226,46 @@ class EventGrouper:
     def _handle_key_down(self, current_event):
         evt_obj = self._get_obj(current_event)
         if isinstance(evt_obj, keyboard.KeyboardEvent):
+            # Logic 1: New Non-Modifier Key
+            if evt_obj.event_type == 'down' and evt_obj.name.lower() not in MODIFIER_KEYS:
+                has_non_modifier = False
+                for e in self.buffer:
+                    e_obj = self._get_obj(e)
+                    if (isinstance(e_obj, keyboard.KeyboardEvent) and 
+                        e_obj.event_type == 'down' and 
+                        e_obj.name.lower() not in MODIFIER_KEYS):
+                        has_non_modifier = True
+                        break
+                
+                if has_non_modifier:
+                    self.log_callback(f"GROUPER: Splitting sequence at {evt_obj.name} (multiple non-modifiers)")
+                    self._flush_buffer()
+                    self._handle_idle(current_event)
+                    return
+    
+            # Logic 2: New Modifier Key (Fix for Tab -> Ctrl+C)
+            # If a modifier is pressed while we have non-modifiers in buffer, flush!
+            elif evt_obj.event_type == 'down' and evt_obj.name.lower() in MODIFIER_KEYS:
+                if self.buffer:
+                    # Check if buffer has any non-modifier keys
+                    has_non_modifier = False
+                    for e in self.buffer:
+                        e_obj = self._get_obj(e)
+                        if (isinstance(e_obj, keyboard.KeyboardEvent) and 
+                            e_obj.name.lower() not in MODIFIER_KEYS):
+                            has_non_modifier = True
+                            break
+                    
+                    if has_non_modifier:
+                        self.log_callback(f"GROUPER: Splitting sequence at {evt_obj.name} (modifier after non-modifier)")
+                        self._flush_buffer()
+                        self._handle_idle(current_event)
+                        return
+    
             self.buffer.append(current_event)
-        else: # Interruption
+        else: # Interruption (e.g. mouse event)
             self._flush_buffer()
             self._handle_idle(current_event)
-
     def _handle_sequence(self, current_event):
         evt_obj = self._get_obj(current_event)
         if self.buffer and type(evt_obj) is type(self._get_obj(self.buffer[0])):

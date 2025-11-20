@@ -1,62 +1,535 @@
-[2025-11-19 16:31:39] Recording started in absolute mode...
-[2025-11-19 16:31:40] Event: ButtonEvent(event_type='down', button='left', time=1763537500.650513)
-[2025-11-19 16:31:40] Event: ButtonEvent(event_type='up', button='left', time=1763537500.8721237)
-[2025-11-19 16:31:41] Event: ButtonEvent(event_type='down', button='left', time=1763537501.8281147)
-[2025-11-19 16:31:42] Event: ButtonEvent(event_type='up', button='left', time=1763537502.0440574)
-[2025-11-19 16:31:42] Recording stopped.
-[2025-11-19 16:31:42] Recorded 211 events.
-[2025-11-19 16:31:42] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:31:42] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:31:42] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:31:42] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:31:45] Playback started (repeating 1 times at 1.0x speed)...
-[2025-11-19 16:31:47] Playback finished.
-[2025-11-19 16:31:49] Recording started in absolute mode...
-[2025-11-19 16:31:50] Event: ButtonEvent(event_type='down', button='left', time=1763537510.24149)
-[2025-11-19 16:31:50] Event: ButtonEvent(event_type='up', button='left', time=1763537510.4566708)
-[2025-11-19 16:31:51] Event: ButtonEvent(event_type='down', button='left', time=1763537511.3554914)
-[2025-11-19 16:31:51] Event: ButtonEvent(event_type='up', button='left', time=1763537511.4900637)
-[2025-11-19 16:31:51] Event: ButtonEvent(event_type='double', button='left', time=1763537511.548611)
-[2025-11-19 16:31:51] Event: ButtonEvent(event_type='up', button='left', time=1763537511.7181373)
-[2025-11-19 16:31:51] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
-[2025-11-19 16:31:52] KeyboardEvent(name='c', scan_code=46, event_type=down)
-[2025-11-19 16:31:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
-[2025-11-19 16:31:52] KeyboardEvent(name='c', scan_code=46, event_type=up)
-[2025-11-19 16:31:52] Event: ButtonEvent(event_type='down', button='left', time=1763537512.7564452)
-[2025-11-19 16:31:52] Event: ButtonEvent(event_type='up', button='left', time=1763537512.971737)
-[2025-11-19 16:31:52] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
-[2025-11-19 16:31:53] KeyboardEvent(name='v', scan_code=47, event_type=down)
-[2025-11-19 16:31:53] KeyboardEvent(name='v', scan_code=47, event_type=up)
-[2025-11-19 16:31:53] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
-[2025-11-19 16:31:54] Event: ButtonEvent(event_type='down', button='left', time=1763537514.46374)
-[2025-11-19 16:31:54] Event: ButtonEvent(event_type='up', button='left', time=1763537514.69194)
-[2025-11-19 16:31:54] Recording stopped.
-[2025-11-19 16:31:54] Recorded 232 events.
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:31:54] GROUPER: Mutating previous click to Double Click.
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Shortcut: Ctrl + C
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Shortcut: Ctrl + V
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:31:54] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:31:57] Playback started (repeating 1 times at 1.0x speed)...
-[2025-11-19 16:31:58] Player: Executing high-level double-click.
-[2025-11-19 16:32:02] Playback finished.
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:32:09] GROUPER: Mutating previous click to Double Click.
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Shortcut: Ctrl + C
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Shortcut: Ctrl + V
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Move
-[2025-11-19 16:32:09] GROUPER: Finalized action -> Mouse Click (left)
-[2025-11-19 16:32:11] Playback started (repeating 1 times at 1.0x speed)...
-[2025-11-19 16:32:13] Player: Executing high-level double-click.
-[2025-11-19 16:32:16] Playback finished.
+[2025-11-20 09:51:37] Recording started in absolute mode...
+[2025-11-20 09:51:39] Event: ButtonEvent(event_type='down', button='left', time=1763599899.5968776)
+[2025-11-20 09:51:39] Event: ButtonEvent(event_type='up', button='left', time=1763599899.8231096)
+[2025-11-20 09:51:39] Recording stopped.
+[2025-11-20 09:51:39] Recorded 121 events.
+[2025-11-20 09:51:39] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 09:51:39] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 09:51:44] Playback started (repeating 4 times at 1.0x speed)...
+[2025-11-20 09:51:44] Playing: 1/4
+[2025-11-20 09:51:46] Playing: 2/4
+[2025-11-20 09:51:49] Playing: 3/4
+[2025-11-20 09:51:51] Playing: 4/4
+[2025-11-20 09:51:53] Playback finished.
+[2025-11-20 10:16:38] Recording started in absolute mode...
+[2025-11-20 10:16:41] Event: ButtonEvent(event_type='down', button='left', time=1763601401.1502898)
+[2025-11-20 10:16:41] Event: ButtonEvent(event_type='up', button='left', time=1763601401.290337)
+[2025-11-20 10:16:41] Event: ButtonEvent(event_type='double', button='left', time=1763601401.348225)
+[2025-11-20 10:16:41] Event: ButtonEvent(event_type='up', button='left', time=1763601401.5176864)
+[2025-11-20 10:16:41] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 10:16:41] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 10:16:42] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 10:16:42] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 10:16:42] Event: ButtonEvent(event_type='down', button='left', time=1763601402.6970034)
+[2025-11-20 10:16:42] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 10:16:42] Event: ButtonEvent(event_type='up', button='left', time=1763601402.9166446)
+[2025-11-20 10:16:42] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 10:16:43] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 10:16:43] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 10:16:45] Event: ButtonEvent(event_type='down', button='left', time=1763601405.2655463)
+[2025-11-20 10:16:45] Event: ButtonEvent(event_type='up', button='left', time=1763601405.4081223)
+[2025-11-20 10:16:45] Event: ButtonEvent(event_type='double', button='left', time=1763601405.457979)
+[2025-11-20 10:16:45] Event: ButtonEvent(event_type='up', button='left', time=1763601405.631077)
+[2025-11-20 10:16:46] Event: ButtonEvent(event_type='down', button='left', time=1763601406.4659896)
+[2025-11-20 10:16:46] Event: ButtonEvent(event_type='up', button='left', time=1763601406.6146939)
+[2025-11-20 10:16:46] Event: ButtonEvent(event_type='double', button='left', time=1763601406.6765952)
+[2025-11-20 10:16:46] Event: ButtonEvent(event_type='up', button='left', time=1763601406.831795)
+[2025-11-20 10:16:47] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 10:16:47] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 10:16:47] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 10:16:47] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 10:16:48] Event: ButtonEvent(event_type='down', button='left', time=1763601408.0403574)
+[2025-11-20 10:16:48] Event: ButtonEvent(event_type='up', button='left', time=1763601408.2605128)
+[2025-11-20 10:16:48] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 10:16:48] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 10:16:48] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 10:16:48] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 10:16:50] Event: ButtonEvent(event_type='down', button='left', time=1763601410.1432905)
+[2025-11-20 10:16:50] Event: ButtonEvent(event_type='up', button='left', time=1763601410.370876)
+[2025-11-20 10:16:50] Recording stopped.
+[2025-11-20 10:16:50] Recorded 506 events.
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:16:50] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:16:50] GROUPER: Unprocessed event -> ButtonEvent(event_type='down', button='left', time=1763601402.6970034)
+[2025-11-20 10:16:50] GROUPER: Unprocessed event -> KeyboardEvent(ctrl down)
+[2025-11-20 10:16:50] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763601402.9166446)
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Type: 'v'
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:16:50] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:16:50] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Shortcut: Ctrl + V
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:16:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:16:56] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-20 10:16:58] Player: Executing high-level double-click.
+[2025-11-20 10:17:02] Player: Executing high-level double-click.
+[2025-11-20 10:17:04] Player: Executing high-level double-click.
+[2025-11-20 10:17:07] Playback finished.
+[2025-11-20 10:17:15] Partial playback started (actions 11 to 18)...
+[2025-11-20 10:17:15] Player: Executing high-level double-click.
+[2025-11-20 10:17:19] Playback finished.
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:23] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:23] GROUPER: Unprocessed event -> ButtonEvent(event_type='down', button='left', time=1763601402.6970034)
+[2025-11-20 10:17:23] GROUPER: Unprocessed event -> KeyboardEvent(ctrl down)
+[2025-11-20 10:17:23] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763601402.9166446)
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Type: 'v'
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:23] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:23] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Shortcut: Ctrl + V
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:23] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:27] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:27] GROUPER: Unprocessed event -> ButtonEvent(event_type='down', button='left', time=1763601402.6970034)
+[2025-11-20 10:17:27] GROUPER: Unprocessed event -> KeyboardEvent(ctrl down)
+[2025-11-20 10:17:27] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763601402.9166446)
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Type: 'v'
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:27] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:27] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Shortcut: Ctrl + V
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:30] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:30] GROUPER: Unprocessed event -> ButtonEvent(event_type='down', button='left', time=1763601402.6970034)
+[2025-11-20 10:17:30] GROUPER: Unprocessed event -> KeyboardEvent(ctrl down)
+[2025-11-20 10:17:30] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763601402.9166446)
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Type: 'v'
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:30] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:30] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Shortcut: Ctrl + V
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:17:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:17:42] Partial playback started (actions 11 to 18)...
+[2025-11-20 10:17:42] Player: Executing high-level double-click.
+[2025-11-20 10:17:46] Playback finished.
+[2025-11-20 10:35:31] Recording started in absolute mode...
+[2025-11-20 10:35:34] Event: ButtonEvent(event_type='down', button='left', time=1763602534.0035646)
+[2025-11-20 10:35:34] Event: ButtonEvent(event_type='up', button='left', time=1763602534.1460798)
+[2025-11-20 10:35:34] Event: ButtonEvent(event_type='double', button='left', time=1763602534.2108579)
+[2025-11-20 10:35:34] Event: ButtonEvent(event_type='up', button='left', time=1763602534.3652358)
+[2025-11-20 10:35:34] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 10:35:34] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 10:35:35] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 10:35:35] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 10:35:36] Event: ButtonEvent(event_type='down', button='left', time=1763602536.128905)
+[2025-11-20 10:35:36] Event: ButtonEvent(event_type='up', button='left', time=1763602536.3552096)
+[2025-11-20 10:35:36] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 10:35:36] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 10:35:36] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 10:35:36] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 10:35:37] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-20 10:35:37] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 10:35:37] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 10:35:38] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-20 10:35:38] Event: ButtonEvent(event_type='down', button='left', time=1763602538.9634972)
+[2025-11-20 10:35:39] Event: ButtonEvent(event_type='up', button='left', time=1763602539.1801229)
+[2025-11-20 10:35:39] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-20 10:35:39] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-20 10:35:39] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-20 10:35:39] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-20 10:35:40] Event: ButtonEvent(event_type='down', button='left', time=1763602540.458428)
+[2025-11-20 10:35:40] Event: ButtonEvent(event_type='up', button='left', time=1763602540.591888)
+[2025-11-20 10:35:40] Event: ButtonEvent(event_type='double', button='left', time=1763602540.6461935)
+[2025-11-20 10:35:40] Event: ButtonEvent(event_type='up', button='left', time=1763602540.8163915)
+[2025-11-20 10:35:42] Event: ButtonEvent(event_type='down', button='left', time=1763602542.6329975)
+[2025-11-20 10:35:42] Event: ButtonEvent(event_type='up', button='left', time=1763602542.78121)
+[2025-11-20 10:35:42] Event: ButtonEvent(event_type='double', button='left', time=1763602542.840704)
+[2025-11-20 10:35:43] Event: ButtonEvent(event_type='up', button='left', time=1763602543.0107486)
+[2025-11-20 10:35:45] Event: ButtonEvent(event_type='down', button='left', time=1763602545.1832426)
+[2025-11-20 10:35:45] Event: ButtonEvent(event_type='up', button='left', time=1763602545.337161)
+[2025-11-20 10:35:45] Event: ButtonEvent(event_type='double', button='left', time=1763602545.3941715)
+[2025-11-20 10:35:45] Event: ButtonEvent(event_type='up', button='left', time=1763602545.4986672)
+[2025-11-20 10:35:45] Event: ButtonEvent(event_type='double', button='left', time=1763602545.5615742)
+[2025-11-20 10:35:45] Event: ButtonEvent(event_type='up', button='left', time=1763602545.7166574)
+[2025-11-20 10:35:47] Event: ButtonEvent(event_type='down', button='left', time=1763602547.2900834)
+[2025-11-20 10:35:47] Recording stopped.
+[2025-11-20 10:35:47] Recorded 501 events.
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:35:47] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Shortcut: Ctrl + V
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Type: 'left windowsv'
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Shortcut: Left ctrl + V
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:35:47] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:35:47] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:35:47] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:35:47] GROUPER: Mutating previous Double Click to Triple Click.
+[2025-11-20 10:35:47] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:35:47] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='down', button='left', time=1763602547.2900834)
+[2025-11-20 10:35:49] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-20 10:35:51] Player: Executing high-level double-click.
+[2025-11-20 10:35:57] Player: Executing high-level double-click.
+[2025-11-20 10:36:00] Player: Executing high-level double-click.
+[2025-11-20 10:36:02] Player: Executing high-level triple-click.
+[2025-11-20 10:36:04] Playback finished.
+[2025-11-20 10:36:09] Recording started in absolute mode...
+[2025-11-20 10:36:12] Event: ButtonEvent(event_type='down', button='left', time=1763602572.5291889)
+[2025-11-20 10:36:12] Event: ButtonEvent(event_type='up', button='left', time=1763602572.6922286)
+[2025-11-20 10:36:12] Event: ButtonEvent(event_type='double', button='left', time=1763602572.7651975)
+[2025-11-20 10:36:12] Event: ButtonEvent(event_type='up', button='left', time=1763602572.9194798)
+[2025-11-20 10:36:13] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 10:36:14] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 10:36:14] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 10:36:14] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 10:36:15] Event: ButtonEvent(event_type='down', button='left', time=1763602575.0748858)
+[2025-11-20 10:36:15] Event: ButtonEvent(event_type='up', button='left', time=1763602575.3017178)
+[2025-11-20 10:36:16] Event: ButtonEvent(event_type='down', button='left', time=1763602576.3363721)
+[2025-11-20 10:36:16] Event: ButtonEvent(event_type='up', button='left', time=1763602576.5533292)
+[2025-11-20 10:36:17] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 10:36:17] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 10:36:18] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-20 10:36:18] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 10:36:18] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 10:36:18] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-20 10:36:22] Event: ButtonEvent(event_type='down', button='left', time=1763602582.3519733)
+[2025-11-20 10:36:22] Event: ButtonEvent(event_type='up', button='left', time=1763602582.5719857)
+[2025-11-20 10:36:22] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-20 10:36:22] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-20 10:36:22] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-20 10:36:22] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-20 10:36:24] Event: ButtonEvent(event_type='down', button='left', time=1763602584.0938675)
+[2025-11-20 10:36:24] Event: ButtonEvent(event_type='up', button='left', time=1763602584.3137314)
+[2025-11-20 10:36:24] Recording stopped.
+[2025-11-20 10:36:24] Recorded 315 events.
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:36:24] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Type: 'v'
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Type: 'left windowsv'
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Shortcut: Left ctrl + V
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:36:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:36:25] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-20 10:36:28] Player: Executing high-level double-click.
+[2025-11-20 10:36:40] Playback finished.
+[2025-11-20 10:39:51] Recording started in absolute mode...
+[2025-11-20 10:39:52] Event: ButtonEvent(event_type='down', button='left', time=1763602792.4072862)
+[2025-11-20 10:39:52] Event: ButtonEvent(event_type='up', button='left', time=1763602792.6279225)
+[2025-11-20 10:39:53] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-20 10:39:53] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 10:39:53] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 10:39:53] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-20 10:39:54] Event: ButtonEvent(event_type='down', button='left', time=1763602794.4449859)
+[2025-11-20 10:39:54] Event: ButtonEvent(event_type='up', button='left', time=1763602794.6731977)
+[2025-11-20 10:39:54] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-20 10:39:54] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-20 10:39:54] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-20 10:39:54] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-20 10:39:56] Event: ButtonEvent(event_type='down', button='left', time=1763602796.317514)
+[2025-11-20 10:39:56] Event: ButtonEvent(event_type='up', button='left', time=1763602796.5375614)
+[2025-11-20 10:39:56] Recording stopped.
+[2025-11-20 10:39:56] Recorded 187 events.
+[2025-11-20 10:39:56] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:39:56] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:39:56] GROUPER: Finalized action -> Type: 'left windowsv'
+[2025-11-20 10:39:56] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:39:56] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:39:56] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 10:39:56] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 10:39:57] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-20 10:40:03] Playback finished.
+[2025-11-20 11:23:16] Recording started in absolute mode...
+[2025-11-20 11:23:17] Event: ButtonEvent(event_type='down', button='left', time=1763605397.0994272)
+[2025-11-20 11:23:17] Event: ButtonEvent(event_type='up', button='left', time=1763605397.328232)
+[2025-11-20 11:23:17] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 11:23:17] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 11:23:19] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:23:20] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 11:23:20] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:23:20] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 11:23:21] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 11:23:21] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 11:23:21] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:23:21] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 11:23:21] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:23:21] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 11:23:23] Event: ButtonEvent(event_type='down', button='left', time=1763605403.2671807)
+[2025-11-20 11:23:23] Event: ButtonEvent(event_type='up', button='left', time=1763605403.4100835)
+[2025-11-20 11:23:23] Event: ButtonEvent(event_type='double', button='left', time=1763605403.4796562)
+[2025-11-20 11:23:23] Event: ButtonEvent(event_type='up', button='left', time=1763605403.6376092)
+[2025-11-20 11:23:23] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:23:24] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 11:23:24] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 11:23:24] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:23:25] Event: ButtonEvent(event_type='down', button='left', time=1763605405.1535451)
+[2025-11-20 11:23:25] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:23:25] Event: ButtonEvent(event_type='up', button='left', time=1763605405.3784647)
+[2025-11-20 11:23:25] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 11:23:25] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:23:25] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 11:23:26] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-20 11:23:27] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 11:23:27] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-20 11:23:27] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 11:23:28] Event: ButtonEvent(event_type='down', button='left', time=1763605408.5446815)
+[2025-11-20 11:23:28] Event: ButtonEvent(event_type='up', button='left', time=1763605408.7664785)
+[2025-11-20 11:23:28] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-20 11:23:28] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-20 11:23:28] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-20 11:23:28] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-20 11:23:30] Event: ButtonEvent(event_type='down', button='left', time=1763605410.439383)
+[2025-11-20 11:23:30] Event: ButtonEvent(event_type='up', button='left', time=1763605410.6690369)
+[2025-11-20 11:23:30] Recording stopped.
+[2025-11-20 11:23:30] Recorded 377 events.
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Type: 'tab'
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Shortcut: Ctrl + C + Tab
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 11:23:30] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 11:23:30] GROUPER: Filtered orphaned event -> KeyboardEvent(ctrl down)
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Type: 'c'
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:23:30] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='down', button='left', time=1763605405.1535451)
+[2025-11-20 11:23:30] GROUPER: Filtered orphaned event -> KeyboardEvent(ctrl down)
+[2025-11-20 11:23:30] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763605405.3784647)
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Type: 'v'
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Type: 'left windowsv'
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:23:30] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 11:23:33] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-20 11:23:40] Player: Executing high-level double-click.
+[2025-11-20 11:23:47] Playback finished.
+[2025-11-20 11:23:50] Recording started in absolute mode...
+[2025-11-20 11:23:52] Event: ButtonEvent(event_type='down', button='left', time=1763605432.280597)
+[2025-11-20 11:23:52] Event: ButtonEvent(event_type='up', button='left', time=1763605432.5053456)
+[2025-11-20 11:23:54] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:23:54] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 11:23:54] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:23:54] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 11:23:54] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 11:23:54] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 11:23:56] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:23:56] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 11:23:56] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:23:56] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 11:23:58] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 11:23:58] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 11:23:59] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 11:23:59] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 11:23:59] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:23:59] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 11:24:00] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:24:00] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 11:24:01] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 11:24:01] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 11:24:02] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 11:24:02] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 11:24:02] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 11:24:02] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 11:24:04] Event: ButtonEvent(event_type='down', button='left', time=1763605444.263458)
+[2025-11-20 11:24:04] Event: ButtonEvent(event_type='up', button='left', time=1763605444.491092)
+[2025-11-20 11:24:04] Recording stopped.
+[2025-11-20 11:24:04] Recorded 233 events.
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Shortcut: Ctrl + C + Tab
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Type: 'tab'
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Shortcut: Ctrl + C + Tab
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Type: 'tab'
+[2025-11-20 11:24:04] GROUPER: Filtered orphaned event -> KeyboardEvent(ctrl down)
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Type: 'c'
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 11:24:04] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:22:28] Recording started in absolute mode...
+[2025-11-20 12:22:29] Event: ButtonEvent(event_type='down', button='left', time=1763608949.6308107)
+[2025-11-20 12:22:29] Event: ButtonEvent(event_type='up', button='left', time=1763608949.8568523)
+[2025-11-20 12:22:30] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 12:22:30] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 12:22:31] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 12:22:31] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 12:22:31] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 12:22:31] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 12:22:32] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 12:22:32] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 12:22:32] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 12:22:33] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 12:22:33] KeyboardEvent(name='tab', scan_code=15, event_type=down)
+[2025-11-20 12:22:33] KeyboardEvent(name='tab', scan_code=15, event_type=up)
+[2025-11-20 12:22:34] Event: ButtonEvent(event_type='down', button='left', time=1763608954.7451665)
+[2025-11-20 12:22:34] Event: ButtonEvent(event_type='up', button='left', time=1763608954.9729028)
+[2025-11-20 12:22:34] Recording stopped.
+[2025-11-20 12:22:34] Recorded 199 events.
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:22:34] GROUPER: Splitting sequence at c (multiple non-modifiers)
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Shortcut: Ctrl + Tab
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Type: 'c'
+[2025-11-20 12:22:34] GROUPER: Splitting sequence at tab (multiple non-modifiers)
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Type: 'tab'
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:22:34] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:31:58] Recording started in absolute mode...
+[2025-11-20 12:31:59] Event: ButtonEvent(event_type='down', button='left', time=1763609519.9844096)
+[2025-11-20 12:32:00] Event: ButtonEvent(event_type='up', button='left', time=1763609520.2131078)
+[2025-11-20 12:32:00] Event: ButtonEvent(event_type='down', button='left', time=1763609520.9840674)
+[2025-11-20 12:32:01] Event: ButtonEvent(event_type='up', button='left', time=1763609521.1115873)
+[2025-11-20 12:32:01] Event: ButtonEvent(event_type='double', button='left', time=1763609521.1746185)
+[2025-11-20 12:32:01] Event: ButtonEvent(event_type='up', button='left', time=1763609521.3306293)
+[2025-11-20 12:32:01] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 12:32:01] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-20 12:32:01] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 12:32:01] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-20 12:32:02] Event: ButtonEvent(event_type='down', button='left', time=1763609522.5261078)
+[2025-11-20 12:32:02] Event: ButtonEvent(event_type='up', button='left', time=1763609522.7477221)
+[2025-11-20 12:32:02] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-20 12:32:02] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 12:32:03] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-20 12:32:03] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 12:32:04] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-20 12:32:04] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 12:32:04] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-20 12:32:04] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 12:32:05] Event: ButtonEvent(event_type='down', button='left', time=1763609525.744432)
+[2025-11-20 12:32:05] Event: ButtonEvent(event_type='up', button='left', time=1763609525.965598)
+[2025-11-20 12:32:05] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-20 12:32:06] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-20 12:32:06] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-20 12:32:06] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-20 12:32:07] Event: ButtonEvent(event_type='down', button='left', time=1763609527.630872)
+[2025-11-20 12:32:07] Event: ButtonEvent(event_type='up', button='left', time=1763609527.852024)
+[2025-11-20 12:32:07] Recording stopped.
+[2025-11-20 12:32:07] Recorded 227 events.
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:32:07] GROUPER: Mutating previous click to Double Click.
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Shortcut: Ctrl + V
+[2025-11-20 12:32:07] GROUPER: Splitting sequence at v (multiple non-modifiers)
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Type: 'left windows'
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Type: 'v'
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:32:07] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:32:09] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-20 12:32:11] Player: Executing high-level double-click.
+[2025-11-20 12:32:18] Playback finished.
+[2025-11-20 12:35:35] Recording started in absolute mode...
+[2025-11-20 12:35:36] Event: ButtonEvent(event_type='down', button='left', time=1763609736.2953186)
+[2025-11-20 12:35:36] Event: ButtonEvent(event_type='up', button='left', time=1763609736.5229223)
+[2025-11-20 12:35:37] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-20 12:35:37] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 12:35:37] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-20 12:35:37] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 12:35:38] Event: ButtonEvent(event_type='down', button='left', time=1763609738.841737)
+[2025-11-20 12:35:39] Event: ButtonEvent(event_type='up', button='left', time=1763609739.061329)
+[2025-11-20 12:35:39] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-20 12:35:39] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-20 12:35:39] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-20 12:35:39] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-20 12:35:40] Event: ButtonEvent(event_type='down', button='left', time=1763609740.198037)
+[2025-11-20 12:35:40] Event: ButtonEvent(event_type='up', button='left', time=1763609740.4190648)
+[2025-11-20 12:35:40] Recording stopped.
+[2025-11-20 12:35:40] Recorded 189 events.
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Shortcut: Left windows + V
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:40] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:35:51] Recording started in absolute mode...
+[2025-11-20 12:35:52] Event: ButtonEvent(event_type='down', button='left', time=1763609752.5122883)
+[2025-11-20 12:35:52] Event: ButtonEvent(event_type='up', button='left', time=1763609752.7367885)
+[2025-11-20 12:35:53] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-20 12:35:53] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-20 12:35:54] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-20 12:35:54] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-20 12:35:55] Event: ButtonEvent(event_type='down', button='left', time=1763609755.103503)
+[2025-11-20 12:35:55] Event: ButtonEvent(event_type='up', button='left', time=1763609755.3308723)
+[2025-11-20 12:35:55] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-20 12:35:55] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-20 12:35:55] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-20 12:35:55] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-20 12:35:57] Event: ButtonEvent(event_type='down', button='left', time=1763609757.0117226)
+[2025-11-20 12:35:57] Event: ButtonEvent(event_type='up', button='left', time=1763609757.231306)
+[2025-11-20 12:35:57] Recording stopped.
+[2025-11-20 12:35:57] Recorded 205 events.
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Shortcut: Left windows + V
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Move
+[2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-20 12:35:58] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-20 12:36:04] Playback finished.

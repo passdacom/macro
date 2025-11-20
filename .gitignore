@@ -15,6 +15,10 @@ dist/
 
 # Temporary files
 _temp_*.py
+fix_*.py
+update_version_*.py
+win_key_fix.py
+modifier_fix.py
 *.tmp
 *.log
 macro_log.txt

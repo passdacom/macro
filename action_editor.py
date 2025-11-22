@@ -22,6 +22,14 @@ class ActionEditorWindow(tk.Toplevel):
 
         self._setup_ui()
 
+        # Center window on parent
+        self.update_idletasks()
+        width = self.winfo_width()
+        height = self.winfo_height()
+        x = parent.winfo_x() + (parent.winfo_width() // 2) - (width // 2)
+        y = parent.winfo_y() + (parent.winfo_height() // 2) - (height // 2)
+        self.geometry(f"+{x}+{y}")
+
     def _setup_ui(self):
         self.geometry("") # Reset geometry to let widgets determine size
 
@@ -37,7 +45,6 @@ class ActionEditorWindow(tk.Toplevel):
             # For interleaved events, calculate delay from the start of the previous action
             prev_action_start_time = self.macro_data['events'][prev_action.indices[0]][0]
             self.current_delay = self.macro_data['events'][self.action.indices[0]][0] - prev_action_start_time
-
         ttk.Label(time_frame, text=label_text).pack(side="left", padx=5, pady=5)
         self.delay_var = tk.StringVar(value=f"{self.current_delay:.4f}")
         time_entry = ttk.Entry(time_frame, textvariable=self.delay_var, width=15)

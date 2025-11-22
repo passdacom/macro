@@ -533,3 +533,494 @@
 [2025-11-20 12:35:57] GROUPER: Finalized action -> Mouse Click (left)
 [2025-11-20 12:35:58] Playback started (repeating 1 times at 1.0x speed)...
 [2025-11-20 12:36:04] Playback finished.
+[2025-11-22 15:02:04] Recording started in absolute mode...
+[2025-11-22 15:02:05] Event: ButtonEvent(event_type='down', button='left', time=1763791325.0313845)
+[2025-11-22 15:02:05] Event: ButtonEvent(event_type='up', button='left', time=1763791325.2567308)
+[2025-11-22 15:02:05] KeyboardEvent(name='r', scan_code=19, event_type=down)
+[2025-11-22 15:02:05] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-22 15:02:05] KeyboardEvent(name='r', scan_code=19, event_type=up)
+[2025-11-22 15:02:05] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-22 15:02:05] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-22 15:02:06] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-22 15:02:06] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-22 15:02:06] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-22 15:02:06] KeyboardEvent(name='right alt', scan_code=56, event_type=down)
+[2025-11-22 15:02:06] KeyboardEvent(name='right alt', scan_code=56, event_type=up)
+[2025-11-22 15:02:06] KeyboardEvent(name='r', scan_code=19, event_type=down)
+[2025-11-22 15:02:06] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-22 15:02:06] KeyboardEvent(name='r', scan_code=19, event_type=up)
+[2025-11-22 15:02:06] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-22 15:02:06] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-22 15:02:06] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-22 15:02:06] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-22 15:02:07] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-22 15:02:07] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-11-22 15:02:07] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-11-22 15:02:07] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-11-22 15:02:07] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-11-22 15:02:07] KeyboardEvent(name='r', scan_code=19, event_type=down)
+[2025-11-22 15:02:07] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-22 15:02:07] KeyboardEvent(name='r', scan_code=19, event_type=up)
+[2025-11-22 15:02:07] KeyboardEvent(name='s', scan_code=31, event_type=down)
+[2025-11-22 15:02:07] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-22 15:02:07] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-22 15:02:07] KeyboardEvent(name='s', scan_code=31, event_type=up)
+[2025-11-22 15:02:07] KeyboardEvent(name='e', scan_code=18, event_type=down)
+[2025-11-22 15:02:07] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-22 15:02:08] KeyboardEvent(name='k', scan_code=37, event_type=down)
+[2025-11-22 15:02:08] KeyboardEvent(name='e', scan_code=18, event_type=up)
+[2025-11-22 15:02:08] KeyboardEvent(name='k', scan_code=37, event_type=up)
+[2025-11-22 15:02:08] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-11-22 15:02:08] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-11-22 15:02:10] Event: ButtonEvent(event_type='down', button='left', time=1763791330.1034622)
+[2025-11-22 15:02:10] Event: ButtonEvent(event_type='up', button='left', time=1763791330.3289893)
+[2025-11-22 15:02:10] Recording stopped.
+[2025-11-22 15:02:10] Recorded 162 events.
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at k (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'r'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at s (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'k'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at k (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 's'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at right alt (modifier after non-modifier)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'k'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at k (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Shortcut: Right alt + R
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at s (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'k'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at k (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 's'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at enter (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'k'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at enter (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'enter'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at r (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'enter'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at k (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'r'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at s (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'k'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at k (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 's'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at e (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'k'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at k (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'e'
+[2025-11-22 15:02:10] GROUPER: Splitting sequence at enter (multiple non-modifiers)
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'k'
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Type: 'enter'
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:10] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:02:11] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:02:17] Playback finished.
+[2025-11-22 15:02:38] Recording started in absolute mode...
+[2025-11-22 15:02:38] Event: ButtonEvent(event_type='down', button='left', time=1763791358.794244)
+[2025-11-22 15:02:39] Event: ButtonEvent(event_type='up', button='left', time=1763791359.0222664)
+[2025-11-22 15:02:39] Event: ButtonEvent(event_type='double', button='left', time=1763791359.4394312)
+[2025-11-22 15:02:39] Event: ButtonEvent(event_type='up', button='left', time=1763791359.660531)
+[2025-11-22 15:02:40] Event: ButtonEvent(event_type='down', button='left', time=1763791360.8388975)
+[2025-11-22 15:02:41] Event: ButtonEvent(event_type='up', button='left', time=1763791361.649817)
+[2025-11-22 15:02:41] Event: ButtonEvent(event_type='double', button='left', time=1763791361.847817)
+[2025-11-22 15:02:42] Event: ButtonEvent(event_type='up', button='left', time=1763791362.0641603)
+[2025-11-22 15:02:42] Event: ButtonEvent(event_type='down', button='left', time=1763791362.7982695)
+[2025-11-22 15:02:42] Event: ButtonEvent(event_type='up', button='left', time=1763791362.9414275)
+[2025-11-22 15:02:42] Event: ButtonEvent(event_type='double', button='left', time=1763791362.999465)
+[2025-11-22 15:02:43] Event: ButtonEvent(event_type='up', button='left', time=1763791363.17058)
+[2025-11-22 15:02:43] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-22 15:02:43] KeyboardEvent(name='c', scan_code=46, event_type=down)
+[2025-11-22 15:02:43] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-22 15:02:43] KeyboardEvent(name='c', scan_code=46, event_type=up)
+[2025-11-22 15:02:43] Event: ButtonEvent(event_type='down', button='left', time=1763791363.9930089)
+[2025-11-22 15:02:44] Event: ButtonEvent(event_type='up', button='left', time=1763791364.2148228)
+[2025-11-22 15:02:44] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-11-22 15:02:44] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-11-22 15:02:44] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-11-22 15:02:44] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-11-22 15:02:44] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-22 15:02:44] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-22 15:02:44] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-22 15:02:44] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-22 15:02:46] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-22 15:02:46] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-22 15:02:46] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-22 15:02:46] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-22 15:02:50] Event: ButtonEvent(event_type='down', button='left', time=1763791370.461263)
+[2025-11-22 15:02:50] Event: ButtonEvent(event_type='up', button='left', time=1763791370.6775615)
+[2025-11-22 15:02:50] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-22 15:02:50] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-22 15:02:50] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-22 15:02:50] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-22 15:02:52] Event: ButtonEvent(event_type='down', button='left', time=1763791372.6294367)
+[2025-11-22 15:02:52] Event: ButtonEvent(event_type='up', button='left', time=1763791372.851331)
+[2025-11-22 15:02:52] Recording stopped.
+[2025-11-22 15:02:52] Recorded 483 events.
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='double', button='left', time=1763791359.4394312)
+[2025-11-22 15:02:52] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763791359.660531)
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Drag (left)
+[2025-11-22 15:02:52] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='double', button='left', time=1763791361.847817)
+[2025-11-22 15:02:52] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763791362.0641603)
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:02:52] GROUPER: Mutating previous click to Double Click.
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Shortcut: Ctrl + C
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:02:52] GROUPER: Splitting sequence at enter (multiple non-modifiers)
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Type: 'enter'
+[2025-11-22 15:02:52] GROUPER: Splitting sequence at ctrl (modifier after non-modifier)
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Type: 'enter'
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Shortcut: Ctrl + V
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Shortcut: Left windows + V
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:02:52] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:02:54] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:02:57] Player: Executing high-level drag.
+[2025-11-22 15:02:59] Player: Executing high-level double-click.
+[2025-11-22 15:03:09] Playback finished.
+[2025-11-22 15:03:15] Recording started in absolute mode...
+[2025-11-22 15:03:16] Event: ButtonEvent(event_type='down', button='left', time=1763791396.8565722)
+[2025-11-22 15:03:17] Event: ButtonEvent(event_type='up', button='left', time=1763791397.0779626)
+[2025-11-22 15:03:18] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-11-22 15:03:18] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-11-22 15:03:18] KeyboardEvent(name='enter', scan_code=28, event_type=down)
+[2025-11-22 15:03:18] KeyboardEvent(name='enter', scan_code=28, event_type=up)
+[2025-11-22 15:03:18] KeyboardEvent(name='left windows', scan_code=91, event_type=down)
+[2025-11-22 15:03:18] KeyboardEvent(name='v', scan_code=47, event_type=down)
+[2025-11-22 15:03:18] KeyboardEvent(name='left windows', scan_code=91, event_type=up)
+[2025-11-22 15:03:18] KeyboardEvent(name='v', scan_code=47, event_type=up)
+[2025-11-22 15:03:20] Event: ButtonEvent(event_type='down', button='left', time=1763791400.3777676)
+[2025-11-22 15:03:20] Event: ButtonEvent(event_type='up', button='left', time=1763791400.5956824)
+[2025-11-22 15:03:20] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=down)
+[2025-11-22 15:03:20] KeyboardEvent(name='v', scan_code=-86, event_type=down)
+[2025-11-22 15:03:20] KeyboardEvent(name='v', scan_code=-86, event_type=up)
+[2025-11-22 15:03:20] KeyboardEvent(name='left ctrl', scan_code=-162, event_type=up)
+[2025-11-22 15:03:22] Event: ButtonEvent(event_type='down', button='left', time=1763791402.2381217)
+[2025-11-22 15:03:22] Event: ButtonEvent(event_type='up', button='left', time=1763791402.456042)
+[2025-11-22 15:03:22] Recording stopped.
+[2025-11-22 15:03:22] Recorded 191 events.
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:03:22] GROUPER: Splitting sequence at enter (multiple non-modifiers)
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Type: 'enter'
+[2025-11-22 15:03:22] GROUPER: Splitting sequence at left windows (modifier after non-modifier)
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Type: 'enter'
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Shortcut: Left windows + V
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:03:22] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:03:23] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:03:31] Playback finished.
+[2025-11-22 15:04:46] Recording started in absolute mode...
+[2025-11-22 15:04:48] Event: ButtonEvent(event_type='down', button='left', time=1763791488.7534397)
+[2025-11-22 15:04:48] Event: ButtonEvent(event_type='up', button='left', time=1763791488.970997)
+[2025-11-22 15:04:49] Event: ButtonEvent(event_type='double', button='left', time=1763791489.4205437)
+[2025-11-22 15:04:49] Event: ButtonEvent(event_type='up', button='left', time=1763791489.641354)
+[2025-11-22 15:04:50] Event: ButtonEvent(event_type='down', button='left', time=1763791490.429666)
+[2025-11-22 15:04:50] Event: ButtonEvent(event_type='up', button='left', time=1763791490.6424437)
+[2025-11-22 15:04:51] Event: ButtonEvent(event_type='down', button='left', time=1763791491.3590229)
+[2025-11-22 15:04:51] Event: ButtonEvent(event_type='up', button='left', time=1763791491.579109)
+[2025-11-22 15:04:51] Recording stopped.
+[2025-11-22 15:04:51] Recorded 147 events.
+[2025-11-22 15:04:51] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:04:51] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:04:51] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:04:51] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='double', button='left', time=1763791489.4205437)
+[2025-11-22 15:04:51] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763791489.641354)
+[2025-11-22 15:04:51] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:04:51] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:04:51] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:04:51] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:05:01] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='double', button='left', time=1763791489.4205437)
+[2025-11-22 15:05:01] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763791489.641354)
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:01] Bulk deleted 139 raw mouse move event(s).
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:01] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='double', button='left', time=1763791489.4205437)
+[2025-11-22 15:05:01] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763791489.641354)
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:02] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:02] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='double', button='left', time=1763791489.4205437)
+[2025-11-22 15:05:02] GROUPER: Filtered orphaned event -> ButtonEvent(event_type='up', button='left', time=1763791489.641354)
+[2025-11-22 15:05:02] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:02] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:13] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:13] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:13] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:13] Bulk edited interval for actions 1-3 to 0.1s
+[2025-11-22 15:05:18] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:18] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:18] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:27] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:27] Bulk edited interval for actions 1-3 to 0.1s
+[2025-11-22 15:05:39] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:39] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:39] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:39] Bulk edited interval for actions 3-3 to 1.0s
+[2025-11-22 15:05:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:48] Bulk edited interval for actions 1-3 to 0.1s
+[2025-11-22 15:05:57] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:57] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:57] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:05:57] Bulk edited interval for actions 2-2 to 0.01s
+[2025-11-22 15:06:02] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:02] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:02] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:02] Bulk edited interval for actions 1-3 to 0.01s
+[2025-11-22 15:06:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:09] Bulk edited interval for actions 1-3 to 99.0s
+[2025-11-22 15:06:14] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:14] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:14] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:18] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:18] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:18] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:06:18] Bulk edited interval for actions 1-3 to 1.0s
+[2025-11-22 15:16:54] Recording started in absolute mode...
+[2025-11-22 15:16:55] Event: ButtonEvent(event_type='down', button='left', time=1763792215.3525136)
+[2025-11-22 15:16:55] Event: ButtonEvent(event_type='up', button='left', time=1763792215.5712717)
+[2025-11-22 15:16:56] Event: ButtonEvent(event_type='down', button='left', time=1763792216.155763)
+[2025-11-22 15:16:56] Event: ButtonEvent(event_type='up', button='left', time=1763792216.3804533)
+[2025-11-22 15:16:56] Event: ButtonEvent(event_type='down', button='left', time=1763792216.999434)
+[2025-11-22 15:16:57] Event: ButtonEvent(event_type='up', button='left', time=1763792217.2236845)
+[2025-11-22 15:16:58] Event: ButtonEvent(event_type='down', button='left', time=1763792218.1820457)
+[2025-11-22 15:16:58] Event: ButtonEvent(event_type='up', button='left', time=1763792218.4070652)
+[2025-11-22 15:16:58] Recording stopped.
+[2025-11-22 15:16:58] Recorded 159 events.
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:16:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:01] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:17:05] Playback finished.
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:11] Bulk deleted 151 raw mouse move event(s).
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:11] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:17] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:17] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:17] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:17] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:17] Bulk edited interval for actions 1-4 to 0.5s
+[2025-11-22 15:17:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:24] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:17:24] Bulk edited interval for actions 1-4 to 0.5s
+[2025-11-22 15:18:38] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:38] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:38] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:38] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:41] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:41] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:41] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:41] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:43] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:43] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:43] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:43] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:18:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:18:48] Playback finished.
+[2025-11-22 15:23:12] Recording started in absolute mode...
+[2025-11-22 15:23:13] Event: ButtonEvent(event_type='down', button='left', time=1763792593.1061354)
+[2025-11-22 15:23:13] Event: ButtonEvent(event_type='up', button='left', time=1763792593.3233535)
+[2025-11-22 15:23:13] Event: ButtonEvent(event_type='down', button='left', time=1763792593.8344798)
+[2025-11-22 15:23:14] Event: ButtonEvent(event_type='up', button='left', time=1763792594.0520694)
+[2025-11-22 15:23:14] Event: ButtonEvent(event_type='down', button='left', time=1763792594.5765495)
+[2025-11-22 15:23:14] Event: ButtonEvent(event_type='up', button='left', time=1763792594.7998173)
+[2025-11-22 15:23:15] Event: ButtonEvent(event_type='down', button='left', time=1763792595.6309066)
+[2025-11-22 15:23:15] Event: ButtonEvent(event_type='up', button='left', time=1763792595.8581784)
+[2025-11-22 15:23:15] Recording stopped.
+[2025-11-22 15:23:15] Recorded 153 events.
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:15] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] Bulk deleted 145 raw mouse move event(s).
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:19] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:29] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:29] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:29] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:29] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:29] Bulk edited interval for actions 1-4 to 0.3s
+[2025-11-22 15:23:31] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:23:34] Playback finished.
+[2025-11-22 15:23:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:23:48] Bulk edited interval for actions 1-4 to 1.0s
+[2025-11-22 15:23:51] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:23:57] Playback finished.
+[2025-11-22 15:24:05] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:24:05] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:24:05] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:24:05] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:24:10] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:24:15] Playback finished.
+[2025-11-22 15:30:42] Recording started in absolute mode...
+[2025-11-22 15:30:43] Event: ButtonEvent(event_type='down', button='left', time=1763793043.3034146)
+[2025-11-22 15:30:43] Event: ButtonEvent(event_type='up', button='left', time=1763793043.5321484)
+[2025-11-22 15:30:44] Event: ButtonEvent(event_type='down', button='left', time=1763793044.0335083)
+[2025-11-22 15:30:44] Event: ButtonEvent(event_type='up', button='left', time=1763793044.250876)
+[2025-11-22 15:30:44] Event: ButtonEvent(event_type='down', button='left', time=1763793044.8323884)
+[2025-11-22 15:30:45] Event: ButtonEvent(event_type='up', button='left', time=1763793045.059695)
+[2025-11-22 15:30:45] Event: ButtonEvent(event_type='down', button='left', time=1763793045.6585152)
+[2025-11-22 15:30:45] Event: ButtonEvent(event_type='up', button='left', time=1763793045.884614)
+[2025-11-22 15:30:47] Event: ButtonEvent(event_type='down', button='left', time=1763793047.0366318)
+[2025-11-22 15:30:47] Event: ButtonEvent(event_type='up', button='left', time=1763793047.252189)
+[2025-11-22 15:30:47] Event: ButtonEvent(event_type='down', button='left', time=1763793047.9994721)
+[2025-11-22 15:30:48] Event: ButtonEvent(event_type='up', button='left', time=1763793048.2163446)
+[2025-11-22 15:30:48] Recording stopped.
+[2025-11-22 15:30:48] Recorded 209 events.
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:48] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] Bulk deleted 197 raw mouse move event(s).
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:50] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:58] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:30:58] Bulk edited interval for actions 1-6 to 0.1s
+[2025-11-22 15:31:00] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:31:01] Playback finished.
+[2025-11-22 15:31:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:31:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:31:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:31:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:31:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:31:09] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:31:09] Bulk edited interval for actions 1-6 to 0.5s
+[2025-11-22 15:31:11] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:31:15] Playback finished.
+[2025-11-22 15:31:20] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:31:23] Playback finished.
+[2025-11-22 15:31:40] Macro successfully saved to C:/cli/macro2/1.json
+[2025-11-22 15:37:45] Playing Quick Slot 1: C:/cli/macro2/1.json
+[2025-11-22 15:37:45] Using pre-grouped actions from file.
+[2025-11-22 15:37:45] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:37:48] Playback finished.
+[2025-11-22 15:38:19] Recording started in absolute mode...
+[2025-11-22 15:38:20] Event: ButtonEvent(event_type='down', button='left', time=1763793500.9623406)
+[2025-11-22 15:38:21] Event: ButtonEvent(event_type='up', button='left', time=1763793501.1471875)
+[2025-11-22 15:38:23] Event: ButtonEvent(event_type='down', button='left', time=1763793503.25145)
+[2025-11-22 15:38:23] Event: ButtonEvent(event_type='up', button='left', time=1763793503.4665225)
+[2025-11-22 15:38:23] Recording stopped.
+[2025-11-22 15:38:23] Recorded 253 events.
+[2025-11-22 15:38:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:38:23] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:38:23] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:38:23] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:38:26] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:38:30] Playback finished.
+[2025-11-22 15:38:31] Playing Quick Slot 1: C:/cli/macro2/1.json
+[2025-11-22 15:38:31] Using pre-grouped actions from file.
+[2025-11-22 15:38:31] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:38:34] Playback finished.
+[2025-11-22 15:38:55] Recording started in absolute mode...
+[2025-11-22 15:38:56] Event: ButtonEvent(event_type='down', button='left', time=1763793536.742943)
+[2025-11-22 15:38:56] Event: ButtonEvent(event_type='up', button='left', time=1763793536.9631796)
+[2025-11-22 15:38:57] KeyboardEvent(name='ctrl', scan_code=29, event_type=down)
+[2025-11-22 15:38:57] KeyboardEvent(name='alt', scan_code=56, event_type=down)
+[2025-11-22 15:38:58] KeyboardEvent(name='1', scan_code=2, event_type=down)
+[2025-11-22 15:38:58] Cannot play quick slot while recording or playing.
+[2025-11-22 15:38:58] KeyboardEvent(name='1', scan_code=2, event_type=up)
+[2025-11-22 15:38:58] KeyboardEvent(name='alt', scan_code=56, event_type=up)
+[2025-11-22 15:38:58] KeyboardEvent(name='ctrl', scan_code=29, event_type=up)
+[2025-11-22 15:39:01] Event: ButtonEvent(event_type='down', button='left', time=1763793541.155)
+[2025-11-22 15:39:01] Event: ButtonEvent(event_type='up', button='left', time=1763793541.3836358)
+[2025-11-22 15:39:01] Recording stopped.
+[2025-11-22 15:39:01] Recorded 179 events.
+[2025-11-22 15:39:01] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:39:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:39:01] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:39:01] GROUPER: Finalized action -> Shortcut: Alt + Ctrl + 1
+[2025-11-22 15:39:01] GROUPER: Finalized action -> Mouse Move
+[2025-11-22 15:39:01] GROUPER: Finalized action -> Mouse Click (left)
+[2025-11-22 15:39:02] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:39:08] Playback finished.
+[2025-11-22 15:39:09] Playing Quick Slot 1: C:/cli/macro2/1.json
+[2025-11-22 15:39:09] Using pre-grouped actions from file.
+[2025-11-22 15:39:09] Playback started (repeating 1 times at 1.0x speed)...
+[2025-11-22 15:39:13] Playback finished.

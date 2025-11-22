@@ -133,12 +133,12 @@ class Player:
                                 keyboard.press_and_release(event.scan_code)
                             continue
                         if event.event_type == 'down':
-                            if event.name in ('left windows', 'right windows', 'win'):
+                            if event.name in ('left windows', 'right windows', 'win') or (len(event.name) == 1 and event.name.isdigit()) or event.name.startswith('numpad'):
                                 keyboard.press(event.name)
                             else:
                                 keyboard.press(event.scan_code)
                         elif event.event_type == 'up':
-                            if event.name in ('left windows', 'right windows', 'win'):
+                            if event.name in ('left windows', 'right windows', 'win') or (len(event.name) == 1 and event.name.isdigit()) or event.name.startswith('numpad'):
                                 keyboard.release(event.name)
                             else:
                                 keyboard.release(event.scan_code)

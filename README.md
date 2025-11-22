@@ -1,90 +1,98 @@
-# Advanced Macro Editor v3.1
+# Advanced CLI Macro Editor v3.2
 
-**Advanced Macro Editor**는 키보드와 마우스의 동작을 정밀하게 녹화하고 재생할 수 있는 강력한 윈도우용 매크로 자동화 도구입니다. 단순한 반복 작업부터 복잡한 워크플로우까지 손쉽게 자동화하세요.
+A powerful, cross-platform macro recorder and player with advanced editing capabilities, smart event grouping, and quick slot functionality. Built with Python and Tkinter.
 
-## ✨ 주요 기능
+## ✨ Key Features
 
-### 🎯 정밀한 녹화 및 재생
-- **키보드 & 마우스**: 모든 입력 이벤트를 정확한 타이밍으로 녹화합니다.
-- **스마트 그룹화**: 단순한 이벤트 나열이 아닌, 의미 있는 단위로 동작을 그룹화합니다.
-  - 예: `Mouse Down` + `Mouse Up` → `Click`
-  - 예: `Ctrl` + `C` → `Shortcut: Ctrl+C`
-  - 예: 빠른 클릭 → `Double Click`, `Triple Click`
-- **좌표 모드**: 
-  - **Absolute**: 화면의 절대 좌표를 기준으로 재생 (고정된 UI에 적합)
-  - **Relative**: 현재 마우스 위치를 기준으로 상대적으로 재생 (유동적인 작업에 적합)
+### 1. 🎯 Precision Recording & Playback
+- **Smart Grouping**: Automatically groups raw input events into logical actions (e.g., "Click", "Double Click", "Ctrl+C").
+- **Cross-Platform**: Works seamlessly on Windows, utilizing hardware scan codes for accurate playback.
+- **Win+V Support**: Correctly handles Windows Clipboard History shortcuts.
 
-### 🛠 강력한 편집 기능
-- **액션 편집**: 녹화된 동작을 리스트에서 확인하고 불필요한 동작을 삭제하거나 순서를 변경할 수 있습니다.
-- **속성 수정**: 클릭 좌표, 딜레이 시간 등을 직접 수정할 수 있습니다.
-- **구간 재생 (Partial Playback)**: 전체 매크로 중 특정 구간(예: 10번~20번 동작)만 선택하여 테스트 및 재생할 수 있습니다.
+### 2. ⚡ Macro Quick Slots (New in v3.2)
+- Assign frequently used macros to **Slot 1 ~ Slot 9**.
+- Trigger instantly with global hotkeys: **`Ctrl + Alt + [1-9]`**.
+- Persistent configuration saves your slots between sessions.
 
-### 🚀 고급 편의 기능
-- **Win+V 지원**: 윈도우 클립보드 히스토리(Win+V) 단축키도 완벽하게 녹화 및 재생됩니다.
-- **스마트 키 분리**: 빠르게 타이핑할 때 `Tab`과 `Ctrl+C` 같은 동작이 뭉치지 않고 정확하게 분리됩니다.
-- **비상 중단 (Emergency Stop)**: 매크로 재생 중 문제가 생기면 `ESC` 키를 3번 빠르게 연타하여 즉시 중단할 수 있습니다.
-- **재생 속도 조절**: 0.1배속(느리게)부터 10배속(빠르게)까지 속도를 조절할 수 있습니다.
-- **반복 재생**: 원하는 횟수만큼 매크로를 반복 실행할 수 있습니다.
+### 3. ⏱️ Advanced Editing
+- **Bulk Edit Interval**: Select multiple actions and set a fixed time interval (Start-to-Start) to create perfectly rhythmic macros (e.g., exactly 0.3s apart).
+- **Action Editor**: Fine-tune individual actions, modify delays, and add remarks.
+- **Partial Playback**: Play only a specific range of actions for testing.
+
+### 4. 🛡️ Reliability & Safety
+- **Emergency Stop**: Press `Esc` three times quickly to abort playback.
+- **Recording Confirmation**: Prevents accidental overwriting of unsaved macros.
+- **Log Filtering**: Clean UI logs focused on important events.
 
 ---
 
-## 📖 사용 방법
+## 🚀 Getting Started
 
-### 1. 실행
-- 배포된 `main_v11.exe` 파일을 실행하거나, 소스 코드에서 `python main.py`를 실행합니다.
+### Prerequisites
+- Python 3.8+
+- Windows OS (for full feature support)
 
-### 2. 녹화 (Recording)
-1. **Record** 버튼을 누르거나 단축키 `Ctrl+Alt+F5`를 입력합니다.
-2. 원하는 동작을 수행합니다.
-3. **Stop Record** 버튼을 누르거나 단축키 `Ctrl+Alt+F5`를 다시 입력하여 녹화를 종료합니다.
-   - *팁: 기존 녹화 내용이 있을 때 녹화 버튼을 누르면, 내용을 지울지 저장할지 묻는 확인창이 뜹니다.*
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/passdacom/macro.git
+   cd macro
+   ```
+2. Install dependencies:
+   ```bash
+   pip install keyboard mouse pyinstaller
+   ```
 
-### 3. 재생 (Playback)
-1. **Play** 버튼을 누르거나 단축키 `Ctrl+Alt+F6`를 입력합니다.
-2. 매크로가 실행됩니다.
-3. 실행 중 중단하려면 `Ctrl+Alt+F7` 또는 `ESC` 키를 3번 연타하세요.
-
-### 4. 구간 재생 (Partial Playback)
-- UI 하단의 **Partial Playback** 섹션에서 `From`과 `To`에 동작 번호를 입력합니다.
-- **Play Range** 버튼을 누르면 해당 구간만 실행됩니다.
-
-### 5. 저장 및 불러오기
-- **Save**: 현재 매크로를 JSON 파일로 저장합니다. 그룹화 정보가 함께 저장되어 완벽한 호환성을 보장합니다.
-- **Load**: 저장된 매크로 파일을 불러옵니다. 기존 매크로 뒤에 이어 붙일 수도 있습니다 (Append).
-
----
-
-## ⌨️ 단축키 (Global Hotkeys)
-
-| 기능 | 단축키 | 설명 |
-|------|--------|------|
-| **녹화 시작/중지** | `Ctrl + Alt + F5` | 녹화를 시작하거나 종료합니다. |
-| **재생 시작** | `Ctrl + Alt + F6` | 전체 매크로를 재생합니다. |
-| **재생 중지** | `Ctrl + Alt + F7` | 실행 중인 매크로를 즉시 중단합니다. |
-| **비상 중단** | `ESC` (3연타) | 0.5초 내에 ESC를 3번 누르면 강제 종료됩니다. |
-
----
-
-## 📦 설치 및 빌드
-
-### 요구 사항
-- Windows 10/11
-- Python 3.x (소스 코드 실행 시)
-
-### 소스 코드 실행
+### Running the App
 ```bash
-git clone https://github.com/passdacom/macro.git
-cd macro
-pip install -r requirements.txt
 python main.py
 ```
 
-### 실행 파일 빌드 (PyInstaller)
+### Building Executable (Optional)
+To create a standalone `.exe` file:
 ```bash
-pyinstaller --onefile --windowed --name main_v11 --icon=NONE main.py
+pyinstaller --onefile --windowed --name main_v3.2 --icon=NONE main.py
 ```
 
 ---
 
-## 📝 라이선스
-이 프로젝트는 MIT 라이선스를 따릅니다. 자유롭게 수정하고 배포할 수 있습니다.
+## 📖 Usage Guide
+
+### 1. Recording
+- Click **Record** or press `Ctrl + Alt + F5`.
+- Perform your actions.
+- Click **Stop Record** or press `Ctrl + Alt + F5` again.
+
+### 2. Editing
+- **Delete**: Select actions and click "Delete Selected".
+- **Bulk Edit**: Select multiple actions -> Click "Bulk Edit Interval" -> Enter seconds (e.g., `0.5`).
+- **Detail Edit**: Double-click an action to edit its specific properties.
+
+### 3. Quick Slots
+1. Go to the **Quick Slots** tab.
+2. Click **Load** on a slot (e.g., Slot 1) and select a `.json` macro file.
+3. Press `Ctrl + Alt + 1` anywhere to play that macro.
+
+### 4. Saving & Loading
+- **File > Save Macro** to save your work as a `.json` file.
+- **File > Load Macro** to open existing macros.
+
+---
+
+## 🛠️ Technical Details
+
+### Event Grouping Logic (`event_grouper.py`)
+- Uses a heuristic algorithm to merge raw `down`/`up` events into high-level actions.
+- Handles complex scenarios like `Tab` + `Ctrl+C` sequences by flushing buffers on non-modifier key presses.
+
+### Time Interval Logic
+- **Start-to-Start Interval**: The "Delay from previous" in Bulk Edit refers to the time difference between the *start* of the previous action and the *start* of the current action. This ensures consistent timing regardless of action duration.
+
+### Keyboard Compatibility
+- Uses `scan_code` for most keys to ensure hardware-level accuracy.
+- Uses `name` for special keys (Windows key, Numpad) to handle driver-specific behaviors.
+
+---
+
+## 📜 License
+This project is open source. Feel free to modify and distribute.

@@ -86,7 +86,7 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v3.1")
+        self.root.title("Advanced Macro Editor v3.2")
         self.root.geometry("580x550")
 
         self.is_recording = False
@@ -94,6 +94,9 @@ class AppGUI:
         self.macro_data = {}
         self.visible_actions = []
 
+        self.quick_slots = {}
+        self.load_quick_slots_config()
+        self.register_quick_slot_hotkeys()
         self.key_mapper_manager = KeyMapperManager()
         self.recorder = Recorder(log_callback=self.add_log_message, mapper_manager=self.key_mapper_manager)
         self.player = Player(
@@ -172,8 +175,15 @@ class AppGUI:
         self.partial_play_btn = ttk.Button(partial_frame, text="Play Range", command=self.play_partial)
         self.partial_play_btn.pack(side="left", padx=5)
 
-        editor_frame = ttk.LabelFrame(main_pane, text="Macro Editor")
-        main_pane.add(editor_frame, weight=1)
+        self.notebook = ttk.Notebook(main_pane)
+        main_pane.add(self.notebook, weight=1)
+        
+        editor_frame = ttk.Frame(self.notebook)
+        self.notebook.add(editor_frame, text="Editor")
+        
+        self.quick_slots_frame = ttk.Frame(self.notebook)
+        self.notebook.add(self.quick_slots_frame, text="Quick Slots")
+        self._setup_quick_slots_tab()
 
         self.tree = ttk.Treeview(editor_frame, columns=("No", "Time", "Action", "Details"), show="headings")
         self.tree.heading("No", text="No.")
@@ -196,6 +206,8 @@ class AppGUI:
         self.delete_button.pack(pady=5)
         self.bulk_delete_moves_button = ttk.Button(editor_button_frame, text="Delete All Moves", command=self.bulk_delete_mouse_moves)
         self.bulk_delete_moves_button.pack(pady=5)
+        self.bulk_edit_btn = ttk.Button(editor_button_frame, text="Bulk Edit Interval", command=self.bulk_edit_interval)
+        self.bulk_edit_btn.pack(pady=5)
 
         log_frame = ttk.LabelFrame(main_pane, text="Logs")
         main_pane.add(log_frame, weight=0)
@@ -210,6 +222,10 @@ class AppGUI:
 
     def open_key_mapper(self):
         KeyMapperWindow(self.root, self.key_mapper_manager)
+
+    def _invalidate_grouped_actions(self):
+        if 'grouped_actions' in self.macro_data:
+            del self.macro_data['grouped_actions']
 
     def _populate_treeview(self):
         self.tree.delete(*self.tree.get_children())
@@ -236,6 +252,87 @@ class AppGUI:
         except Exception as e:
             self.add_log_message(f"Error populating editor: {e}")
             messagebox.showerror("Error", f"Failed to display macro actions. The data might be inconsistent.\n\nDetails: {e}")
+
+
+    def bulk_edit_interval(self):
+        selected_items = self.tree.selection()
+        if not selected_items:
+            messagebox.showwarning("No Selection", "Please select actions to edit.")
+            return
+        
+        indices = sorted([self.tree.index(item) for item in selected_items])
+        start_idx = indices[0]
+        end_idx = indices[-1]
+        
+        import tkinter.simpledialog as simpledialog
+        new_interval_str = simpledialog.askstring("Bulk Edit Interval", 
+            f"Enter new delay (seconds) for actions {start_idx+1} to {end_idx+1}:")
+        
+        if new_interval_str is None: return
+        
+        try:
+            new_interval = float(new_interval_str)
+            if new_interval < 0: raise ValueError
+        except ValueError:
+            messagebox.showerror("Invalid Input", "Please enter a valid non-negative number.")
+            return
+            
+        self._invalidate_grouped_actions()
+        self._apply_bulk_interval(start_idx, end_idx, new_interval)
+        self._populate_treeview()
+        self.add_log_message(f"Bulk edited interval for actions {start_idx+1}-{end_idx+1} to {new_interval}s")
+
+    def _apply_bulk_interval(self, start_idx, end_idx, new_interval):
+        self._invalidate_grouped_actions()
+        events = self.macro_data['events']
+        if not self.visible_actions: return
+    
+        # Reconstruct timeline based on Start-to-Start intervals
+        new_start_times = []
+        
+        for i, action in enumerate(self.visible_actions):
+            original_start = events[action.indices[0]][0]
+            
+            if i < start_idx:
+                new_start = original_start
+            elif i <= end_idx:
+                # In range: Start = PrevStart + Interval
+                if i == 0:
+                    new_start = new_interval
+                else:
+                    new_start = new_start_times[i-1] + new_interval
+            else:
+                # After range: Maintain original interval from previous
+                prev_original_start = events[self.visible_actions[i-1].indices[0]][0]
+                original_interval = original_start - prev_original_start
+                new_start = new_start_times[i-1] + original_interval
+            
+            new_start_times.append(new_start)
+                
+        rebuilt_events = []
+        for i, action in enumerate(self.visible_actions):
+            new_start = new_start_times[i]
+            original_start = events[action.indices[0]][0]
+            shift = new_start - original_start
+            
+            for idx in action.indices:
+                t, data = events[idx]
+                import copy
+                new_data = copy.deepcopy(data)
+                new_t = t + shift
+                
+                if 'time' in new_data:
+                    new_data['time'] = new_t
+                
+                if 'obj' in new_data:
+                    try:
+                        new_data['obj'].time = new_t
+                    except:
+                        pass
+                        
+                rebuilt_events.append((new_t, new_data))
+                
+        self.macro_data['events'] = rebuilt_events
 
     def bulk_delete_mouse_moves(self):
         if not self.macro_data.get('events'):
@@ -265,6 +362,7 @@ class AppGUI:
             del self.macro_data['events'][i]
 
         self.add_log_message(f"Bulk deleted {len(indices_to_delete)} raw mouse move event(s).")
+        self._invalidate_grouped_actions()
         self._populate_treeview()
         self.update_button_states()
 
@@ -290,6 +388,7 @@ class AppGUI:
             del self.macro_data['events'][i]
 
         self.add_log_message(f"Deleted {len(raw_indices_to_delete)} raw event(s).")
+        self._invalidate_grouped_actions()
         self._populate_treeview()
         self.update_button_states()
 
@@ -602,7 +701,8 @@ class AppGUI:
             error_message = f"{timestamp} [ERROR] Could not write to log file: {e}"
             self.root.after(0, self._update_log_text, error_message)
 
-        self.root.after(0, self._update_log_text, log_message)
+        if 'Executing high-level' not in message:
+            self.root.after(0, self._update_log_text, log_message)
 
     def _update_log_text(self, message):
         self.log_text.config(state='normal')
@@ -643,5 +743,139 @@ class AppGUI:
             action_index=action_index,
             visible_actions=self.visible_actions,
             macro_data=self.macro_data,
-            on_complete_callback=self._populate_treeview
+            on_complete_callback=self.on_action_edit_complete
         )
+    def on_action_edit_complete(self):
+        self._invalidate_grouped_actions()
+        self._populate_treeview()
+
+    def _setup_quick_slots_tab(self):
+        canvas = tk.Canvas(self.quick_slots_frame)
+        scrollbar = ttk.Scrollbar(self.quick_slots_frame, orient="vertical", command=canvas.yview)
+        scrollable_frame = ttk.Frame(canvas)
+        
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+        
+        canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+        
+        canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+        
+        self.slot_vars = {}
+        for i in range(1, 10):
+            frame = ttk.LabelFrame(scrollable_frame, text=f"Slot {i} (Ctrl+Alt+{i})")
+            frame.pack(fill="x", padx=5, pady=5, expand=True)
+            
+            path_var = tk.StringVar(value=self.quick_slots.get(str(i), ""))
+            self.slot_vars[i] = path_var
+            
+            entry = ttk.Entry(frame, textvariable=path_var, state="readonly")
+            entry.pack(side="left", fill="x", expand=True, padx=5)
+            
+            load_btn = ttk.Button(frame, text="Load", command=lambda idx=i: self.load_quick_slot_file(idx))
+            load_btn.pack(side="left", padx=2)
+            
+            clear_btn = ttk.Button(frame, text="Clear", command=lambda idx=i: self.clear_quick_slot(idx))
+            clear_btn.pack(side="left", padx=2)
+            
+            play_btn = ttk.Button(frame, text="Play", command=lambda idx=i: self.play_quick_slot(idx))
+            play_btn.pack(side="left", padx=2)
+
+    def load_quick_slot_file(self, slot_idx):
+        file_path = filedialog.askopenfilename(
+            defaultextension=".json",
+            filetypes=[("JSON Macro Files", "*.json"), ("All Files", "*.*")]
+        )
+        if file_path:
+            self.quick_slots[str(slot_idx)] = file_path
+            self.slot_vars[slot_idx].set(file_path)
+            self.save_quick_slots_config()
+
+    def clear_quick_slot(self, slot_idx):
+        if str(slot_idx) in self.quick_slots:
+            del self.quick_slots[str(slot_idx)]
+            self.slot_vars[slot_idx].set("")
+            self.save_quick_slots_config()
+
+    def load_quick_slots_config(self):
+        try:
+            with open("quick_slots.json", "r") as f:
+                self.quick_slots = json.load(f)
+        except FileNotFoundError:
+            self.quick_slots = {}
+        except Exception as e:
+            self.add_log_message(f"Error loading quick slots: {e}")
+            self.quick_slots = {}
+
+    def save_quick_slots_config(self):
+        try:
+            with open("quick_slots.json", "w") as f:
+                json.dump(self.quick_slots, f)
+        except Exception as e:
+            self.add_log_message(f"Error saving quick slots: {e}")
+
+    def register_quick_slot_hotkeys(self):
+        for i in range(1, 10):
+            hotkey = f"ctrl+alt+{i}"
+            try:
+                keyboard.add_hotkey(hotkey, lambda idx=i: self.root.after(0, self.play_quick_slot, idx))
+            except Exception as e:
+                self.add_log_message(f"Failed to register hotkey {hotkey}: {e}")
+
+    def play_quick_slot(self, slot_idx):
+        file_path = self.quick_slots.get(str(slot_idx))
+        if not file_path:
+            self.add_log_message(f"Slot {slot_idx} is empty.")
+            return
+        
+        if self.is_recording or self.is_playing:
+            self.add_log_message("Cannot play quick slot while recording or playing.")
+            return
+        
+        self.add_log_message(f"Playing Quick Slot {slot_idx}: {file_path}")
+        
+        # Load and play
+        try:
+            with open(file_path, 'r') as f:
+                loaded_data = json.load(f)
+            
+            new_events = [_deserialize_event(e) for e in loaded_data.get('events', [])]
+            new_events = [e for e in new_events if e is not None]
+            
+            if not new_events:
+                self.add_log_message("Macro file contains no valid events.")
+                return
+            
+            # Update macro_data (replace mode)
+            self.macro_data = {
+                'mode': loaded_data.get('mode', 'absolute'),
+                'origin': loaded_data.get('origin', (0,0)),
+                'events': new_events
+            }
+            
+            # Load grouped actions if available
+            loaded_groups = loaded_data.get('grouped_actions')
+            if loaded_groups:
+                self.macro_data['grouped_actions'] = []
+                for action_dict in loaded_groups:
+                    action = GroupedAction(
+                        type=action_dict['type'],
+                        display_text=action_dict['display_text'],
+                        start_time=action_dict['start_time'],
+                        end_time=action_dict['end_time'],
+                        start_index=action_dict['start_index'],
+                        end_index=action_dict['end_index'],
+                        indices=action_dict['indices'],
+                        details=action_dict.get('details', {})
+                    )
+                    self.macro_data['grouped_actions'].append(action)
+            
+            self._populate_treeview()
+            self.start_playing()
+            
+        except Exception as e:
+            self.add_log_message(f"Error playing quick slot: {e}")

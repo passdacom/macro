@@ -1,0 +1,37 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install keyboard mouse sounddevice numpy pyinstaller
+    
+    - name: Build executable with PyInstaller
+      run: |
+        pyinstaller --onefile --windowed --icon=icon.ico --name="MacroEditor_v6.1" main.py
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MacroEditor-Windows
+        path: dist/MacroEditor_v6.1.exe
+        retention-days: 30

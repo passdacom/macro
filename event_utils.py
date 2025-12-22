@@ -51,7 +51,7 @@ def deserialize_event(event_dict):
     event = None
 
     if event_type == 'keyboard':
-        event = keyboard.KeyboardEvent(event_type=event_dict['event_type'], name=event_dict['name'], scan_code=event_dict['scan_code'])
+        event = keyboard.KeyboardEvent(event_type=event_dict['event_type'], name=event_dict['name'], scan_code=event_dict.get('scan_code', -1))
     elif event_type == 'mouse_move':
         event = mouse.MoveEvent(event_dict['x'], event_dict['y'], event_dict['time'])
     elif event_type == 'mouse_button':
@@ -117,6 +117,10 @@ def remove_redundant_paste_events(events):
             continue
             
         evt_time, evt_data = events[i]
+        if 'obj' not in evt_data:
+            cleaned_events.append(events[i])
+            continue
+            
         evt_obj = evt_data['obj']
         
         # 1. Detect Win+V
@@ -182,3 +186,18 @@ def remove_redundant_paste_events(events):
         cleaned_events.append(events[i])
 
     return cleaned_events
+
+import ctypes
+
+def get_pixel_color(x, y):
+    hdc = ctypes.windll.user32.GetDC(0)
+    color = ctypes.windll.gdi32.GetPixel(hdc, x, y)
+    ctypes.windll.user32.ReleaseDC(0, hdc)
+    # Color is BGR in Windows GDI
+    r = color & 0xFF
+    g = (color >> 8) & 0xFF
+    b = (color >> 16) & 0xFF
+    return (r, g, b)
+
+def rgb_to_hex(rgb):
+    return "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])

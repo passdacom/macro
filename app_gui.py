@@ -13,6 +13,8 @@ import event_utils
 from action_editor import ActionEditorWindow
 from key_mapper_manager import KeyMapperManager
 from key_mapper_gui import KeyMapperWindow
+from import_dialog import ImportDialog
+from help_gui import HelpWindow
 
 def _get_event_obj(event):
     """Helper to extract the event object from a macro data entry."""
@@ -26,6 +28,13 @@ def _is_modifier_or_hotkey(key_name):
 # --- Event Serialization/Deserialization Helpers ---
 def _serialize_event(event_data):
     event_time, data_dict = event_data
+    
+    # Handle Logic Events (Loop, Wait, etc.)
+    if 'logic_type' in data_dict:
+        event_dict = {'time': event_time}
+        event_dict.update(data_dict)
+        return event_dict
+
     event = data_dict['obj']
     pos = data_dict.get('pos')
 
@@ -57,10 +66,16 @@ def _serialize_event(event_data):
     return event_dict
 
 def _deserialize_event(event_dict):
-    event_type = event_dict.get('type')
     event_time = event_dict['time']
-    
     data_dict = {}
+    
+    # Handle Logic Events
+    if 'logic_type' in event_dict:
+        data_dict = event_dict.copy()
+        del data_dict['time']
+        return (event_time, data_dict)
+
+    event_type = event_dict.get('type')
     event = None
 
     if event_type == 'keyboard':
@@ -86,8 +101,8 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v3.2")
-        self.root.geometry("580x550")
+        self.root.title("Advanced Macro Editor v6.0.1")
+        self.root.geometry("650x600")
 
         self.is_recording = False
         self.is_playing = False
@@ -98,6 +113,7 @@ class AppGUI:
         self.load_quick_slots_config()
         self.register_quick_slot_hotkeys()
         self.key_mapper_manager = KeyMapperManager()
+        self.playback_idx_offset = 0
         self.recorder = Recorder(log_callback=self.add_log_message, mapper_manager=self.key_mapper_manager)
         self.player = Player(
             on_finish_callback=self.on_playback_finished, 
@@ -110,10 +126,16 @@ class AppGUI:
 
         menubar = Menu(self.root)
         self.root.config(menu=menubar)
+        self.root.bind('<Control-o>', lambda e: self.load_events(mode='replace'))
         file_menu = Menu(menubar, tearoff=0)
         menubar.add_cascade(label="File", menu=file_menu)
         file_menu.add_command(label="Save Macro", command=self.save_events)
-        file_menu.add_command(label="Load Macro", command=self.load_events)
+        file_menu.add_command(label="Open (Replace)", command=lambda: self.load_events(mode='replace'), accelerator="Ctrl+O")
+        import_menu = Menu(file_menu, tearoff=0)
+        file_menu.add_cascade(label="Import", menu=import_menu)
+        import_menu.add_command(label="Append to End", command=lambda: self.load_events(mode='append'))
+        import_menu.add_command(label="Prepend to Start", command=lambda: self.load_events(mode='prepend'))
+        import_menu.add_command(label="Insert at Selection", command=self.import_at_selection)
         file_menu.add_separator()
         file_menu.add_command(label="Exit", command=self.on_close)
 
@@ -124,6 +146,10 @@ class AppGUI:
 
         tools_menu = Menu(menubar, tearoff=0)
         menubar.add_cascade(label="Tools", menu=tools_menu)
+
+        help_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="Help", menu=help_menu)
+        help_menu.add_command(label="Usage Guide", command=self.open_help)
         tools_menu.add_command(label="Keyboard Mapping...", command=self.open_key_mapper)
 
         main_pane = ttk.PanedWindow(self.root, orient=tk.VERTICAL)
@@ -159,21 +185,53 @@ class AppGUI:
 
         self.always_on_top_var = tk.BooleanVar()
         ttk.Checkbutton(options_frame, text="Always on Top", variable=self.always_on_top_var, command=self.toggle_always_on_top).pack(side="left", padx=(10,0))
+        self.stop_on_sound_var = tk.BooleanVar()
+        ttk.Checkbutton(options_frame, text="Stop on Sound", variable=self.stop_on_sound_var).pack(side="left", padx=(10,0))
+        
+        self.prudent_mode_var = tk.BooleanVar()
+        ttk.Checkbutton(options_frame, text="Prudent Mode", variable=self.prudent_mode_var).pack(side="left", padx=(10,0))
 
-        # Partial playback controls
-        partial_frame = ttk.LabelFrame(top_frame, text="Partial Playback")
-        partial_frame.grid(row=2, column=0, padx=5, pady=5, sticky="ew")
+
+
+        # Bottom Controls (Partial + Import)
+        bottom_controls_frame = ttk.Frame(top_frame)
+        bottom_controls_frame.grid(row=2, column=0, padx=5, pady=5, sticky="ew")
         
-        ttk.Label(partial_frame, text="From:").pack(side="left", padx=5)
+        # Partial Playback (Left)
+        partial_frame = ttk.LabelFrame(bottom_controls_frame, text="Partial Playback")
+        partial_frame.pack(side="left", fill="both", expand=True, padx=(0, 5))
+        
+        ttk.Label(partial_frame, text="From:").pack(side="left", padx=2)
         self.from_var = tk.StringVar(value="1")
-        ttk.Entry(partial_frame, textvariable=self.from_var, width=8).pack(side="left")
+        ttk.Entry(partial_frame, textvariable=self.from_var, width=4).pack(side="left")
         
-        ttk.Label(partial_frame, text="To:").pack(side="left", padx=5)
+        ttk.Label(partial_frame, text="To:").pack(side="left", padx=2)
         self.to_var = tk.StringVar(value="")
-        ttk.Entry(partial_frame, textvariable=self.to_var, width=8).pack(side="left")
+        ttk.Entry(partial_frame, textvariable=self.to_var, width=4).pack(side="left")
         
-        self.partial_play_btn = ttk.Button(partial_frame, text="Play Range", command=self.play_partial)
+        self.partial_play_btn = ttk.Button(partial_frame, text="Play", command=self.play_partial, width=6)
         self.partial_play_btn.pack(side="left", padx=5)
+
+        # Import Macros (Middle)
+        import_frame = ttk.LabelFrame(bottom_controls_frame, text="Import Macros")
+        import_frame.pack(side="left", fill="both", expand=True, padx=(0, 5))
+        
+        ttk.Button(import_frame, text="Append", command=lambda: self.load_events(mode='append'), width=8).pack(side="left", padx=2, pady=5)
+        ttk.Button(import_frame, text="Prepend", command=lambda: self.load_events(mode='prepend'), width=8).pack(side="left", padx=2, pady=5)
+        ttk.Button(import_frame, text="Insert", command=self.import_at_selection, width=8).pack(side="left", padx=2, pady=5)
+
+        # Auto Wait Color (Right)
+        auto_wait_frame = ttk.LabelFrame(bottom_controls_frame, text="Auto Wait Color")
+        auto_wait_frame.pack(side="left", fill="both", expand=True)
+
+        self.auto_wait_var = tk.BooleanVar()
+        self.auto_wait_chk = ttk.Checkbutton(auto_wait_frame, text="Enable", variable=self.auto_wait_var, command=self.toggle_auto_wait_timeout)
+        self.auto_wait_chk.pack(side="left", padx=5, pady=5)
+        
+        ttk.Label(auto_wait_frame, text="Timeout:").pack(side="left", padx=2)
+        self.auto_wait_timeout_var = tk.StringVar(value="5.0")
+        self.auto_wait_timeout_entry = ttk.Entry(auto_wait_frame, textvariable=self.auto_wait_timeout_var, width=4, state="disabled")
+        self.auto_wait_timeout_entry.pack(side="left", padx=2)
 
         self.notebook = ttk.Notebook(main_pane)
         main_pane.add(self.notebook, weight=1)
@@ -185,15 +243,15 @@ class AppGUI:
         self.notebook.add(self.quick_slots_frame, text="Quick Slots")
         self._setup_quick_slots_tab()
 
-        self.tree = ttk.Treeview(editor_frame, columns=("No", "Time", "Action", "Details"), show="headings")
+        self.tree = ttk.Treeview(editor_frame, columns=("No", "Time", "Action", "Remarks"), show="headings")
         self.tree.heading("No", text="No.")
         self.tree.heading("Time", text="Time (s)")
         self.tree.heading("Action", text="Action")
-        self.tree.heading("Details", text="Details")
-        self.tree.column("No", width=40, anchor="center")
-        self.tree.column("Time", width=80, anchor="center")
+        self.tree.heading("Remarks", text="Remarks")
+        self.tree.column("No", width=30, anchor="center")
+        self.tree.column("Time", width=60, anchor="center")
         self.tree.column("Action", width=120)
-        self.tree.column("Details", width=80)
+        self.tree.column("Remarks", width=150)
         tree_scrollbar = ttk.Scrollbar(editor_frame, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=tree_scrollbar.set)
         tree_scrollbar.pack(side="right", fill="y")
@@ -208,6 +266,12 @@ class AppGUI:
         self.bulk_delete_moves_button.pack(pady=5)
         self.bulk_edit_btn = ttk.Button(editor_button_frame, text="Bulk Edit Interval", command=self.bulk_edit_interval)
         self.bulk_edit_btn.pack(pady=5)
+        self.insert_loop_btn = ttk.Button(editor_button_frame, text="Insert Loop", command=self.insert_loop)
+        self.insert_loop_btn.pack(pady=5)
+        self.insert_color_btn = ttk.Button(editor_button_frame, text="Insert Color Wait", command=self.insert_color_wait)
+        self.insert_color_btn.pack(pady=5)
+        self.insert_sound_btn = ttk.Button(editor_button_frame, text="Insert Sound Wait", command=self.insert_sound_wait)
+        self.insert_sound_btn.pack(pady=5)
 
         log_frame = ttk.LabelFrame(main_pane, text="Logs")
         main_pane.add(log_frame, weight=0)
@@ -222,6 +286,12 @@ class AppGUI:
 
     def open_key_mapper(self):
         KeyMapperWindow(self.root, self.key_mapper_manager)
+
+    def toggle_auto_wait_timeout(self):
+        if self.auto_wait_var.get():
+            self.auto_wait_timeout_entry.config(state="normal")
+        else:
+            self.auto_wait_timeout_entry.config(state="disabled")
 
     def _invalidate_grouped_actions(self):
         if 'grouped_actions' in self.macro_data:
@@ -246,7 +316,7 @@ class AppGUI:
                 
                 # Check for remarks in the first event of the action
                 first_event_data = self.macro_data['events'][action.start_index][1]
-                details = first_event_data.get('remarks', f"{len(action.indices)} raw events")
+                details = first_event_data.get('remarks', "")
 
                 self.tree.insert("", "end", iid=i, values=(i + 1, f"{start_time:.2f}", action.display_text, details))
         except Exception as e:
@@ -291,7 +361,7 @@ class AppGUI:
         new_start_times = []
         
         for i, action in enumerate(self.visible_actions):
-            original_start = events[action.indices[0]][0]
+            original_start = action.start_time
             
             if i < start_idx:
                 new_start = original_start
@@ -303,7 +373,7 @@ class AppGUI:
                     new_start = new_start_times[i-1] + new_interval
             else:
                 # After range: Maintain original interval from previous
-                prev_original_start = events[self.visible_actions[i-1].indices[0]][0]
+                prev_original_start = self.visible_actions[i-1].start_time
                 original_interval = original_start - prev_original_start
                 new_start = new_start_times[i-1] + original_interval
             
@@ -312,25 +382,29 @@ class AppGUI:
         rebuilt_events = []
         for i, action in enumerate(self.visible_actions):
             new_start = new_start_times[i]
-            original_start = events[action.indices[0]][0]
+            original_start = action.start_time
             shift = new_start - original_start
             
-            for idx in action.indices:
-                t, data = events[idx]
-                import copy
-                new_data = copy.deepcopy(data)
-                new_t = t + shift
-                
-                if 'time' in new_data:
-                    new_data['time'] = new_t
-                
-                if 'obj' in new_data:
-                    try:
-                        new_data['obj'].time = new_t
-                    except:
-                        pass
+            action.start_time = new_start
+            action.end_time += shift
+
+            if action.indices:
+                for idx in action.indices:
+                    t, data = events[idx]
+                    import copy
+                    new_data = copy.deepcopy(data)
+                    new_t = t + shift
+                    
+                    if 'time' in new_data:
+                        new_data['time'] = new_t
+                    
+                    if 'obj' in new_data:
+                        try:
+                            new_data['obj'].time = new_t
+                        except:
+                            pass
                         
-                rebuilt_events.append((new_t, new_data))
+                    rebuilt_events.append((new_t, new_data))
                 
         self.macro_data['events'] = rebuilt_events
 
@@ -392,6 +466,9 @@ class AppGUI:
         self._populate_treeview()
         self.update_button_states()
 
+    def open_help(self):
+        HelpWindow(self.root)
+
     def on_close(self):
         if self.is_recording:
             self.recorder.stop_recording()
@@ -420,7 +497,14 @@ class AppGUI:
             self.is_recording = True
             self.record_button.config(text="Stop Record (Ctrl+Alt+F5)")
             existing_events = self.macro_data.get('events', []) if is_continuation else None
-            self.recorder.start_recording(self.coord_var.get(), existing_events=existing_events)
+            
+            auto_wait = self.auto_wait_var.get()
+            try:
+                auto_wait_timeout = float(self.auto_wait_timeout_var.get())
+            except ValueError:
+                auto_wait_timeout = 5.0
+
+            self.recorder.start_recording(self.coord_var.get(), existing_events=existing_events, auto_wait=auto_wait, auto_wait_timeout=auto_wait_timeout)
         else:
             self.is_recording = False
             self.record_button.config(text="Record (Ctrl+Alt+F5)")
@@ -432,6 +516,7 @@ class AppGUI:
                 if events and not is_continuation:
                     start_filter_time = events[0][0]
                     for idx, (evt_time, evt_data) in enumerate(events):
+                        if 'obj' not in evt_data: continue
                         evt_obj = evt_data['obj']
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
                            _is_modifier_or_hotkey(evt_obj.name) and \
@@ -444,6 +529,7 @@ class AppGUI:
                     end_filter_time = events[-1][0]
                     for idx in range(len(events) - 1, -1, -1):
                         evt_time, evt_data = events[idx]
+                        if 'obj' not in evt_data: continue
                         evt_obj = evt_data['obj']
                         if isinstance(evt_obj, keyboard.KeyboardEvent) and \
                            _is_modifier_or_hotkey(evt_obj.name) and \
@@ -463,6 +549,8 @@ class AppGUI:
         self.update_button_states()
 
     def start_continue_recording(self):
+        if not messagebox.askyesno("Continue Recording", "Do you want to continue recording from the end of the current macro?"):
+            return
         self.toggle_recording(is_continuation=True)
 
     def start_playing(self):
@@ -478,9 +566,10 @@ class AppGUI:
             self.add_log_message("Invalid repeat count or speed.")
             return
         self.is_playing = True
+        self.playback_idx_offset = 0
         self.update_button_states()
         self.add_log_message(f"Playback started (repeating {repeat_count} times at {speed_multiplier}x speed)...")
-        self.player.play_events(self.macro_data, repeat_count, speed_multiplier)
+        self.player.play_events(self.macro_data, repeat_count, speed_multiplier, stop_on_sound=self.stop_on_sound_var.get(), prudent_mode=self.prudent_mode_var.get())
 
 
     def play_partial(self):
@@ -521,9 +610,10 @@ class AppGUI:
             speed_multiplier = float(self.speed_spinbox.get())
             
             self.is_playing = True
+            self.playback_idx_offset = from_idx
             self.update_button_states()
             self.add_log_message(f"Partial playback started (actions {from_idx+1} to {to_idx+1})...")
-            self.player.play_events(partial_macro, repeat_count, speed_multiplier)
+            self.player.play_events(partial_macro, repeat_count, speed_multiplier, stop_on_sound=self.stop_on_sound_var.get(), prudent_mode=self.prudent_mode_var.get())
             
         except ValueError:
             messagebox.showerror("Invalid Input", "Please enter valid numbers.")
@@ -556,10 +646,80 @@ class AppGUI:
     def toggle_always_on_top(self):
         self.root.attributes("-topmost", self.always_on_top_var.get())
 
+    def _get_clean_data(self):
+        """
+        Regenerates the events list based on visible actions only.
+        Returns (clean_events, clean_actions)
+        """
+        if not self.visible_actions:
+            return [], []
+
+        clean_events = []
+        clean_actions = []
+        
+        current_idx = 0
+        import copy
+        
+        for action in self.visible_actions:
+            # Create a copy of the action to avoid modifying the current view in-place immediately
+            new_action = copy.deepcopy(action)
+            
+            new_indices = []
+            
+            # Extract events for this action
+            for old_idx in action.indices:
+                if 0 <= old_idx < len(self.macro_data['events']):
+                    event = self.macro_data['events'][old_idx]
+                    clean_events.append(event)
+                    new_indices.append(current_idx)
+                    current_idx += 1
+            
+            if new_indices:
+                new_action.indices = new_indices
+                new_action.start_index = new_indices[0]
+                new_action.end_index = new_indices[-1]
+                clean_actions.append(new_action)
+        
+        # Normalization: Shift all events so the first event starts at 0.0
+        if clean_events:
+            start_offset = clean_events[0][0]
+            if start_offset > 0:
+                normalized_events = []
+                for t, data in clean_events:
+                    new_t = t - start_offset
+                    # Update logic event time if present
+                    if 'time' in data:
+                        data['time'] = new_t # This might be redundant if data is just a dict, but safe
+                    
+                    # Update object time if possible (for completeness, though serialization uses tuple time)
+                    if 'obj' in data:
+                        try:
+                            data['obj'].time = new_t
+                        except:
+                            pass
+                            
+                    normalized_events.append((new_t, data))
+                clean_events = normalized_events
+                
+                # We also need to update the start/end times in clean_actions
+                for action in clean_actions:
+                    action.start_time -= start_offset
+                    action.end_time -= start_offset
+
+        return clean_events, clean_actions
+
     def save_events(self):
         if not self.macro_data.get('events'):
             self.add_log_message("No macro data to save.")
             return
+            
+        # Clean data (Garbage Collection)
+        clean_events, clean_actions = self._get_clean_data()
+        self.macro_data['events'] = clean_events
+        self.macro_data['grouped_actions'] = clean_actions
+        self.visible_actions = clean_actions
+        self._populate_treeview()
+        
         file_path = filedialog.asksaveasfilename(defaultextension=".json", filetypes=[("JSON Macro Files", "*.json"), ("All Files", "*.*")] )
         if not file_path:
             return
@@ -593,26 +753,24 @@ class AppGUI:
         except Exception as e:
             self.add_log_message(f"Error saving file: {e}")
 
-    def load_events(self):
+    def _show_context_menu(self, event):
+        item = self.tree.identify_row(event.y)
+        if item:
+            self.tree.selection_set(item)
+            self.context_menu.post(event.x_root, event.y_root)
+
+    def import_at_selection(self):
+        selected = self.tree.selection()
+        if not selected:
+            messagebox.showinfo("Info", "Please select an action to insert after.")
+            return
+        idx = self.tree.index(selected[0])
+        self.load_events(mode='insert', target_index=idx + 1)
+
+    def load_events(self, mode='replace', target_index=None):
         if self.is_recording or self.is_playing:
             self.add_log_message("Cannot load macro while recording or playing.")
             return
-
-        load_mode = 'replace' # Default to replace
-        if self.macro_data.get('events'):
-            # In Korean: "기존 매크로가 있습니다. 불러온 매크로를 뒤에 추가하시겠습니까?\n\n(Yes=추가, No=새로 쓰기)"
-            # Translation: "An existing macro is present. Would you like to append the new macro?\n\n(Yes=Append, No=Overwrite)"
-            user_choice = messagebox.askyesnocancel(
-                "Confirm Load", 
-                "기존 매크로가 있습니다. 불러온 매크로를 뒤에 추가하시겠습니까?\n\n(Yes=추가, No=새로 쓰기)"
-            )
-            if user_choice is None: # Cancel
-                self.add_log_message("Load operation cancelled.")
-                return
-            elif user_choice is True: # Yes -> Append
-                load_mode = 'append'
-            else: # No -> Replace
-                load_mode = 'replace'
 
         file_path = filedialog.askopenfilename(
             defaultextension=".json",
@@ -632,52 +790,159 @@ class AppGUI:
                 self.add_log_message("Loaded macro file contains no valid events.")
                 return
 
-            if load_mode == 'append':
-                old_events = self.macro_data.get('events', [])
-                if old_events:
-                    last_timestamp = old_events[-1][0] if old_events else 0
-                    # Add a 1-second delay between the end of the old macro and the start of the new one.
-                    time_offset = last_timestamp + 1.0 
-                    first_new_timestamp = new_events[0][0]
-                    adjustment = time_offset - first_new_timestamp
-                    
-                    adjusted_new_events = [(t + adjustment, e) for t, e in new_events]
-                    self.macro_data['events'].extend(adjusted_new_events)
-                    self.add_log_message(f"Appended {len(adjusted_new_events)} events from {file_path}")
-                else:
-                    # If old_events is empty, 'append' is the same as 'replace'
-                    self.macro_data = {
-                        'mode': loaded_data.get('mode', 'absolute'),
-                        'origin': loaded_data.get('origin', (0,0)),
-                        'events': new_events
-                    }
-                    # Load grouped actions if available (for perfect compatibility)
-                    loaded_groups = loaded_data.get('grouped_actions')
-                    if loaded_groups:
-                        self.macro_data['grouped_actions'] = []
-                        for action_dict in loaded_groups:
-                            action = GroupedAction(
-                                type=action_dict['type'],
-                                display_text=action_dict['display_text'],
-                                start_time=action_dict['start_time'],
-                                end_time=action_dict['end_time'],
-                                start_index=action_dict['start_index'],
-                                end_index=action_dict['end_index'],
-                                indices=action_dict['indices'],
-                                details=action_dict.get('details', {})
-                            )
-                            self.macro_data['grouped_actions'].append(action)
-                    self.add_log_message(f"Macro successfully loaded from {file_path}")
+            # Load grouped actions for the new macro
+            new_groups = []
+            loaded_groups_data = loaded_data.get('grouped_actions')
+            if loaded_groups_data:
+                for action_dict in loaded_groups_data:
+                    action = GroupedAction(
+                        type=action_dict['type'],
+                        display_text=action_dict['display_text'],
+                        start_time=action_dict['start_time'],
+                        end_time=action_dict['end_time'],
+                        start_index=action_dict['start_index'],
+                        end_index=action_dict['end_index'],
+                        indices=action_dict['indices'],
+                        details=action_dict.get('details', {})
+                    )
+                    new_groups.append(action)
+            else:
+                # If no groups in file, group them now
+                new_groups = event_grouper.group_events(new_events)
 
-            else: # 'replace'
+            # Determine Import Mode
+            current_events = self.macro_data.get('events', [])
+            if not current_events:
+                mode = 'replace'
+            
+            action_insert_idx = 0
+            if mode == 'insert':
+                if target_index is not None:
+                    action_insert_idx = target_index
+                else:
+                    # Fallback if called without index (shouldn't happen with new UI)
+                    action_insert_idx = len(self.visible_actions)
+
+            # Execute Import Logic
+            if mode == 'replace':
+                # Normalize timestamps for backward compatibility
+                if new_events:
+                    start_offset = new_events[0][0]
+                    if start_offset > 0:
+                        # Shift events
+                        normalized_events = []
+                        for t, data in new_events:
+                            new_t = t - start_offset
+                            if 'obj' in data and hasattr(data['obj'], 'time'):
+                                try: data['obj'].time = new_t
+                                except: pass
+                            normalized_events.append((new_t, data))
+                        new_events = normalized_events
+                        
+                        # Shift groups
+                        for g in new_groups:
+                            g.start_time -= start_offset
+                            g.end_time -= start_offset
+
                 self.macro_data = {
                     'mode': loaded_data.get('mode', 'absolute'),
                     'origin': loaded_data.get('origin', (0,0)),
-                    'events': new_events
+                    'events': new_events,
+                    'grouped_actions': new_groups
                 }
-                self.add_log_message(f"Macro successfully loaded from {file_path}")
+                self.add_log_message(f"Replaced macro with {file_path}")
 
-            self.add_log_message(f"Total events: {len(self.macro_data.get('events', []))}.")
+            else:
+                # Prepare segments
+                current_groups = self.macro_data.get('grouped_actions', [])
+                if not current_groups and current_events:
+                     current_groups = event_grouper.group_events(current_events)
+
+                # Calculate split point (event index)
+                if mode == 'prepend':
+                    split_event_idx = 0
+                    split_group_idx = 0
+                elif mode == 'append':
+                    split_event_idx = len(current_events)
+                    split_group_idx = len(current_groups)
+                else: # insert
+                    if action_insert_idx >= len(current_groups):
+                        split_event_idx = len(current_events)
+                        split_group_idx = len(current_groups)
+                    elif action_insert_idx == 0:
+                        split_event_idx = 0
+                        split_group_idx = 0
+                    else:
+                        prev_action = current_groups[action_insert_idx - 1]
+                        split_event_idx = prev_action.end_index + 1
+                        split_group_idx = action_insert_idx
+
+                events_before = current_events[:split_event_idx]
+                events_after = current_events[split_event_idx:]
+                groups_before = current_groups[:split_group_idx]
+                groups_after = current_groups[split_group_idx:]
+
+                # 1. Adjust New Events (Shift timestamps)
+                # Start time for new events should be: (end of before) + 1.0
+                start_time_new = 0.0
+                if events_before:
+                    start_time_new = events_before[-1][0] + 1.0
+
+                # Shift new events to start at 0 first (normalize), then add start_time_new
+                if new_events:
+                    first_new_t = new_events[0][0]
+                    shifted_new_events = []
+                    for t, e in new_events:
+                        new_t = (t - first_new_t) + start_time_new
+                        # Update event object time if possible
+                        if 'obj' in e and hasattr(e['obj'], 'time'):
+                            try: e['obj'].time = new_t
+                            except: pass
+                        shifted_new_events.append((new_t, e))
+                    new_events = shifted_new_events
+
+                # 2. Adjust After Events (Shift timestamps)
+                # Start time for after events should be: (end of new) + 1.0
+                start_time_after = start_time_new
+                if new_events:
+                    start_time_after = new_events[-1][0] + 1.0
+
+                if events_after:
+                    first_after_t = events_after[0][0]
+                    shifted_after_events = []
+                    for t, e in events_after:
+                        new_t = (t - first_after_t) + start_time_after
+                        if 'obj' in e and hasattr(e['obj'], 'time'):
+                            try: e['obj'].time = new_t
+                            except: pass
+                        shifted_after_events.append((new_t, e))
+                    events_after = shifted_after_events
+
+                # 3. Merge Events
+                merged_events = events_before + new_events + events_after
+
+                # 4. Update Group Indices
+                # New groups need to be shifted by len(events_before)
+                offset_new = len(events_before)
+                for g in new_groups:
+                    g.start_index += offset_new
+                    g.end_index += offset_new
+                    g.indices = [i + offset_new for i in g.indices]
+
+                # After groups need to be shifted by len(new_events)
+                offset_after = len(new_events)
+                for g in groups_after:
+                    g.start_index += offset_after
+                    g.end_index += offset_after
+                    g.indices = [i + offset_after for i in g.indices]
+
+                merged_groups = groups_before + new_groups + groups_after
+
+                self.macro_data['events'] = merged_events
+                self.macro_data['grouped_actions'] = merged_groups
+                self.add_log_message(f"Imported macro (Mode: {mode}) from {file_path}")
+
+            self._invalidate_grouped_actions() # Actually we just built them, but safe to refresh
             self._populate_treeview()
             self.update_button_states()
 
@@ -689,7 +954,6 @@ class AppGUI:
             self.add_log_message(f"Error: The macro file is invalid or incompatible. Missing key: {e}")
         except Exception as e:
             self.add_log_message(f"An unexpected error occurred: {e}")
-
     def add_log_message(self, message):
         timestamp = time.strftime("[%Y-%m-%d %H:%M:%S]")
         log_message = f"{timestamp} {message}"
@@ -711,7 +975,8 @@ class AppGUI:
         self.log_text.see(tk.END)
 
     def highlight_playing_action(self, action_index):
-        self.root.after(0, self._update_highlight, action_index)
+        real_idx = action_index + self.playback_idx_offset
+        self.root.after(0, self._update_highlight, real_idx)
 
     def _update_highlight(self, action_index):
         for item in self.tree.selection():
@@ -879,3 +1144,134 @@ class AppGUI:
             
         except Exception as e:
             self.add_log_message(f"Error playing quick slot: {e}")
+
+    def insert_loop(self):
+        selected_items = self.tree.selection()
+        if not selected_items:
+            messagebox.showwarning("No Selection", "Please select actions to wrap in a loop.")
+            return
+        
+        import tkinter.simpledialog as simpledialog
+        count = simpledialog.askinteger("Loop Count", "Enter loop count (0 for infinite):", minvalue=0, initialvalue=1)
+        if count is None: return
+        
+        # Get indices
+        indices = sorted([self.tree.index(item) for item in selected_items])
+        start_action_idx = indices[0]
+        end_action_idx = indices[-1]
+        
+        start_action = self.visible_actions[start_action_idx]
+        end_action = self.visible_actions[end_action_idx]
+        
+        raw_start_idx = start_action.indices[0]
+        raw_end_idx = end_action.indices[-1]
+        
+        # Create Logic Events
+        start_event = (start_action.start_time, {'logic_type': 'loop_start', 'count': count})
+        end_event = (end_action.end_time, {'logic_type': 'loop_end'})
+        
+        # Insert into macro_data['events']
+        # Insert End first to not mess up Start index
+        self.macro_data['events'].insert(raw_end_idx + 1, end_event)
+        self.macro_data['events'].insert(raw_start_idx, start_event)
+        
+        self._invalidate_grouped_actions()
+        self._populate_treeview()
+        self.add_log_message(f"Inserted Loop (Count: {count}) around actions {start_action_idx+1}-{end_action_idx+1}")
+
+    def insert_color_wait(self):
+        messagebox.showinfo("Color Picker", "Move mouse to target pixel and press 'C' to capture.")
+        self.root.withdraw()
+        self.picking_color = True
+        self._check_color_pick_key()
+
+    def _check_color_pick_key(self):
+        if not getattr(self, 'picking_color', False): return
+        
+        if keyboard.is_pressed('c'):
+            self.picking_color = False
+            # Wait for key release to avoid repeated triggers
+            while keyboard.is_pressed('c'):
+                time.sleep(0.05)
+                
+            x, y = mouse.get_position()
+            rgb = event_utils.get_pixel_color(x, y)
+            hex_color = event_utils.rgb_to_hex(rgb)
+            
+            self._finish_color_pick(x, y, hex_color)
+        else:
+            self.root.after(50, self._check_color_pick_key)
+
+    def _finish_color_pick(self, x, y, hex_color):
+        self.root.deiconify()
+        
+        import tkinter.simpledialog as simpledialog
+        timeout = simpledialog.askinteger("Timeout", f"Captured {hex_color} at ({x}, {y}).\nEnter timeout in seconds:", minvalue=1, initialvalue=10)
+        if timeout is None: return
+        
+        # Insert Logic Event
+        selected_items = self.tree.selection()
+        if selected_items:
+            idx = self.tree.index(selected_items[-1])
+            action = self.visible_actions[idx]
+            if action.indices:
+                insert_idx = action.indices[-1] + 1
+            else:
+                insert_idx = action.start_index
+        else:
+            insert_idx = len(self.macro_data['events'])
+            
+        # Calculate appropriate timestamp (relative)
+        if insert_idx > 0:
+            prev_time = self.macro_data['events'][insert_idx - 1][0]
+            new_time = prev_time + 0.1
+        else:
+            new_time = 0.0
+
+        event = (new_time, {'logic_type': 'wait_color', 'x': x, 'y': y, 'target_hex': hex_color, 'timeout': timeout})
+        self.macro_data['events'].insert(insert_idx, event)
+        
+        self._invalidate_grouped_actions()
+        self._populate_treeview()
+        self.add_log_message(f"Inserted Wait Color ({hex_color}) at ({x}, {y})")
+
+    def insert_sound_wait(self):
+        try:
+            import sounddevice as sd
+            import numpy as np
+        except ImportError:
+            messagebox.showerror("Missing Library", "Please install 'sounddevice' and 'numpy' to use this feature.\npip install sounddevice numpy")
+            return
+            
+        import tkinter.simpledialog as simpledialog
+        threshold = simpledialog.askfloat("Sound Threshold", "Enter volume threshold (0.0 - 1.0):", minvalue=0.0, maxvalue=1.0, initialvalue=0.1)
+        if threshold is None: return
+        
+        timeout = simpledialog.askinteger("Timeout", "Enter timeout in seconds:", minvalue=1, initialvalue=10)
+        if timeout is None: return
+        
+        # Insert Logic Event
+        selected_items = self.tree.selection()
+        if selected_items:
+            idx = self.tree.index(selected_items[-1])
+            action = self.visible_actions[idx]
+            if action.indices:
+                insert_idx = action.indices[-1] + 1
+            else:
+                insert_idx = action.start_index
+        else:
+            insert_idx = len(self.macro_data['events'])
+            
+        # Calculate appropriate timestamp (relative)
+        if insert_idx > 0:
+            prev_time = self.macro_data['events'][insert_idx - 1][0]
+            new_time = prev_time + 0.1
+        else:
+            new_time = 0.0
+
+        event = (new_time, {'logic_type': 'wait_sound', 'threshold': threshold, 'timeout': timeout})
+        self.macro_data['events'].insert(insert_idx, event)
+        
+        self._invalidate_grouped_actions()
+        self._populate_treeview()
+        self.add_log_message(f"Inserted Wait Sound (Threshold: {threshold})")

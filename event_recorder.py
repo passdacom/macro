@@ -2,6 +2,7 @@ import time
 import threading
 import keyboard
 import mouse
+import event_utils
 
 NUMPAD_SCAN_CODES = {
     79: {'name': '1', 'scan_code': 2},
@@ -29,7 +30,10 @@ class Recorder:
         self.coordinate_mode = 'absolute'
         self.keyboard_hook = None
         self.mouse_hook = None
+        self.mouse_hook = None
         self.button_to_ignore_up = None
+        self.auto_wait = False
+        self.auto_wait_timeout = 5.0
 
     def _record_event(self, event):
         if not self.recording:
@@ -59,14 +63,31 @@ class Recorder:
 
         pos = mouse.get_position() if isinstance(event, mouse.ButtonEvent) else None
         event_to_store = {'obj': event, 'pos': pos}
+        if isinstance(event, mouse.ButtonEvent) and event.event_type == 'down' and event.button == 'left':
+            if self.auto_wait:
+                # Capture color for Auto-Wait
+                try:
+                    color = event_utils.get_pixel_color(pos[0], pos[1])
+                    hex_color = event_utils.rgb_to_hex(color)
+                    event_to_store['auto_wait'] = {
+                        'target_hex': hex_color,
+                        'x': pos[0],
+                        'y': pos[1],
+                        'timeout': self.auto_wait_timeout
+                    }
+                    self.log_callback(f"Auto-Wait captured: {hex_color} at {pos}")
+                except Exception as e:
+                    self.log_callback(f"Failed to capture color: {e}")
+
         self.new_events.append((event_time, event_to_store))
 
-        if not isinstance(event, mouse.MoveEvent):
-            if isinstance(event, keyboard.KeyboardEvent):
-                log_msg = f"KeyboardEvent(name='{event.name}', scan_code={event.scan_code}, event_type={event.event_type})"
-                self.log_callback(log_msg)
-            else:
-                self.log_callback(f"Event: {event}")
+        # Optimization: Disable verbose logging for raw events to improve recording performance
+        # if not isinstance(event, mouse.MoveEvent):
+        #     if isinstance(event, keyboard.KeyboardEvent):
+        #         log_msg = f"KeyboardEvent(name='{event.name}', scan_code={event.scan_code}, event_type={event.event_type})"
+        #         self.log_callback(log_msg)
+        #     else:
+        #         self.log_callback(f"Event: {event}")
 
     def _keyboard_handler(self, event):
         self._record_event(event)
@@ -84,7 +105,7 @@ class Recorder:
         keyboard.unhook(self.keyboard_hook)
         mouse.unhook(self.mouse_hook)
 
-    def start_recording(self, coordinate_mode='absolute', existing_events=None):
+    def start_recording(self, coordinate_mode='absolute', existing_events=None, auto_wait=False, auto_wait_timeout=5.0):
         if self.recording:
             self.log_callback("Already recording.")
             return
@@ -93,8 +114,16 @@ class Recorder:
         self.new_events = []
         self.coordinate_mode = coordinate_mode
         self.button_to_ignore_up = None
+        self.auto_wait = auto_wait
+        self.auto_wait_timeout = auto_wait_timeout
 
         last_timestamp = self.events[-1][0] if self.events else 0
+        
+        # Safety check for invalid timestamps (e.g. negative or epoch)
+        if last_timestamp < 0 or last_timestamp > 1000000000:
+            self.log_callback(f"Warning: Invalid last timestamp ({last_timestamp}). Resetting base time.")
+            last_timestamp = 0
+
         self.start_time = time.time() - last_timestamp
 
         if self.events:

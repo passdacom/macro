@@ -218,6 +218,29 @@ class EventGrouper:
             action_type = 'mouse_drag' if max_dist_sq > DRAG_THRESHOLD_SQUARED else 'mouse_click'
             display_text = f"Mouse Drag ({down_obj.button})" if action_type == 'mouse_drag' else f"Mouse Click ({down_obj.button})"
             action = GroupedAction(type=action_type, display_text=display_text, start_time=self._get_time(self.buffer[0]), end_time=self._get_time(current_event), start_index=self.buffer[0][0], end_index=current_event[0], indices=[e[0] for e in self.buffer], details={'button': down_obj.button, 'start_pos': start_pos, 'end_pos': self._get_pos(current_event)})
+            
+            # Check for Auto-Wait metadata on the Mouse Down event
+            down_evt_data = self.buffer[0][2]
+            if 'auto_wait' in down_evt_data and action_type == 'mouse_click':
+                aw_data = down_evt_data['auto_wait']
+                wait_action = GroupedAction(
+                    type='wait_color',
+                    display_text=f"Auto Wait Color ({aw_data['target_hex']})",
+                    start_time=action.start_time,
+                    end_time=action.start_time,
+                    start_index=action.start_index,
+                    end_index=action.start_index,
+                    indices=[],
+                    details={
+                        'target_hex': aw_data['target_hex'],
+                        'x': aw_data['x'],
+                        'y': aw_data['y'],
+                        'timeout': aw_data['timeout'],
+                        'post_delay': 0
+                    }
+                )
+                self._finalize_action(wait_action)
+
             self._finalize_action(action)
         elif not isinstance(evt_obj, mouse.MoveEvent):
             self._flush_buffer()
@@ -280,6 +303,35 @@ class EventGrouper:
         for i, evt_time, evt_data in self.raw_events:
             if i in self.processed_indices: continue
             current_event = (i, evt_time, evt_data)
+            # Check for Logic Event
+            if 'logic_type' in evt_data:
+                self._flush_buffer()
+                
+                display_text = f"Logic: {evt_data['logic_type']}"
+                if evt_data['logic_type'] == 'loop_start':
+                    count = evt_data.get('count', 0)
+                    display_text = f"Loop Start (Count: {count if count > 0 else 'Infinite'})"
+                elif evt_data['logic_type'] == 'loop_end':
+                    display_text = "Loop End"
+                elif evt_data['logic_type'] == 'wait_color':
+                    display_text = f"Wait Color ({evt_data.get('target_hex')} at {evt_data.get('x')},{evt_data.get('y')})"
+                elif evt_data['logic_type'] == 'wait_sound':
+                    display_text = "Wait Sound"
+                    
+                action = GroupedAction(
+                    type=evt_data['logic_type'],
+                    display_text=display_text,
+                    start_time=evt_time,
+                    end_time=evt_time,
+                    start_index=i,
+                    end_index=i,
+                    indices=[i],
+                    details=evt_data
+                )
+                self.actions.append(action)
+                self.processed_indices.add(i)
+                continue
+
             
             if self.buffer and (evt_time - self._get_time(self.buffer[-1])) > HUMAN_PAUSE_THRESHOLD:
                 self._flush_buffer()

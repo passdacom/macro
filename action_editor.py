@@ -30,38 +30,6 @@ class ActionEditorWindow(tk.Toplevel):
         y = parent.winfo_y() + (parent.winfo_height() // 2) - (height // 2)
         self.geometry(f"+{x}+{y}")
 
-import tkinter as tk
-from tkinter import ttk, messagebox
-import time
-import keyboard
-import mouse
-
-def _get_event_obj(event):
-    return event[1]['obj']
-
-class ActionEditorWindow(tk.Toplevel):
-    def __init__(self, parent, action, action_index, visible_actions, macro_data, on_complete_callback):
-        super().__init__(parent)
-        self.action = action
-        self.action_index = action_index
-        self.visible_actions = visible_actions
-        self.macro_data = macro_data
-        self.on_complete = on_complete_callback
-
-        self.title("Edit Action")
-        self.transient(parent)
-        self.grab_set()
-
-        self._setup_ui()
-
-        # Center window on parent
-        self.update_idletasks()
-        width = self.winfo_width()
-        height = self.winfo_height()
-        x = parent.winfo_x() + (parent.winfo_width() // 2) - (width // 2)
-        y = parent.winfo_y() + (parent.winfo_height() // 2) - (height // 2)
-        self.geometry(f"+{x}+{y}")
-
     def _setup_ui(self):
         self.geometry("") # Reset geometry to let widgets determine size
 

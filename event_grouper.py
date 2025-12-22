@@ -1,29 +1,20 @@
-from dataclasses import dataclass, field
+from typing import Callable, Optional
 import time
 from collections import deque
 import keyboard
 import mouse
 
-# --- Configuration Constants ---
-DOUBLE_CLICK_TIME = 0.3  # seconds (reduced from 0.4 for better detection)
-DRAG_THRESHOLD_SQUARED = 10**2  # pixels squared, cheaper than sqrt
-HUMAN_PAUSE_THRESHOLD = 0.3 # Time in seconds to consider an action complete
-MODIFIER_KEYS = {'ctrl', 'alt', 'shift', 'cmd', 'win', 'left ctrl', 'right ctrl', 'left shift', 'right shift', 'left alt', 'right alt', 'left windows', 'right windows'}
-
-# --- Data Class for Actions ---
-@dataclass(kw_only=True)
-class GroupedAction:
-    type: str
-    display_text: str
-    start_time: float
-    end_time: float
-    start_index: int
-    end_index: int
-    indices: list[int] = field(default_factory=list)
-    details: dict = field(default_factory=dict)
-
-    def __repr__(self):
-        return f"Action({self.display_text} @ {self.start_time:.2f}s, {len(self.indices)} events)"
+# Import shared types and constants
+from types_def import (
+    GroupedAction,
+    RawEvent,
+    RawEventList,
+    LogCallback,
+    MODIFIER_KEYS,
+    DOUBLE_CLICK_TIME,
+    DRAG_THRESHOLD_SQUARED,
+    HUMAN_PAUSE_THRESHOLD
+)
 
 # --- Main Grouper Class ---
 class EventGrouper:

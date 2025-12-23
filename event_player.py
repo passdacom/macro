@@ -200,6 +200,36 @@ class Player:
                         idx += 1
                         continue
 
+                    elif action.type == 'if_color_match':
+                        # IF COLOR: Check if pixel matches target color
+                        target_hex = action.details.get('target_hex')
+                        x = action.details.get('x')
+                        y = action.details.get('y')
+                        else_jump_idx = action.details.get('else_jump_idx', idx + 1)
+                        
+                        rgb = event_utils.get_pixel_color(x, y)
+                        current_hex = event_utils.rgb_to_hex(rgb)
+                        
+                        if current_hex.lower() == target_hex.lower():
+                            self.log_callback(f"IF COLOR: Matched {target_hex}! Continuing...")
+                            idx += 1
+                        else:
+                            self.log_callback(f"IF COLOR: Not matched ({current_hex} != {target_hex}). Jumping to ELSE.")
+                            idx = else_jump_idx
+                        continue
+
+                    elif action.type == 'if_color_else':
+                        # ELSE branch: skip to IF_END
+                        end_jump_idx = action.details.get('end_jump_idx', idx + 1)
+                        self.log_callback(f"IF COLOR ELSE: Jumping to END at {end_jump_idx}")
+                        idx = end_jump_idx
+                        continue
+
+                    elif action.type == 'if_color_end':
+                        # IF END: just continue
+                        idx += 1
+                        continue
+
                     # --- Action-Aware Playback Logic (High-Level) ---
                     # Prudent Mode Helper
                     def check_prudent(target_x, target_y):

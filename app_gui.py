@@ -275,6 +275,8 @@ class AppGUI:
         self.insert_color_btn.pack(pady=5)
         self.insert_sound_btn = ttk.Button(editor_button_frame, text="Insert Sound Wait", command=self.insert_sound_wait)
         self.insert_sound_btn.pack(pady=5)
+        self.insert_if_color_btn = ttk.Button(editor_button_frame, text="Insert IF Color", command=self.insert_if_color)
+        self.insert_if_color_btn.pack(pady=5)
 
         log_frame = ttk.LabelFrame(main_pane, text="Logs")
         main_pane.add(log_frame, weight=0)
@@ -1322,3 +1324,121 @@ class AppGUI:
         self._invalidate_grouped_actions()
         self._populate_treeview()
         self.add_log_message(f"Inserted Wait Sound (Threshold: {threshold})")
+
+    def insert_if_color(self):
+        """Insert IF Color block around selected actions"""
+        selected_items = self.tree.selection()
+        if not selected_items:
+            messagebox.showwarning("No Selection", "Please select actions for IF block (True branch).")
+            return
+        
+        # Get the range of selected actions
+        indices = sorted([self.tree.index(item) for item in selected_items])
+        start_action_idx = indices[0]
+        end_action_idx = indices[-1]
+        
+        messagebox.showinfo("Color Picker", 
+            "Move mouse to target pixel and press 'C' to capture.\n\n"
+            "The selected actions will run IF the color matches.\n"
+            "Otherwise, they will be skipped.")
+        
+        self.root.withdraw()
+        self.if_color_selection = (start_action_idx, end_action_idx)
+        self.picking_if_color = True
+        self._check_if_color_pick_key()
+
+    def _check_if_color_pick_key(self):
+        if not getattr(self, 'picking_if_color', False): 
+            return
+        
+        if keyboard.is_pressed('c'):
+            self.picking_if_color = False
+            while keyboard.is_pressed('c'):
+                time.sleep(0.05)
+            
+            x, y = mouse.get_position()
+            rgb = event_utils.get_pixel_color(x, y)
+            hex_color = event_utils.rgb_to_hex(rgb)
+            
+            self._finish_if_color_pick(x, y, hex_color)
+        else:
+            self.root.after(50, self._check_if_color_pick_key)
+
+    def _finish_if_color_pick(self, x, y, hex_color):
+        self.root.deiconify()
+        
+        start_action_idx, end_action_idx = self.if_color_selection
+        start_action = self.visible_actions[start_action_idx]
+        end_action = self.visible_actions[end_action_idx]
+        
+        raw_start_idx = start_action.indices[0] if start_action.indices else start_action.start_index
+        raw_end_idx = end_action.indices[-1] if end_action.indices else end_action.end_index
+        
+        # Calculate jump indices (after insertion)
+        # Structure: [IF_MATCH] [selected actions] [IF_ELSE] [IF_END]
+        # IF matched: execute selected actions, then hit IF_ELSE which jumps to IF_END
+        # IF not matched: jump to IF_ELSE+1 = IF_END
+        
+        num_selected_events = raw_end_idx - raw_start_idx + 1
+        
+        # Create logic events
+        start_time = start_action.start_time
+        end_time = end_action.end_time
+        
+        # IF_MATCH event (at start, before selected actions)
+        if_match_event = (start_time, {
+            'logic_type': 'if_color_match',
+            'x': x, 'y': y, 
+            'target_hex': hex_color,
+            'else_jump_idx': -1  # Will be calculated after regrouping
+        })
+        
+        # IF_ELSE event (after selected actions)
+        if_else_event = (end_time + 0.01, {
+            'logic_type': 'if_color_else',
+            'end_jump_idx': -1  # Will be calculated after regrouping
+        })
+        
+        # IF_END event (at the very end)
+        if_end_event = (end_time + 0.02, {
+            'logic_type': 'if_color_end'
+        })
+        
+        # Insert events (in reverse order to maintain indices)
+        self.macro_data['events'].insert(raw_end_idx + 1, if_end_event)
+        self.macro_data['events'].insert(raw_end_idx + 1, if_else_event)
+        self.macro_data['events'].insert(raw_start_idx, if_match_event)
+        
+        # Now we need to regroup and calculate jump indices
+        self._invalidate_grouped_actions()
+        self._populate_treeview()
+        
+        # Find the IF_MATCH, IF_ELSE, IF_END in grouped actions and set jump indices
+        if_match_idx = None
+        if_else_idx = None
+        if_end_idx = None
+        
+        for i, action in enumerate(self.visible_actions):
+            if action.type == 'if_color_match' and if_match_idx is None:
+                if action.details.get('target_hex') == hex_color:
+                    if_match_idx = i
+            elif action.type == 'if_color_else' and if_else_idx is None and if_match_idx is not None:
+                if_else_idx = i
+            elif action.type == 'if_color_end' and if_end_idx is None and if_else_idx is not None:
+                if_end_idx = i
+                break
+        
+        # Update jump indices in the action details
+        if if_match_idx is not None and if_else_idx is not None:
+            self.visible_actions[if_match_idx].details['else_jump_idx'] = if_else_idx
+            # Also update the event data
+            evt_idx = self.visible_actions[if_match_idx].start_index
+            self.macro_data['events'][evt_idx][1]['else_jump_idx'] = if_else_idx
+        
+        if if_else_idx is not None and if_end_idx is not None:
+            self.visible_actions[if_else_idx].details['end_jump_idx'] = if_end_idx
+            evt_idx = self.visible_actions[if_else_idx].start_index
+            self.macro_data['events'][evt_idx][1]['end_jump_idx'] = if_end_idx
+        
+        self._populate_treeview()
+        self.add_log_message(f"Inserted IF Color ({hex_color}) block around actions {start_action_idx+1}-{end_action_idx+1}")

@@ -308,6 +308,13 @@ class EventGrouper:
                     display_text = f"Wait Color ({evt_data.get('target_hex')} at {evt_data.get('x')},{evt_data.get('y')})"
                 elif evt_data['logic_type'] == 'wait_sound':
                     display_text = "Wait Sound"
+                elif evt_data['logic_type'] == 'if_color_match':
+                    hex_color = evt_data.get('target_hex', '?')
+                    display_text = f"IF Color ({hex_color})"
+                elif evt_data['logic_type'] == 'if_color_else':
+                    display_text = "ELSE"
+                elif evt_data['logic_type'] == 'if_color_end':
+                    display_text = "END IF"
                     
                 action = GroupedAction(
                     type=evt_data['logic_type'],

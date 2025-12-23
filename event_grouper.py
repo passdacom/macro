@@ -315,6 +315,10 @@ class EventGrouper:
                     display_text = "ELSE"
                 elif evt_data['logic_type'] == 'if_color_end':
                     display_text = "END IF"
+                elif evt_data['logic_type'] == 'call_macro':
+                    import os
+                    file_name = os.path.basename(evt_data.get('file_path', 'unknown'))
+                    display_text = f"Call: {file_name}"
                     
                 action = GroupedAction(
                     type=evt_data['logic_type'],

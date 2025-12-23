@@ -277,6 +277,8 @@ class AppGUI:
         self.insert_sound_btn.pack(pady=5)
         self.insert_if_color_btn = ttk.Button(editor_button_frame, text="Insert IF Color", command=self.insert_if_color)
         self.insert_if_color_btn.pack(pady=5)
+        self.insert_call_btn = ttk.Button(editor_button_frame, text="Insert Call Macro", command=self.insert_call_macro)
+        self.insert_call_btn.pack(pady=5)
 
         log_frame = ttk.LabelFrame(main_pane, text="Logs")
         main_pane.add(log_frame, weight=0)
@@ -1442,3 +1444,44 @@ class AppGUI:
         
         self._populate_treeview()
         self.add_log_message(f"Inserted IF Color ({hex_color}) block around actions {start_action_idx+1}-{end_action_idx+1}")
+
+    def insert_call_macro(self):
+        """Insert a call to another macro file (subroutine)"""
+        file_path = filedialog.askopenfilename(
+            title="Select Macro to Call",
+            defaultextension=".json",
+            filetypes=[("JSON Macro Files", "*.json"), ("All Files", "*.*")]
+        )
+        if not file_path:
+            return
+        
+        # Determine insert position
+        selected_items = self.tree.selection()
+        if selected_items:
+            idx = self.tree.index(selected_items[-1])
+            action = self.visible_actions[idx]
+            if action.indices:
+                insert_idx = action.indices[-1] + 1
+            else:
+                insert_idx = action.start_index + 1
+        else:
+            insert_idx = len(self.macro_data['events'])
+        
+        # Calculate timestamp
+        if insert_idx > 0 and insert_idx <= len(self.macro_data['events']):
+            prev_time = self.macro_data['events'][insert_idx - 1][0]
+            new_time = prev_time + 0.1
+        else:
+            new_time = 0.0
+        
+        # Create logic event
+        import os
+        event = (new_time, {
+            'logic_type': 'call_macro',
+            'file_path': file_path
+        })
+        self.macro_data['events'].insert(insert_idx, event)
+        
+        self._invalidate_grouped_actions()
+        self._populate_treeview()
+        self.add_log_message(f"Inserted Call Macro: {os.path.basename(file_path)}")

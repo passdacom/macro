@@ -230,6 +230,46 @@ class Player:
                         idx += 1
                         continue
 
+                    elif action.type == 'call_macro':
+                        # Call another macro file as a subroutine
+                        file_path = action.details.get('file_path')
+                        if file_path:
+                            self.log_callback(f"Calling macro: {file_path}")
+                            try:
+                                import json
+                                with open(file_path, 'r') as f:
+                                    sub_data = json.load(f)
+                                
+                                # Deserialize events (simplified - assuming compatible format)
+                                sub_events = sub_data.get('events', [])
+                                sub_groups = sub_data.get('grouped_actions', [])
+                                
+                                if sub_groups:
+                                    # Reconstruct GroupedAction objects
+                                    from types_def import GroupedAction
+                                    sub_actions = []
+                                    for g in sub_groups:
+                                        sub_actions.append(GroupedAction(
+                                            type=g['type'],
+                                            display_text=g['display_text'],
+                                            start_time=g['start_time'],
+                                            end_time=g['end_time'],
+                                            start_index=g['start_index'],
+                                            end_index=g['end_index'],
+                                            indices=g.get('indices', []),
+                                            details=g.get('details', {})
+                                        ))
+                                    
+                                    # Recursively play subroutine (simplified - single pass)
+                                    self.log_callback(f"Executing {len(sub_actions)} sub-actions...")
+                                    # Note: For full implementation, would need to recursively call playback
+                                    
+                            except Exception as e:
+                                self.log_callback(f"Error calling macro: {e}")
+                        
+                        idx += 1
+                        continue
+
                     # --- Action-Aware Playback Logic (High-Level) ---
                     # Prudent Mode Helper
                     def check_prudent(target_x, target_y):

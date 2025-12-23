@@ -266,75 +266,97 @@ class ActionEditorWindow(tk.Toplevel):
         new_click_type = self.edit_params['click_type'].get()
         new_button_type = self.edit_params['button_type'].get()
         
-        original_event_index = -1
-        original_event_obj = None
+        # Find the first ButtonEvent in this action (down or double)
+        first_btn_event_index = -1
+        first_btn_event_obj = None
+        first_btn_evt_data = None
+        
         for i in self.action.indices:
-            evt = _get_event_obj(self.macro_data['events'][i])
-            if isinstance(evt, mouse.ButtonEvent):
-                original_event_index = i
-                original_event_obj = evt
+            if i >= len(self.macro_data['events']):
+                continue
+            evt_time, evt_data = self.macro_data['events'][i]
+            evt = evt_data.get('obj')
+            if isinstance(evt, mouse.ButtonEvent) and evt.event_type in ['down', 'double']:
+                first_btn_event_index = i
+                first_btn_event_obj = evt
+                first_btn_evt_data = evt_data
                 break
         
-        if original_event_obj is None: return
-
-        original_click_type = "double" if original_event_obj.event_type == 'double' else "single"
-
-        if original_event_obj.button != new_button_type:
+        if first_btn_event_obj is None: 
+            return
+        
+        original_click_type = "double" if first_btn_event_obj.event_type == 'double' else "single"
+        
+        # Update button type for all button events (if changed)
+        if first_btn_event_obj.button != new_button_type:
             for i in self.action.indices:
+                if i >= len(self.macro_data['events']):
+                    continue
                 evt_time, evt_data = self.macro_data['events'][i]
-                evt = evt_data['obj']
+                evt = evt_data.get('obj')
                 if isinstance(evt, mouse.ButtonEvent):
                     new_evt = mouse.ButtonEvent(evt.event_type, new_button_type, evt.time)
                     evt_data['obj'] = new_evt
-
+        
+        # Handle click type conversion
         if original_click_type != new_click_type:
             if new_click_type == 'double':
-                # Single -> Double: Remove the 'up' event and change 'down' to 'double'
-                up_event_index = -1
+                # Single -> Double
+                # 1. Find and collect all 'up' event indices to delete
+                up_indices_to_delete = []
                 for i in self.action.indices:
-                    evt_obj = _get_event_obj(self.macro_data['events'][i])
-                    if isinstance(evt_obj, mouse.ButtonEvent) and evt_obj.event_type == 'up':
-                        up_event_index = i
-                        break
+                    if i >= len(self.macro_data['events']):
+                        continue
+                    evt_time, evt_data = self.macro_data['events'][i]
+                    evt = evt_data.get('obj')
+                    if isinstance(evt, mouse.ButtonEvent) and evt.event_type == 'up':
+                        up_indices_to_delete.append(i)
                 
-                # Adjust original_event_index if up_event comes before it
-                adjusted_original_index = original_event_index
-                if up_event_index != -1:
-                    if up_event_index < original_event_index:
-                        adjusted_original_index = original_event_index - 1
-                    del self.macro_data['events'][up_event_index]
+                # 2. Change 'down' to 'double'
+                first_btn_evt_data['obj'] = mouse.ButtonEvent('double', new_button_type, first_btn_event_obj.time)
                 
-                # Now update the down event to double
-                if adjusted_original_index < len(self.macro_data['events']):
-                    evt_time, evt_data = self.macro_data['events'][adjusted_original_index]
-                    new_evt = mouse.ButtonEvent('double', new_button_type, evt_time)
-                    evt_data['obj'] = new_evt
-                    
-                    # Update action type to reflect the change
-                    self.action.type = 'mouse_double_click'
-                    self.action.display_text = f"Mouse Double Click ({new_button_type})"
-
+                # 3. Delete 'up' events in reverse order (to keep indices valid)
+                for idx in sorted(up_indices_to_delete, reverse=True):
+                    del self.macro_data['events'][idx]
+                
+                # 4. Update action metadata
+                self.action.type = 'mouse_double_click'
+                self.action.display_text = f"Mouse Double Click ({new_button_type})"
+                
+                # 5. Recalculate indices (only keep the double event index)
+                # After deletion, first_btn_event_index may have shifted
+                new_index = first_btn_event_index
+                for deleted_idx in sorted(up_indices_to_delete):
+                    if deleted_idx < first_btn_event_index:
+                        new_index -= 1
+                
+                self.action.indices = [new_index]
+                self.action.start_index = new_index
+                self.action.end_index = new_index
+                
             else:
-                # Double -> Single: Change 'double' to 'down' and add 'up' event
-                evt_time, evt_data = self.macro_data['events'][original_event_index]
-                new_evt = mouse.ButtonEvent('down', new_button_type, evt_time)
-                evt_data['obj'] = new_evt
-
-                down_time = evt_time
-                up_event_time = down_time + 0.05
+                # Double -> Single
+                # 1. Change 'double' to 'down'
+                evt_time = first_btn_event_obj.time
+                first_btn_evt_data['obj'] = mouse.ButtonEvent('down', new_button_type, evt_time)
+                
+                # 2. Insert new 'up' event right after
+                up_event_time = evt_time + 0.05
                 up_event_obj = mouse.ButtonEvent('up', new_button_type, up_event_time)
-                up_event_data = {'obj': up_event_obj, 'pos': evt_data.get('pos')}
+                up_event_data = {'obj': up_event_obj, 'pos': first_btn_evt_data.get('pos')}
                 up_event = (up_event_time, up_event_data)
-                self.macro_data['events'].insert(original_event_index + 1, up_event)
-
-                # Update action type to reflect the change
+                
+                insert_position = first_btn_event_index + 1
+                self.macro_data['events'].insert(insert_position, up_event)
+                
+                # 3. Update action metadata
                 self.action.type = 'mouse_click'
                 self.action.display_text = f"Mouse Click ({new_button_type})"
                 
-                # Shift timestamps of subsequent events
-                for i in range(original_event_index + 2, len(self.macro_data['events'])):
-                    original_time, event_data = self.macro_data['events'][i]
-                    self.macro_data['events'][i] = (original_time + 0.05, event_data)
+                # 4. Update indices to include both down and up
+                self.action.indices = [first_btn_event_index, insert_position]
+                self.action.start_index = first_btn_event_index
+                self.action.end_index = insert_position
 
 
     def _apply_key_edit(self):

@@ -240,7 +240,7 @@ class Player:
                                 with open(file_path, 'r') as f:
                                     sub_data = json.load(f)
                                 
-                                # Deserialize events (simplified - assuming compatible format)
+                                # Deserialize events
                                 sub_events = sub_data.get('events', [])
                                 sub_groups = sub_data.get('grouped_actions', [])
                                 
@@ -260,9 +260,48 @@ class Player:
                                             details=g.get('details', {})
                                         ))
                                     
-                                    # Recursively play subroutine (simplified - single pass)
                                     self.log_callback(f"Executing {len(sub_actions)} sub-actions...")
-                                    # Note: For full implementation, would need to recursively call playback
+                                    
+                                    # Execute each sub-action inline
+                                    for sub_action in sub_actions:
+                                        if self.stop_requested or self.stop_due_to_sound:
+                                            break
+                                        
+                                        # Handle high-level mouse actions
+                                        if sub_action.type in ['mouse_click', 'mouse_double_click']:
+                                            details = sub_action.details
+                                            x = details.get('x', 0)
+                                            y = details.get('y', 0)
+                                            btn = details.get('button', 'left')
+                                            
+                                            mouse.move(x, y)
+                                            time.sleep(0.01)
+                                            
+                                            if sub_action.type == 'mouse_double_click':
+                                                mouse.double_click(btn)
+                                            else:
+                                                mouse.click(btn)
+                                            
+                                            self.log_callback(f"Sub: {sub_action.display_text}")
+                                        
+                                        elif sub_action.type == 'shortcut':
+                                            keys = sub_action.details.get('keys', [])
+                                            if keys:
+                                                keyboard.press_and_release('+'.join(keys))
+                                                self.log_callback(f"Sub: {sub_action.display_text}")
+                                        
+                                        elif sub_action.type == 'typing':
+                                            text = sub_action.details.get('text', '')
+                                            if text:
+                                                keyboard.write(text)
+                                                self.log_callback(f"Sub: {sub_action.display_text}")
+                                        
+                                        # Small delay between sub-actions
+                                        time.sleep(0.05)
+                                    
+                                    self.log_callback(f"Subroutine completed.")
+                                else:
+                                    self.log_callback(f"Warning: No grouped_actions in subroutine file")
                                     
                             except Exception as e:
                                 self.log_callback(f"Error calling macro: {e}")

@@ -101,8 +101,8 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v6.1.0")
-        self.root.geometry("650x600")
+        self.root.title("Advanced Macro Editor v6.2.1")
+        self.root.geometry("700x750")
 
         self.is_recording = False
         self.is_playing = False
@@ -275,8 +275,18 @@ class AppGUI:
         self.insert_color_btn.pack(pady=5)
         self.insert_sound_btn = ttk.Button(editor_button_frame, text="Insert Sound Wait", command=self.insert_sound_wait)
         self.insert_sound_btn.pack(pady=5)
-        self.insert_if_color_btn = ttk.Button(editor_button_frame, text="Insert IF Color", command=self.insert_if_color)
-        self.insert_if_color_btn.pack(pady=5)
+        
+        # IF Color with submenu
+        self.if_color_menubutton = ttk.Menubutton(editor_button_frame, text="Insert IF Color ▼")
+        self.if_color_menu = Menu(self.if_color_menubutton, tearoff=0)
+        self.if_color_menubutton["menu"] = self.if_color_menu
+        self.if_color_menu.add_command(label="IF Block (전체)", command=self.insert_if_color_block)
+        self.if_color_menu.add_separator()
+        self.if_color_menu.add_command(label="IF Color Only", command=self.insert_if_color_only)
+        self.if_color_menu.add_command(label="ELSE Only", command=self.insert_else_only)
+        self.if_color_menu.add_command(label="END IF Only", command=self.insert_end_if_only)
+        self.if_color_menubutton.pack(pady=5, fill='x')
+        
         self.insert_call_btn = ttk.Button(editor_button_frame, text="Insert Call Macro", command=self.insert_call_macro)
         self.insert_call_btn.pack(pady=5)
 
@@ -1327,8 +1337,8 @@ class AppGUI:
         self._populate_treeview()
         self.add_log_message(f"Inserted Wait Sound (Threshold: {threshold})")
 
-    def insert_if_color(self):
-        """Insert IF Color block around selected actions"""
+    def insert_if_color_block(self):
+        """Insert IF Color block around selected actions (IF + ELSE + END IF)"""
         selected_items = self.tree.selection()
         if not selected_items:
             messagebox.showwarning("No Selection", "Please select actions for IF block (True branch).")
@@ -1485,3 +1495,67 @@ class AppGUI:
         self._invalidate_grouped_actions()
         self._populate_treeview()
         self.add_log_message(f"Inserted Call Macro: {os.path.basename(file_path)}")
+
+    def insert_if_color_only(self):
+        """Insert only IF Color (without ELSE and END IF)"""
+        messagebox.showinfo("Color Picker", "Move mouse to target pixel and press 'C' to capture.")
+        self.root.withdraw()
+        self.if_only_mode = True
+        self.picking_simple_if = True
+        self._check_simple_if_pick()
+
+    def _check_simple_if_pick(self):
+        if not getattr(self, 'picking_simple_if', False):
+            return
+        
+        if keyboard.is_pressed('c'):
+            self.picking_simple_if = False
+            while keyboard.is_pressed('c'):
+                time.sleep(0.05)
+            
+            x, y = mouse.get_position()
+            rgb = event_utils.get_pixel_color(x, y)
+            hex_color = event_utils.rgb_to_hex(rgb)
+            
+            self.root.deiconify()
+            self._insert_single_logic_event('if_color_match', {
+                'x': x, 'y': y, 'target_hex': hex_color, 'else_jump_idx': -1
+            }, f"IF Color ({hex_color})")
+        else:
+            self.root.after(50, self._check_simple_if_pick)
+
+    def insert_else_only(self):
+        """Insert only ELSE"""
+        self._insert_single_logic_event('if_color_else', {'end_jump_idx': -1}, "ELSE")
+
+    def insert_end_if_only(self):
+        """Insert only END IF"""
+        self._insert_single_logic_event('if_color_end', {}, "END IF")
+
+    def _insert_single_logic_event(self, logic_type, details, display_name):
+        """Helper to insert a single logic event at selection point"""
+        selected_items = self.tree.selection()
+        if selected_items:
+            idx = self.tree.index(selected_items[-1])
+            action = self.visible_actions[idx]
+            if action.indices:
+                insert_idx = action.indices[-1] + 1
+            else:
+                insert_idx = action.start_index + 1
+        else:
+            insert_idx = len(self.macro_data['events'])
+        
+        if insert_idx > 0 and insert_idx <= len(self.macro_data['events']):
+            prev_time = self.macro_data['events'][insert_idx - 1][0]
+            new_time = prev_time + 0.01
+        else:
+            new_time = 0.0
+        
+        event_data = {'logic_type': logic_type}
+        event_data.update(details)
+        event = (new_time, event_data)
+        self.macro_data['events'].insert(insert_idx, event)
+        
+        self._invalidate_grouped_actions()
+        self._populate_treeview()
+        self.add_log_message(f"Inserted {display_name}")

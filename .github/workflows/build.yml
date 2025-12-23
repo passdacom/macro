@@ -27,11 +27,11 @@ jobs:
     
     - name: Build executable with PyInstaller
       run: |
-        pyinstaller --onefile --windowed --icon=icon.ico --name="MacroEditor_v6.1" main.py
+        pyinstaller --onefile --windowed --icon=icon.ico --name="MacroEditor_v6.2" main.py
     
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: MacroEditor-Windows
-        path: dist/MacroEditor_v6.1.exe
+        path: dist/MacroEditor_v6.2.exe
         retention-days: 30

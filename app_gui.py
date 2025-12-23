@@ -101,7 +101,7 @@ def _deserialize_event(event_dict):
 class AppGUI:
     def __init__(self, root):
         self.root = root
-        self.root.title("Advanced Macro Editor v6.0.1")
+        self.root.title("Advanced Macro Editor v6.1.0")
         self.root.geometry("650x600")
 
         self.is_recording = False
@@ -143,6 +143,9 @@ class AppGUI:
         menubar.add_cascade(label="Option", menu=option_menu)
         option_menu.add_radiobutton(label="Absolute Coordinates", variable=self.coord_var, value="absolute")
         option_menu.add_radiobutton(label="Relative Coordinates", variable=self.coord_var, value="relative")
+        option_menu.add_separator()
+        self.dark_mode_var = tk.BooleanVar(value=False)
+        option_menu.add_checkbutton(label="Dark Mode / 다크 모드", variable=self.dark_mode_var, command=self.toggle_dark_mode)
 
         tools_menu = Menu(menubar, tearoff=0)
         menubar.add_cascade(label="Tools", menu=tools_menu)
@@ -279,6 +282,12 @@ class AppGUI:
         self.log_text.pack(fill="both", expand=True, padx=5, pady=5)
 
         self.log_file = "macro_log.txt"
+
+        # Status Bar
+        self.status_var = tk.StringVar(value="Ready / 준비")
+        self.status_bar = ttk.Label(self.root, textvariable=self.status_var, 
+                                    relief=tk.SUNKEN, anchor=tk.W, padding=(5, 2))
+        self.status_bar.pack(side=tk.BOTTOM, fill=tk.X)
 
         self.update_button_states()
         self.hotkey_manager.start()
@@ -642,9 +651,47 @@ class AppGUI:
         self.play_button.config(state=play_state)
         self.stop_button.config(state=stop_state)
         self.delete_button.config(state="normal" if can_edit and has_macro else "disabled")
+        
+        # Update Status Bar
+        if self.is_recording:
+            self.status_var.set("🔴 Recording... / 녹화 중...")
+        elif self.is_playing:
+            self.status_var.set("▶️ Playing... / 재생 중...")
+        else:
+            event_count = len(self.macro_data.get('events', []))
+            if event_count > 0:
+                self.status_var.set(f"Ready ({event_count} events) / 준비 ({event_count}개 이벤트)")
+            else:
+                self.status_var.set("Ready / 준비")
+
 
     def toggle_always_on_top(self):
         self.root.attributes("-topmost", self.always_on_top_var.get())
+
+    def toggle_dark_mode(self):
+        """Toggle between light and dark mode"""
+        style = ttk.Style()
+        if self.dark_mode_var.get():
+            # Dark Mode
+            style.theme_use('clam')
+            bg_color = '#2d2d2d'
+            fg_color = '#ffffff'
+            self.root.configure(bg=bg_color)
+            style.configure(".", background=bg_color, foreground=fg_color, fieldbackground='#3d3d3d')
+            style.configure("TFrame", background=bg_color)
+            style.configure("TLabel", background=bg_color, foreground=fg_color)
+            style.configure("TLabelframe", background=bg_color, foreground=fg_color)
+            style.configure("TLabelframe.Label", background=bg_color, foreground=fg_color)
+            style.configure("TButton", background='#4a4a4a', foreground=fg_color)
+            style.configure("Treeview", background='#3d3d3d', foreground=fg_color, fieldbackground='#3d3d3d')
+            style.configure("Treeview.Heading", background='#4a4a4a', foreground=fg_color)
+            self.log_text.configure(bg='#3d3d3d', fg=fg_color, insertbackground=fg_color)
+        else:
+            # Light Mode (default)
+            style.theme_use('default')
+            self.root.configure(bg='SystemButtonFace')
+            style.configure(".", background='SystemButtonFace', foreground='black')
+            self.log_text.configure(bg='white', fg='black', insertbackground='black')
 
     def _get_clean_data(self):
         """

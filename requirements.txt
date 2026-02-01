@@ -1,2 +1,4 @@
 keyboard
 mouse
+sounddevice
+numpy

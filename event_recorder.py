@@ -30,10 +30,10 @@ class Recorder:
         self.coordinate_mode = 'absolute'
         self.keyboard_hook = None
         self.mouse_hook = None
-        self.mouse_hook = None
         self.button_to_ignore_up = None
         self.auto_wait = False
         self.auto_wait_timeout = 5.0
+        self.right_click_to_color_check = False
 
     def _record_event(self, event):
         if not self.recording:
@@ -60,6 +60,30 @@ class Recorder:
             return
 
         event_time = time.time() - self.start_time
+
+        # Right Click → Color Check 변환 처리
+        if isinstance(event, mouse.ButtonEvent) and event.button == 'right' and event.event_type == 'down':
+            if self.right_click_to_color_check:
+                pos = mouse.get_position()
+                try:
+                    color = event_utils.get_pixel_color(pos[0], pos[1])
+                    hex_color = event_utils.rgb_to_hex(color)
+                    # 우클릭 대신 Color Check 이벤트로 저장
+                    event_to_store = {
+                        'logic_type': 'wait_color',
+                        'target_hex': hex_color,
+                        'x': pos[0],
+                        'y': pos[1],
+                        'timeout': self.auto_wait_timeout,
+                        'post_delay': 0
+                    }
+                    self.new_events.append((event_time, event_to_store))
+                    self.log_callback(f"Right Click → Color Check: {hex_color} at {pos}")
+                    # 우클릭 Up 이벤트도 무시
+                    self.button_to_ignore_up = 'right'
+                    return  # 우클릭 이벤트는 기록하지 않음
+                except Exception as e:
+                    self.log_callback(f"Failed to capture color for right click: {e}")
 
         pos = mouse.get_position() if isinstance(event, mouse.ButtonEvent) else None
         event_to_store = {'obj': event, 'pos': pos}
@@ -105,7 +129,7 @@ class Recorder:
         keyboard.unhook(self.keyboard_hook)
         mouse.unhook(self.mouse_hook)
 
-    def start_recording(self, coordinate_mode='absolute', existing_events=None, auto_wait=False, auto_wait_timeout=5.0):
+    def start_recording(self, coordinate_mode='absolute', existing_events=None, auto_wait=False, auto_wait_timeout=5.0, right_click_to_color_check=False):
         if self.recording:
             self.log_callback("Already recording.")
             return
@@ -116,6 +140,7 @@ class Recorder:
         self.button_to_ignore_up = None
         self.auto_wait = auto_wait
         self.auto_wait_timeout = auto_wait_timeout
+        self.right_click_to_color_check = right_click_to_color_check
 
         last_timestamp = self.events[-1][0] if self.events else 0
         

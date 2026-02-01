@@ -235,6 +235,10 @@ class AppGUI:
         self.auto_wait_timeout_var = tk.StringVar(value="5.0")
         self.auto_wait_timeout_entry = ttk.Entry(auto_wait_frame, textvariable=self.auto_wait_timeout_var, width=4, state="disabled")
         self.auto_wait_timeout_entry.pack(side="left", padx=2)
+        
+        # Right Click → Color Check 기능
+        self.right_click_color_check_var = tk.BooleanVar()
+        ttk.Checkbutton(auto_wait_frame, text="R.Click→Color", variable=self.right_click_color_check_var).pack(side="left", padx=5, pady=5)
 
         self.notebook = ttk.Notebook(main_pane)
         main_pane.add(self.notebook, weight=1)
@@ -522,12 +526,13 @@ class AppGUI:
             existing_events = self.macro_data.get('events', []) if is_continuation else None
             
             auto_wait = self.auto_wait_var.get()
+            right_click_color_check = self.right_click_color_check_var.get()
             try:
                 auto_wait_timeout = float(self.auto_wait_timeout_var.get())
             except ValueError:
                 auto_wait_timeout = 5.0
 
-            self.recorder.start_recording(self.coord_var.get(), existing_events=existing_events, auto_wait=auto_wait, auto_wait_timeout=auto_wait_timeout)
+            self.recorder.start_recording(self.coord_var.get(), existing_events=existing_events, auto_wait=auto_wait, auto_wait_timeout=auto_wait_timeout, right_click_to_color_check=right_click_color_check)
         else:
             self.is_recording = False
             self.record_button.config(text="Record (Ctrl+Alt+F5)")
